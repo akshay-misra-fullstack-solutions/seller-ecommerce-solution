@@ -1,0 +1,236 @@
+<!--footer starts from here-->
+<!--<footer *ngIf="authenticated" id="footer" class="page-footer bg-dark mt-4">
+  <div class="app-bottom-toolbar text-center py-4">
+    <a class="border rounded p-2 px-3 mr-4 d-none d-md-inline-block">
+      Button 1  <fa-icon ml-2 [icon]="faEnvelope"></fa-icon>
+    </a>
+
+    <a class="border rounded p-2 px-3 mr-4 d-none d-md-inline-block">
+      Button 2  <fa-icon ml-2 [icon]="faEnvelope"></fa-icon>
+    </a>
+
+    <a class="border rounded p-2 px-3 mr-4 d-none d-md-inline-block">
+      Button 3  <fa-icon ml-2 [icon]="faEnvelope"></fa-icon>
+    </a>
+
+    &lt;!&ndash;GitHub&ndash;&gt;
+    <a id="footer-link-github" target="_blank" href="https://github.com">
+      <i class="fa fa-github white-text mr-4"> </i>
+    </a>
+    &lt;!&ndash;Youtube&ndash;&gt;
+    <a id="footer-link-youtube" target="_blank" href="https://www.youtube.com">
+      <i class="fa fa-youtube white-text mr-4"> </i>
+    </a>
+    &lt;!&ndash;Facebook&ndash;&gt;
+    <a id="footer-link-facebook" target="_blank" href="https://www.facebook.com/akshay.mishra.33886">
+      <i class="fa fa-facebook white-text mr-4"> </i>
+    </a>
+    &lt;!&ndash;Twitter&ndash;&gt;
+    <a id="footer-link-twitter" target="_blank" href="https://twitter.com/Akki2488">
+      <i class="fa fa-twitter white-text"> </i>
+    </a>
+  </div>
+  &lt;!&ndash;Footer Links&ndash;&gt;
+  <div class="container text-center text-md-left mt-5">
+    <div class="row mt-3">
+      &lt;!&ndash;First column&ndash;&gt;
+      <div class="col-md-3 col-lg-2 col-xl-2 mb-4">
+        <h6 class="text-uppercase font-weight-bold">
+          <strong>Products </strong> <fa-icon ml-2 [icon]="faBoxOpen"></fa-icon>
+        </h6>
+        <hr class="info-background-color mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>
+          <a>Products</a>
+        </p>
+        <p>
+          <a>Prices</a>
+        </p>
+        <p>
+          <a>Coupons</a>
+        </p>
+      </div>
+
+      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+        <h6 class="text-uppercase font-weight-bold">
+          <strong>Orders </strong> <fa-icon ml-2 [icon]="faShoppingCart"></fa-icon>
+        </h6>
+        <hr class="info-background-color mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>
+          <a>Active Orders</a>
+        </p>
+        <p>
+          <a>Cart</a>
+        </p>
+        <p>
+          <a>Logs</a>
+        </p>
+      </div>
+      &lt;!&ndash;/.Second column&ndash;&gt;
+      &lt;!&ndash;Third column&ndash;&gt;
+      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+        <h6 class="text-uppercase font-weight-bold">
+          <strong>Billing </strong> <fa-icon ml-2 [icon]="faMoneyBillWaveAlt"></fa-icon>
+        </h6>
+        <hr class="info-background-color mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>
+          <a>Accounts</a>
+        </p>
+        <p>
+          <a>Reports</a>
+        </p>
+        <p>
+          <a>Payments</a>
+        </p>
+      </div>
+
+      <div class="col-md-4 col-lg-3 col-xl-3">
+        <h6 class="text-uppercase font-weight-bold">
+          <strong>Delivery </strong> <fa-icon ml-2 [icon]="faTruckLoading"></fa-icon>
+        </h6>
+        <hr class="info-background-color mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>
+          <a>Address</a>
+        </p>
+        <p>
+          <a>Logistics</a>
+        </p>
+        <p>
+          <a>Locations</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  &lt;!&ndash; Copyright&ndash;&gt;
+  <div class="footer-copyright text-center">
+        <span>
+            © 2018, Global Business Solutions, Inc. or its affiliates. All rights reserved.
+        </span>
+
+    <a class="btn-link mx-1" >Terms of Use</a>
+    <span>|</span>
+    <a class="btn-link mx-1">Privacy Policy</a>
+  </div>
+  &lt;!&ndash;/.Copyright &ndash;&gt;
+</footer>
+
+<footer *ngIf="!authenticated" id="footer" class="page-footer simple-footer footer-bg fixed-bottom">
+  &lt;!&ndash; Copyright&ndash;&gt;
+  <div class="footer-copyright text-center">
+        <span>
+            © 2018, Global Business Solutions, Inc. or its affiliates. All rights reserved.
+        </span>
+
+    <a class="btn-link mx-1" >Terms of Use</a>
+    <span>|</span>
+    <a class="btn-link mx-1">Privacy Policy</a>
+  </div>
+  &lt;!&ndash;/.Copyright &ndash;&gt;
+</footer>-->
+
+<footer *ngIf="authenticated" class="main-footer">
+  <!-- Services block-->
+  <div class="bg-gray-100 text-dark-700 py-6">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 service-column">
+          <svg class="svg-icon service-icon">
+            <use xlink:href="#delivery-time-1"> </use>
+          </svg>
+          <div class="service-text">
+            <h6 class="text-uppercase">Free shipping &amp; return</h6>
+            <p class="text-muted font-weight-light text-sm mb-0">Free Shipping over Rs. 300</p>
+          </div>
+        </div>
+        <div class="col-lg-4 service-column">
+          <svg class="svg-icon service-icon">
+            <use xlink:href="#money-1"> </use>
+          </svg>
+          <div class="service-text">
+            <h6 class="text-uppercase">Money back guarantee</h6>
+            <p class="text-muted font-weight-light text-sm mb-0">28 Days Money Back Guarantee</p>
+          </div>
+        </div>
+        <div class="col-lg-4 service-column">
+          <svg class="svg-icon service-icon">
+            <use xlink:href="#customer-support-1"> </use>
+          </svg>
+          <div class="service-text">
+            <h6 class="text-uppercase">1800-111-222-333</h6>
+            <p class="text-muted font-weight-light text-sm mb-0">24/7 Available Support</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Main block - menus, subscribe form-->
+  <div class="py-6 bg-gray-300 text-muted">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <div class="font-weight-bold text-uppercase text-lg text-dark mb-3">Global Business Solutions<span class="text-primary">.</span></div>
+          <p>A common business supports system solution for any domain.</p>
+          <ul class="list-inline">
+            <li class="list-inline-item"><a href="#" target="_blank" title="twitter" class="text-muted text-hover-primary"><i class="fab fa-twitter"></i></a></li>
+            <li class="list-inline-item"><a href="#" target="_blank" title="facebook" class="text-muted text-hover-primary"><i class="fab fa-facebook"></i></a></li>
+            <li class="list-inline-item"><a href="#" target="_blank" title="instagram" class="text-muted text-hover-primary"><i class="fab fa-instagram"></i></a></li>
+            <li class="list-inline-item"><a href="#" target="_blank" title="pinterest" class="text-muted text-hover-primary"><i class="fab fa-pinterest"></i></a></li>
+            <li class="list-inline-item"><a href="#" target="_blank" title="vimeo" class="text-muted text-hover-primary"><i class="fab fa-vimeo"></i></a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+          <h6 class="text-uppercase text-dark mb-3">Shop</h6>
+          <ul class="list-unstyled">
+            <li> <a href="#" class="text-muted">For Women</a></li>
+            <li> <a href="#" class="text-muted">For Men</a></li>
+            <li> <a href="#" class="text-muted">Stores</a></li>
+            <li> <a href="#" class="text-muted">Our Blog</a></li>
+            <li> <a href="#" class="text-muted">Shop</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+          <h6 class="text-uppercase text-dark mb-3">Company</h6>
+          <ul class="list-unstyled">
+            <li> <a href="/login" class="text-muted">Login</a></li>
+            <li> <a href="/register" class="text-muted">Register</a></li>
+            <li> <a href="#" class="text-muted">Wishlist</a></li>
+            <li> <a href="/" class="text-muted">Our Products</a></li>
+            <li> <a href="/customer/orders" class="text-muted">Checkouts</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <h6 class="text-uppercase text-dark mb-3">Daily Offers &amp; Discounts</h6>
+          <p class="mb-3"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. At itaque temporibus.</p>
+          <form action="#" id="newsletter-form">
+            <div class="input-group mb-3">
+              <input type="email" placeholder="Your Email Address" aria-label="Your Email Address" class="form-control bg-transparent border-secondary border-right-0">
+              <div class="input-group-append">
+                <button type="submit" class="btn btn-outline-secondary border-left-0"> <i class="fa fa-paper-plane text-lg text-dark"></i></button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Copyright section of the footer-->
+  <div class="py-4 font-weight-light bg-gray-800 text-gray-300">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-left">
+          <p class="mb-md-0">© 2018, Global Business Solutions, Inc. or its affiliates. All rights reserved.</p>
+        </div>
+        <div class="col-md-6">
+          <ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-md-right">
+            <li class="list-inline-item"><img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-1/img/visa.svg" alt="..." class="w-2rem"></li>
+            <li class="list-inline-item"><img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-1/img/mastercard.svg" alt="..." class="w-2rem"></li>
+            <li class="list-inline-item"><img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-1/img/paypal.svg" alt="..." class="w-2rem"></li>
+            <li class="list-inline-item"><img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-1/img/western-union.svg" alt="..." class="w-2rem"></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+

@@ -1,0 +1,26 @@
+<div class="container">
+  <form class="form-inline" (ngSubmit)="onSubmit()" #form="ngForm" novalidate>
+    <div class="col">
+      <select #category="ngModel" class="form-control " [(ngModel)]="product.category" name="category" required>
+        <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+      </select>
+    </div>
+
+    <div class="col">
+      <input #title="ngModel" class="form-control" type="text" [(ngModel)]="product.title" name="title" required placeholder="Title">
+    </div>
+
+    <div class="col">
+      <input #description="ngModel" class="form-control" type="text" [(ngModel)]="product.description" name="description" required placeholder="Description">
+    </div>
+
+    <div class="col">
+      <input #price="ngModel" class="form-control" type="text" [(ngModel)]="product.price" name="price" required placeholder="Base Price">
+    </div>
+
+    <div class="col">
+      <button  mdbBtn size="sm" color="elegant" rounded="true" class="my-0 waves-light" mdbWavesEffect type="submit" [disabled]="!form.form.valid">
+        <fa-icon size="2x" [icon]="faArrowAltCircleUp"></fa-icon></button>
+    </div>
+  </form>
+</div>

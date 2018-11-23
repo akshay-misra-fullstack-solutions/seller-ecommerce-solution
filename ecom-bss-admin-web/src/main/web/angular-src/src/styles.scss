@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "./bootstrap-custom.scss";
+
+.hidden {
+  display: none;
+}
+
+a, button {
+  cursor: pointer;
+}
+
+.form-signin .navbar-brand, .form-signup .navbar-brand {
+  color: #2b3034;
+}
+.form-signin .navbar-brand:hover, .form-signup .navbar-brand:hover {
+  color: #495057;
+}
+
+.nav-link {
+  cursor: pointer;
+}

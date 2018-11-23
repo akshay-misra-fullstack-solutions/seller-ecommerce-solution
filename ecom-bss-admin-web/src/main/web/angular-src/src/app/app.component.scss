@@ -1,0 +1,176 @@
+/*
+.west-nav {
+  position: fixed;
+  z-index: 1000;
+}
+
+.route-content {
+  float: left;
+}
+
+.east-nav {
+  position: fixed;
+  right: -128px;
+  z-index: 1000;
+}
+
+.east-nav:hover {
+  transition: all 0.3s cubic-bezier(0.945, 0.020, 0.270, 0.665);
+  transform-origin: bottom right;
+  animation-name: slideInRight;
+  right: 0;
+}
+
+@media (min-width: 200px) and (max-width: 576px) {
+  .container-middle {
+    margin-top: 35px;
+    padding-top: 30px;
+  }
+
+  .container-middle.login {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  .route-content {
+    margin-top: 45px;
+    padding-top: 40px;
+  }
+
+  .route-content.login {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  .east-nav {
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+  .container-middle {
+    margin-top: 35px;
+    padding-top: 30px;
+  }
+
+  .container-middle.login {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  .route-content {
+    margin-top: 40px;
+    padding-top: 35px;
+  }
+
+  .route-content.login {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  .east-nav {
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .container-middle {
+    margin-top: 35px;
+    padding-top: 30px;
+  }
+
+  .container-middle.login {
+    margin-top: 20px;
+    padding-top: 15px;
+  }
+
+  .route-content {
+    margin-top: 25px;
+    padding-top: 20px;
+  }
+
+  .route-content.login {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  .east-nav {
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .container-middle {
+    margin-top: 55px;
+    padding-top: 38px;
+  }
+
+  .container-middle.login {
+    margin-top: 25px;
+    padding-top: 20px;
+  }
+
+  .west-nav {
+    padding-left: 0;
+    min-width: 160px;
+    max-width: 160px;
+  }
+
+  .east-nav {
+    padding-right: 0;
+    min-width: 185px;
+    max-width: 185px;
+  }
+
+  .route-content {
+    margin-top: 0;
+    padding-top: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container-middle.login {
+    margin-top: 30px;
+    padding-top: 25px;
+  }
+
+  .container-middle {
+    margin-top: 55px;
+    padding-top: 38px;
+  }
+
+  .west-nav {
+    padding-left: 0;
+    min-width: 160px;
+    max-width: 160px;
+  }
+
+  .east-nav {
+    padding-right: 0;
+    min-width: 185px;
+    max-width: 185px;
+  }
+
+  .route-content {
+    margin-top: 0;
+    padding-top: 0;
+  }
+}
+
+.footer-col {
+  padding-left: 0;
+  padding-right: 0;
+}
+*/

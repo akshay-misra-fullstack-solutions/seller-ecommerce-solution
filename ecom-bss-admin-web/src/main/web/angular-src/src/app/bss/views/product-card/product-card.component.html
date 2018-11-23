@@ -1,0 +1,98 @@
+<!--
+<div class="card-container manual-flip" [ngClass]="{'hover': flip}">
+  <div class="card">
+    <div class="front">
+      <div class="cover">
+        <img src="../../../assets/images/rotating_card.png"/>
+      </div>
+      <div class="content">
+        <div class="main">
+          <h3 class="name">{{cardProduct.title}}</h3>
+          <p class="profession">{{cardProduct.category}}</p>
+          <p class="text-center">{{cardProduct.description}}</p>
+        </div>
+        <div class="footer">
+          <a class="btn btn-simple" (click)="flipCard()">
+            <i class="fa fa-mail-forward flip-forward"></i> more...
+          </a>
+        </div>
+      </div>
+    </div> &lt;!&ndash; end front panel &ndash;&gt;
+    <div class="back">
+      <div class="header">
+        <h5 class="motto">"To be or not to be, this is my awesome motto!"</h5>
+      </div>
+      <div class="content">
+        <div class="main">
+          <h4 class="text-center">Job Description</h4>
+          <p class="text-center">Web design, Adobe Photoshop, HTML5, CSS3, Corel and many others...</p>
+
+          <div class="stats-container">
+            <div class="stats">
+              <h4>235</h4>
+              <p>
+                Followers
+              </p>
+            </div>
+            <div class="stats">
+              <h4>114</h4>
+              <p>
+                Following
+              </p>
+            </div>
+            <div class="stats">
+              <h4>35</h4>
+              <p>
+                Projects
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <a class="btn btn-simple" (click)="flipCard()">
+          <i class="fa fa-reply flip-backward"></i>
+        </a>
+        <div class="social-links text-center">
+          <a class="facebook"><i class="fa fa-facebook fa-fw"></i></a>
+          <a class="google"><i class="fa fa-google-plus fa-fw"></i></a>
+          <a class="twitter"><i class="fa fa-twitter fa-fw"></i></a>
+        </div>
+      </div>
+    </div> &lt;!&ndash; end back panel &ndash;&gt;
+  </div> &lt;!&ndash; end card &ndash;&gt;
+</div>
+-->
+
+<!-- product-->
+<div class="product">
+  <div class="product-image">
+    <div class="ribbon ribbon-info">Fresh</div>
+    <img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-1/img/product/ian-dooley-347968-unsplash.jpg" alt="product" class="img-fluid">
+    <!--<div class="ribbon ribbon-primary">Sale</div><img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-1/img/product/kyle-loftus-596319-unsplash.jpg" alt="product" class="img-fluid">-->
+    <!--<div class="ribbon ribbon-danger">Sold out</div><img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-1/img/product/serrah-galos-494279-unsplash.jpg" alt="product" class="img-fluid">-->
+    <div class="product-hover-overlay">
+      <a href="product/details" class="product-hover-overlay-link"></a>
+      <div class="product-hover-overlay-buttons">
+        <a href="#" class="btn btn-outline-dark btn-product-left">
+          <i class="fa fa-shopping-cart"></i>
+        </a>
+        <a href="product/details" class="btn btn-dark btn-buy">
+          <i class="fa-search fa"></i>
+        </a>
+        <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-dark btn-product-right">
+          <i class="fa fa-expand-arrows-alt"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="py-2">
+    <p class="text-muted text-sm mb-1">Jackets</p>
+    <h3 class="h6 text-uppercase mb-1">
+      <a href="product/details" class="text-dark">White Tee</a>
+    </h3>
+    <span class="text-muted">$40.00</span>
+  </div>
+</div>
+<!-- /product-->

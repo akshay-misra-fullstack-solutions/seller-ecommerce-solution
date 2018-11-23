@@ -1,0 +1,486 @@
+<!--
+<nav *ngIf="authenticated || routeAuthenticated" class="navbar navbar-expand-md navbar-dark fixed-top bg-dark header-bg">
+  <span>
+    <a [routerLink]="['/']" class="navbar-brand">
+       <span>
+       <fa-icon class="logo-authenticated-laptop" size="1x" [icon]="faLaptop"></fa-icon>
+       <fa-icon class="logo-authenticated-handshake" size="2x" [icon]="faHandsHelping"></fa-icon>
+         &lt;!&ndash;<strong class="logo-authenticated-text font-weight-bold">G.B.S</strong>&ndash;&gt;
+      </span>
+      &lt;!&ndash;<img height="50" width="50" class="img-fluid logo" src="../../assets/images/logo.png">&ndash;&gt;
+    </a>
+  </span>
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="navbar-collapse collapse" id="navbarCollapse" style="">
+    <ul class="navbar-nav ml-auto">
+      <li *ngIf="!authenticated" class="nav-item">
+        <a [routerLink]="['/login']" class="nav-link">
+          <fa-icon [icon]="faSignInAlt"></fa-icon> Sign in
+        </a>
+      </li>
+
+      &lt;!&ndash;Dropdown&ndash;&gt;
+      <li *ngIf="authenticated"  class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle  waves-effect waves-light" href="#" id="navbarDropdownMenuLink-4" data-toggle="dropdown">
+          <fa-icon [icon]="faUserAlt"></fa-icon> {{user.userName}}
+        </a>
+        <ul class="dropdown-menu dropdown-menu-right">
+          <li>
+            <a [routerLink]="['/profile']" class="dropdown-item btn-sm">
+              <fa-icon [icon]="faPencilAlt"></fa-icon> Profile
+            </a>
+          </li>
+          <li class="dropdown-divider"></li>
+          <li>
+            <a class="dropdown-item btn-sm" (click)="logout(); $event.stopPropagation();">
+              <fa-icon [icon]="faSignOutAlt"></fa-icon> Sign out
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    &lt;!&ndash;<form class="form-inline mt-2 mt-md-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>&ndash;&gt;
+  </div>
+</nav>
+-->
+
+<header *ngIf="authenticated || routeAuthenticated" class="header">
+  <!-- Top Bar-->
+  <div class="top-bar">
+    <div class="container-fluid">
+      <div class="row d-flex align-items-center ml-3">
+        <a [routerLink]="['/']" class="navbar-logo navbar-brand">
+       <span>
+       <fa-icon class="logo-authenticated-laptop" size="lg" [icon]="faLaptop"></fa-icon>
+         <!--<fa-icon class="logo-authenticated-handshake" size="lg" [icon]="faHandsHelping"></fa-icon>-->
+      </span>
+        </a>
+        <!--<div class="col-sm-7 d-none d-sm-block">
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item pr-3 mr-0">
+              <fa-icon rotate="180" [spin]="true"  [icon]="faPhone"></fa-icon> 080-677-951-812
+            </li>
+            <li class="list-inline-item px-3 border-left d-none d-lg-inline-block">Free shipping on orders over Rs300</li>
+          </ul>
+        </div>-->
+
+        <div class="col-sm-5 d-flex justify-content-end ml-auto">
+          <!-- Language Dropdown-->
+          <div class="dropdown border-right px-3">
+            <a id="langsDropdown" href="https://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle topbar-link">
+              <img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-1/img/united-kingdom.svg" alt="english" class="topbar-flag">
+              English
+            </a>
+            <div aria-labelledby="langsDropdown" class="dropdown-menu dropdown-menu-right">
+              <a href="#" class="dropdown-item text-sm">
+                <img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-1/img/germany.svg" alt="german" class="topbar-flag">
+                German
+              </a>
+              <a href="#" class="dropdown-item text-sm">
+                <img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-1/img/france.svg" alt="french" class="topbar-flag">French</a></div>
+          </div>
+          <!-- Currency Dropdown-->
+          <div class="dropdown pl-3 ml-0"><a id="currencyDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle topbar-link">USD</a>
+            <div aria-labelledby="currencyDropdown" class="dropdown-menu dropdown-menu-right"><a href="#" class="dropdown-item text-sm">EUR</a><a href="#" class="dropdown-item text-sm"> GBP</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Top Bar End-->
+
+  <!-- Navbar-->
+  <nav [ngClass]="{'fixed-top': fixHeader}" class="navbar navbar-expand-lg navbar-sticky navbar-airy navbar-light header">
+    <div class="container-fluid">
+      <button type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><i class="fa fa-bars"></i></button>
+      <!-- Navbar Collapse -->
+      <div id="navbarCollapse" class="collapse navbar-collapse">
+        <div id="nav-global-location-slot">
+          <a class="nav-item  text-white " data-toggle="modal" data-target="#location">
+            <fa-icon class="location-icon" size="lg" [icon]="faMapMarkerAlt"></fa-icon>
+            <span class="nav-line-1 ml-4" id="glow-ingress-line1">Deliver to Akshay</span><br>
+            <span class="nav-line-2 ml-4" id="glow-ingress-line2">Bangalore 560102</span>
+          </a>
+        </div>
+
+        <!--<ul class="navbar-nav mx-auto">
+          <li class="nav-item dropdown">
+            <a id="homeDropdownMenuLink" href="/" data-toggle="dropdown" aria-haspopup="true"
+               aria-expanded="false" class="nav-link ">
+              Home<i class="fa fa-angle-down"></i></a>
+            <div aria-labelledby="homeDropdownMenuLink" class="dropdown-menu">
+              <a href="index.html" class="dropdown-item">Fullscreen home + Lookbook</a>
+              <a href="index2.html" class="dropdown-item">Split-screen home</a>
+              <a href="index3.html" class="dropdown-item">Classic home</a>
+              <a href="index4.html" class="dropdown-item">Parallax sections</a>
+            </div>
+          </li>
+          <li class="nav-item"><a href="category.html" class="nav-link active">Shop</a>
+          </li>
+          &lt;!&ndash; Megamenu&ndash;&gt;
+          <li class="nav-item dropdown position-static">
+            <a href="#" data-toggle="dropdown" class="nav-link">Template<i class="fa fa-angle-down"></i></a>
+            <div class="dropdown-menu megamenu py-lg-0">
+              <div class="row">
+                <div class="col-lg-9">f
+                  <div class="row p-3 pr-lg-0 pl-lg-5 pt-lg-5">
+                    <div class="col-lg-3">
+                      &lt;!&ndash; Megamenu list&ndash;&gt;
+                      <h6 class="text-uppercase">Homepage</h6>
+                      <ul class="megamenu-list list-unstyled">
+                        <li class="megamenu-list-item"><a href="index.html" class="megamenu-list-link">Fullscreen home + Lookbook   </a></li>
+                        <li class="megamenu-list-item"><a href="index2.html" class="megamenu-list-link">Split-screen home   </a></li>
+                        <li class="megamenu-list-item"><a href="index3.html" class="megamenu-list-link">Classic home   </a></li>
+                        <li class="megamenu-list-item"><a href="index4.html" class="megamenu-list-link">Parallax sections  <span class="badge badge-info ml-1">New</span>   </a></li>
+                      </ul>
+                      &lt;!&ndash; Megamenu list&ndash;&gt;
+                      <h6 class="text-uppercase">Shop</h6>
+                      <ul class="megamenu-list list-unstyled">
+                        <li class="megamenu-list-item"><a href="category.html" class="megamenu-list-link">Category - left sidebar   </a></li>
+                        <li class="megamenu-list-item"><a href="category-right.html" class="megamenu-list-link">Category - right sidebar   </a></li>
+                        <li class="megamenu-list-item"><a href="category-no-sidebar.html" class="megamenu-list-link">Category - no sidebar   </a></li>
+                        <li class="megamenu-list-item"><a href="category-full.html" class="megamenu-list-link">Category - full width   </a></li>
+                        <li class="megamenu-list-item"><a href="category-masonry.html" class="megamenu-list-link">Category - masonry items   </a></li>
+                        <li class="megamenu-list-item"><a href="category-banner.html" class="megamenu-list-link">Category - w/ banner   </a></li>
+                        <li class="megamenu-list-item"><a href="detail.html" class="megamenu-list-link">Product detail   </a></li>
+                        <li class="megamenu-list-item"><a href="detail-2.html" class="megamenu-list-link">Product detail - v.2   </a></li>
+                      </ul>
+                    </div>
+                    <div class="col-lg-3">
+                      &lt;!&ndash; Megamenu list&ndash;&gt;
+                      <h6 class="text-uppercase">Order process</h6>
+                      <ul class="megamenu-list list-unstyled">
+                        <li class="megamenu-list-item"><a href="cart.html" class="megamenu-list-link">Shopping cart   </a></li>
+                        <li class="megamenu-list-item"><a href="cart-2.html" class="megamenu-list-link">Shopping cart - v. 2 <span class="badge badge-info ml-1">New</span>   </a></li>
+                        <li class="megamenu-list-item"><a href="checkout1.html" class="megamenu-list-link">Checkout 1 - Address   </a></li>
+                        <li class="megamenu-list-item"><a href="checkout2.html" class="megamenu-list-link">Checkout 2 - Delivery   </a></li>
+                        <li class="megamenu-list-item"><a href="checkout3.html" class="megamenu-list-link">Checkout 3 - Payment   </a></li>
+                        <li class="megamenu-list-item"><a href="checkout4.html" class="megamenu-list-link">Checkout 4 - Review     </a></li>
+                        <li class="megamenu-list-item"><a href="checkout5.html" class="megamenu-list-link">Checkout 5 - Confirmation   </a></li>
+                      </ul>
+                      &lt;!&ndash; Megamenu list&ndash;&gt;
+                      <h6 class="text-uppercase">Blog</h6>
+                      <ul class="megamenu-list list-unstyled">
+                        <li class="megamenu-list-item"><a href="blog.html" class="megamenu-list-link">Blog   </a></li>
+                        <li class="megamenu-list-item"><a href="post.html" class="megamenu-list-link">Post   </a></li>
+                      </ul>
+                    </div>
+                    <div class="col-lg-3">
+                      &lt;!&ndash; Megamenu list&ndash;&gt;
+                      <h6 class="text-uppercase">Pages</h6>
+                      <ul class="megamenu-list list-unstyled">
+                        <li class="megamenu-list-item"><a href="contact.html" class="megamenu-list-link">Contact   </a></li>
+                        <li class="megamenu-list-item"><a href="contact-2.html" class="megamenu-list-link">Contact v.2   </a></li>
+                        <li class="megamenu-list-item"><a href="text.html" class="megamenu-list-link">Text page   </a></li>
+                        <li class="megamenu-list-item"><a href="faq.html" class="megamenu-list-link">F.A.Q.s  <span class="badge badge-info ml-1">New</span>   </a></li>
+                        <li class="megamenu-list-item"><a href="coming-soon.html" class="megamenu-list-link">Coming soon   </a></li>
+                      </ul>
+                      &lt;!&ndash; Megamenu list&ndash;&gt;
+                      <h6 class="text-uppercase">Customer</h6>
+                      <ul class="megamenu-list list-unstyled">
+                        <li class="megamenu-list-item"><a href="customer-login.html" class="megamenu-list-link">Login/sign up   </a></li>
+                        <li class="megamenu-list-item"><a href="customer-orders.html" class="megamenu-list-link">Orders   </a></li>
+                        <li class="megamenu-list-item"><a href="customer-order.html" class="megamenu-list-link">Order detail   </a></li>
+                        <li class="megamenu-list-item"><a href="customer-addresses.html" class="megamenu-list-link">Addresses   </a></li>
+                        <li class="megamenu-list-item"><a href="customer-account.html" class="megamenu-list-link">Profile   </a></li>
+                      </ul>
+                    </div>
+                    <div class="col-lg-3">
+                      &lt;!&ndash; Megamenu list&ndash;&gt;
+                      <h6 class="text-uppercase">Documentation</h6>
+                      <ul class="megamenu-list list-unstyled">
+                        <li class="megamenu-list-item"><a href="docs/docs-introduction.html" class="megamenu-list-link">Introduction   </a></li>
+                        <li class="megamenu-list-item"><a href="docs/docs-directory-structure.html" class="megamenu-list-link">Directory structure   </a></li>
+                        <li class="megamenu-list-item"><a href="docs/docs-gulp.html" class="megamenu-list-link">Gulp   </a></li>
+                        <li class="megamenu-list-item"><a href="docs/docs-customizing-css.html" class="megamenu-list-link">Customizing CSS   </a></li>
+                        <li class="megamenu-list-item"><a href="docs/docs-credits.html" class="megamenu-list-link">Credits   </a></li>
+                        <li class="megamenu-list-item"><a href="docs/docs-changelog.html" class="megamenu-list-link">Changelog   </a></li>
+                      </ul>
+                      &lt;!&ndash; Megamenu list&ndash;&gt;
+                      <h6 class="text-uppercase">Components</h6>
+                      <ul class="megamenu-list list-unstyled">
+                        <li class="megamenu-list-item"><a href="docs/components-bootstrap.html" class="megamenu-list-link">Bootstrap   </a></li>
+                        <li class="megamenu-list-item"><a href="docs/components-sell.html" class="megamenu-list-link">Theme   </a></li>
+                        <li class="megamenu-list-item"><a href="component-variants/header.html" class="megamenu-list-link">Header variants <span class="badge badge-info ml-1">New</span>   </a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="row megamenu-services d-none d-lg-flex">
+                    <div class="col-xl-3 col-lg-6 d-flex">
+                      <div class="megamenu-services-item">
+                        <svg class="svg-icon megamenu-services-icon">
+                          <use xlink:href="#delivery-time-1"> </use>
+                        </svg>
+                        <div>
+                          <h6 class="text-uppercase">Free shipping &amp; return</h6>
+                          <p class="mb-0 text-muted text-sm">Free Shipping over $300</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 d-flex">
+                      <div class="megamenu-services-item">
+                        <svg class="svg-icon megamenu-services-icon">
+                          <use xlink:href="#money-1"> </use>
+                        </svg>
+                        <div>
+                          <h6 class="text-uppercase">Money back guarantee</h6>
+                          <p class="mb-0 text-muted text-sm">30 Days Money Back</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 d-flex">
+                      <div class="megamenu-services-item">
+                        <svg class="svg-icon megamenu-services-icon">
+                          <use xlink:href="#customer-support-1"> </use>
+                        </svg>
+                        <div>
+                          <h6 class="text-uppercase">020-800-456-747</h6>
+                          <p class="mb-0 text-muted text-sm">24/7 Available Support</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 d-flex">
+                      <div class="megamenu-services-item">
+                        <svg class="svg-icon megamenu-services-icon">
+                          <use xlink:href="#secure-payment-1"> </use>
+                        </svg>
+                        <div>
+                          <h6 class="text-uppercase">Secure Payment</h6>
+                          <p class="mb-0 text-muted text-sm">Secure Payment</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3 d-none d-lg-block"><img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-1/img/megamenu.jpg" alt="" class="bg-image"></div>
+              </div>
+            </div>
+          </li>
+          &lt;!&ndash; /Megamenu end&ndash;&gt;
+          &lt;!&ndash; Multi level dropdown    &ndash;&gt;
+          <li class="nav-item dropdown"><a id="navbarDropdownMenuLink" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link">Dropdown<i class="fa fa-angle-down"></i></a>
+            <ul aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu">
+              <li><a href="#" class="dropdown-item">Action</a></li>
+              <li><a href="#" class="dropdown-item">Another action</a></li>
+              <li class="dropdown-submenu"><a id="navbarDropdownMenuLink2" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item">Dropdown link<i class="fa fa-angle-down ml-2"></i></a>
+                <ul aria-labelledby="navbarDropdownMenuLink2" class="dropdown-menu">
+                  <li><a href="#" class="dropdown-item">Action</a></li>
+                  <li class="dropdown-submenu"><a id="navbarDropdownMenuLink3" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item">
+
+                    Another action<i class="fa fa-angle-down ml-2"></i></a>
+                    <ul aria-labelledby="navbarDropdownMenuLink3" class="dropdown-menu">
+                      <li><a href="#" class="dropdown-item">Action</a></li>
+                      <li><a href="#" class="dropdown-item">Action</a></li>
+                      <li><a href="#" class="dropdown-item">Action</a></li>
+                      <li><a href="#" class="dropdown-item">Action</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#" class="dropdown-item">Something else here</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          &lt;!&ndash; Multi level dropdown end&ndash;&gt;
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a>
+          </li>
+          <li class="nav-item dropdown"><a id="docsDropdownMenuLink" href="/" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link ">
+
+            Docs<i class="fa fa-angle-down"></i></a>
+            <div aria-labelledby="docsDropdownMenuLink" class="dropdown-menu dropdown-menu-right">
+              <h6 class="dropdown-header font-weight-normal">Documentation</h6><a href="docs/docs-introduction.html" class="dropdown-item">Introduction </a><a href="docs/docs-directory-structure.html" class="dropdown-item">Directory structure </a><a href="docs/docs-gulp.html" class="dropdown-item">Gulp </a><a href="docs/docs-customizing-css.html" class="dropdown-item">Customizing CSS </a><a href="docs/docs-credits.html" class="dropdown-item">Credits </a><a href="docs/docs-changelog.html" class="dropdown-item">Changelog </a>
+              <div class="dropdown-divider"></div>
+              <h6 class="dropdown-header font-weight-normal">Components</h6><a href="docs/components-bootstrap.html" class="dropdown-item">Bootstrap </a><a href="docs/components-sell.html" class="dropdown-item">Theme </a><a href="component-variants/header.html" class="dropdown-item">Header variants <span class="badge badge-info ml-1">New</span> </a>
+            </div>
+          </li>
+        </ul>-->
+
+        <div class="d-flex align-items-center justify-content-between justify-content-lg-end mt-1 mb-2 my-lg-0 ml-auto">
+          <!-- Search Button-->
+          <div data-toggle="search" class="nav-item navbar-icon-link">
+            <fa-icon [icon]="faSearch"></fa-icon>
+          </div>
+          <!-- User Not Logged - link to login page-->
+          <div *ngIf="!authenticated" class="nav-item">
+            <a href="/login" class="navbar-icon-link">
+              <fa-icon [icon]="faUserAlt"></fa-icon>
+              <span class="text-sm ml-2 ml-lg-0 text-uppercase text-sm font-weight-bold d-none d-sm-inline d-lg-none"> Log in </span></a>
+          </div>
+          <!-- User Logged In - Drop Down -->
+          <div *ngIf="authenticated" class="nav-item dropdown">
+            <a id="userdetails" href="https://example.com" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false" class="dropdown-toggle navbar-icon-link">
+              <fa-icon [icon]="faUserAlt"></fa-icon>
+            </a>
+            <div aria-labelledby="userdetails" class="dropdown-menu dropdown-menu-right">
+              <a href="customer/orders" class="dropdown-item">Orders</a>
+              <a href="customer/address" class="dropdown-item">Addresses</a>
+              <a href="customer/account" class="dropdown-item">Profile</a>
+              <div class="dropdown-divider my-0"></div>
+              <a class="dropdown-item" (click)="logout(); $event.stopPropagation();" >Logout</a>
+
+            </div>
+          </div>
+
+          <!-- Cart Dropdown-->
+          <div class="nav-item dropdown">
+            <a href="cart.html" class="navbar-icon-link d-lg-none">
+              <svg class="svg-icon">
+                <use xlink:href="#cart-1"> </use>
+              </svg>
+              <span class="text-sm ml-2 ml-lg-0 text-uppercase text-sm font-weight-bold d-none d-sm-inline d-lg-none">View cart</span>
+            </a>
+            <div class="d-none d-lg-block">
+              <a id="cartdetails" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/products/cart" class="navbar-icon-link dropdown-toggle">
+                <fa-icon [icon]="faShoppingCart"></fa-icon>
+                <div class="navbar-icon-link-badge">0
+                </div>
+              </a>
+              <div aria-labelledby="cartdetails" class="dropdown-menu dropdown-menu-right p-4">
+                <div class="navbar-cart-product-wrapper">
+                  <!-- cart item-->
+                  <div class="navbar-cart-product">
+                    <div class="d-flex align-items-center"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-1/img/product/product-square-ian-dooley-347968-unsplash.jpg" alt="..." class="img-fluid navbar-cart-product-image"></a>
+                      <div class="w-100"><a href="#" class="close text-sm mr-2"><i class="fa fa-times">                                                   </i></a>
+                        <div class="pl-3"> <a href="detail.html" class="navbar-cart-product-link">Skull Tee</a><small class="d-block text-muted">Quantity: 1 </small><strong class="d-block text-sm">$75.00 </strong></div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- cart item-->
+                  <div class="navbar-cart-product">
+                    <div class="d-flex align-items-center"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-1/img/product/product-square-kyle-loftus-596319-unsplash.jpg" alt="..." class="img-fluid navbar-cart-product-image"></a>
+                      <div class="w-100"><a href="#" class="close text-sm mr-2"><i class="fa fa-times">                                                   </i></a>
+                        <div class="pl-3"> <a href="detail.html" class="navbar-cart-product-link">Transparent Blouse</a><small class="d-block text-muted">Quantity: 1 </small><strong class="d-block text-sm">$75.00 </strong></div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- cart item-->
+                  <div class="navbar-cart-product">
+                    <div class="d-flex align-items-center">
+                      <a href="detail.html">
+                        <img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-1/img/product/product-square-serrah-galos-494312-unsplash.jpg" alt="..." class="img-fluid navbar-cart-product-image">
+                      </a>
+                      <div class="w-100">
+                        <a href="#" class="close text-sm mr-2">
+                          <i class="fa fa-times"></i>
+                        </a>
+                        <div class="pl-3">
+                          <a href="detail.html" class="navbar-cart-product-link">White Tee</a>
+                          <small class="d-block text-muted">Quantity: 1 </small>
+                          <strong class="d-block text-sm">$75.00 </strong>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- total price-->
+                <div class="navbar-cart-total">
+                  <span class="text-uppercase text-muted">Total</span>
+                  <strong class="text-uppercase">$75.00</strong>
+                </div>
+                <!-- buttons-->
+                <div class="d-flex justify-content-between">
+                  <a href="products/cart" class="btn btn-link text-dark mr-3">
+                    View Cart <i class="fa-arrow-right fa"></i>
+                  </a>
+                  <a href="process/order" class="btn btn-outline-dark">Checkout</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- /Navbar -->
+
+  <!--Modal for Location Input-->
+  <div class="modal fade" id="location" tabindex="-1" role="dialog" aria-labelledby="locationModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h6 class="modal-title" id="locationModalTitle">Choose your location</h6>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="GLOWFeature_AddressList">
+            <div id="GLUXAddressBlock">
+              <div class="a-section a-padding-none a-row a-spacing-small">
+                <span class="a-text a-color-secondary a-spacing-medium a-size-small">Select a delivery location to see product availability and delivery options</span>
+              </div>
+              <div class="a-button a-button-primary a-button-span12 mt-2 mb-3 ml-3">
+                <span class=" a-declarative" data-action="GLUXSignInAction">
+                  <button class="btn btn-primary rounded" type="submit" aria-label="Sign in to see your addresses">Sign in to see your addresses</button>
+                </span>
+              </div>
+            </div>
+            <div class="GLUX_Inline" id="GLUXSpecifyLocationDiv">
+              <div class="a-divider a-divider-break a-spacing-top-base mb-2">
+                <span class="text-muted">------------------- or enter a pincode ------------------ </span>
+              </div>
+              <div class="pin-input-container">
+                <div [ngClass]="{'d-none': !enterLocation}" class="a-box" id="GLUXZipInputSection">
+                  <div class="row a-span8">
+                    <input class="pin-input col-8 ml-3 mr-1" type="text" maxlength="6" value="560102" id="GLUXZipUpdateInput" aria-label="or enter a pincode" data-action="GLUXPostalInputAction">
+                    <button class="btn btn-info btn-sm col-3 rounded mr-2" (click)="displayLocationForm(false)" type="submit" aria-labelledby="GLUXZipUpdate-announce">Apply</button>
+                  </div>
+                  <span class="d-none" id="GLUXZipError" role="alert">
+                    <div class="a-box a-alert-inline a-alert-inline-error">
+                      <div class="a-box-inner a-alert-container">
+                        <i class="a-icon a-icon-alert"></i>
+                        <div>Please enter a valid pincode</div>
+                      </div>
+                    </div>
+                  </span>
+                </div>
+                <div [ngClass]="{'d-none': enterLocation}" class="">
+                  <div class="a-button-inner a-padding-base" tabindex="0">Deliver to&nbsp;
+                    <span class="a-text-bold a-size-base-plus">560102</span>&nbsp;
+                    <a (click)="displayLocationForm(true)" class="a-link-normal a-declarative" role="link" tabindex="0">Change</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary rounded" data-dismiss="modal">Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!---------------->
+
+  <!-- Products Categories Starts -->
+  <product-categories-navigation></product-categories-navigation>
+  <!--Products Categories Ends-->
+
+  <!-- Fullscreen search area-->
+  <div class="search-area-wrapper" style="display: none;">
+    <div class="search-area d-flex align-items-center justify-content-center">
+      <div class="close-btn">
+        <svg class="svg-icon svg-icon-light w-3rem h-3rem">
+          <use xlink:href="#close-1"> </use>
+        </svg>
+      </div>
+      <form action="#" class="search-area-form">
+        <div class="form-group position-relative">
+          <input type="search" name="search" id="search" placeholder="What are you looking for?" class="search-area-input">
+          <button type="submit" class="search-area-button">
+            <svg class="svg-icon">
+              <use xlink:href="#search-1"> </use>
+            </svg>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- /Fullscreen search area-->
+
+</header>

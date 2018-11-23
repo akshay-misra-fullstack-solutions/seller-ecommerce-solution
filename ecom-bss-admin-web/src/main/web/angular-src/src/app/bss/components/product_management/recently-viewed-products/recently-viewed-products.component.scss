@@ -1,0 +1,114 @@
+.rhf-footer {
+  padding-bottom: 14px;
+}
+
+.rhf-footer .ybh-edit {
+  float: right;
+  margin-top: 18px;
+  padding-left: 40px;
+  padding-right: 10px;
+}
+
+.rhf-border a {
+  text-decoration: none;
+}
+
+.ybh-edit .ybh-edit-arrow {
+  color: #c90;
+  font-size: 11px;
+  margin-top: -2px;
+  padding-right: 8px;
+}
+
+.ybh-edit .ybh-edit-link {
+  font-size: 10px;
+  width: 80px;
+}
+
+.ybh-edit-link a {
+  color: rgb(0, 0, 238);
+}
+
+.ybh-edit-link a:hover {
+  color: rgb(0, 130, 230);
+}
+
+.ybh-edit .ybh-edit-arrow,
+.ybh-edit .ybh-edit-link {
+  display: inline-block;
+  font-weight: 700;
+  line-height: 11px;
+  vertical-align: top;
+}
+
+.rvi-container {
+  height: 75px;
+  line-height: 75px;
+  overflow: hidden;
+  padding: 0 10px;
+  position: relative;
+}
+
+.rvi-container a {
+  text-decoration: none;
+}
+
+.rvi-container .rhf-RVIs {
+  display: inline-block;
+  padding: 0 10px 0 10px;
+  vertical-align: middle;
+}
+
+.rvi-container .rhf-RVIs a img {
+   border: 1px solid #DDD;
+   box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   -webkit-box-sizing: border-box;
+   vertical-align: middle;
+ }
+
+.rvi-container .you-viewed {
+  width: 60px;
+  color: #000;
+  font-size: 13px;
+  display: inline-block;
+  line-height: 13px;
+  margin-right: 3px;
+  text-align: right;
+  vertical-align: middle;
+}
+
+.rhf-sign-in-button-box {
+  float: right;
+  border-left: 1px solid #ddd;
+  margin-right: -30px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.rhf-sign-in-button {
+  border: 0;
+  line-height: 15px;
+  margin: 0;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.rhf-sign-in-button, .rvi-container #ybh-link, .rvi-container #ybh-text-off,
+.rvi-container #ybh-text-on, .rvi-container .you-viewed {
+  color: #000;
+  font-size: 13px;
+}
+
+.rhf-sign-in-button .action-button,
+.rhf-sign-in-button a.action-button:active,
+.rhf-sign-in-button a.action-button:hover,
+.rhf-sign-in-button a.action-button:link {
+  max-width: 230px;
+  text-decoration: none;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  width: 230px;
+  display: block;
+}
+

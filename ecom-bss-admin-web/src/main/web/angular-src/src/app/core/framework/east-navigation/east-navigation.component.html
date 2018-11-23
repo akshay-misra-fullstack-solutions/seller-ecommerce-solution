@@ -1,0 +1,8 @@
+<nav *ngIf="authenticated"  id="sidebarEast" class="sidebar-east card card-cascade narrower">
+  <ul class="nav justify-content-center">
+    <li class="nav-item" *ngFor="let operation of operations">
+      <a class="nav-link pt-2"><span><fa-icon class="operation-icon-float mr-2" ml-2 size="1x" [icon]="operation.icon"></fa-icon>
+        <strong class="operation-name ml-2">{{ operation.name }}</strong></span></a>
+    </li>
+  </ul>
+</nav>

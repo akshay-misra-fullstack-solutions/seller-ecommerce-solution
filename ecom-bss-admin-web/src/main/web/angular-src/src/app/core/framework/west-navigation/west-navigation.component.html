@@ -1,0 +1,8 @@
+<!-- Sidebar Holder -->
+<nav *ngIf="authenticated"  id="sidebarWest" class="sidebar card card-cascade narrower">
+  <ul class="nav justify-content-center">
+    <li class="nav-item" [ngClass]="{'active': activeComponent == component.name}" (click)="selectComponent($event, component.name)" *ngFor="let component of components">
+      <a [routerLink]="[component.route]" class="nav-link">{{ component.name }} <fa-icon class="component-icon-float" ml-2 size="1x" [icon]="component.icon" ></fa-icon></a>
+    </li>
+  </ul>
+</nav>

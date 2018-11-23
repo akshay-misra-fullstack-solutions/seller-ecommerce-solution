@@ -1,0 +1,104 @@
+<div *ngIf="loading" class="mt-2 pt-2 mb-5 p-5">
+  <div class="mb-5 p-5">
+    <div id="loading">
+      <ul class="bokeh">
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<top-section *ngIf="!loading"></top-section>
+
+<div *ngIf="!loading"  class="container-fluid">
+  <div class="px-xl-5">
+    <div class="row">
+      <!-- Grid -->
+      <div class="products-grid col-xl-9 col-lg-9 order-lg-2">
+        <header class="product-grid-header">
+          <div class="mr-3 mb-3">
+
+            Showing <strong>1-12 </strong>of <strong>158 </strong>products
+          </div>
+          <div class="mr-3 mb-3"><span class="mr-2">Show</span><a href="#" class="product-grid-header-show active">12    </a><a href="#" class="product-grid-header-show ">24    </a><a href="#" class="product-grid-header-show ">All    </a>
+          </div>
+          <div class="mb-3 d-flex align-items-center"><span class="d-inline-block mr-1">Sort by</span>
+            <select class="custom-select w-auto border-0">
+              <option value="orderby_0">Default</option>
+              <option value="orderby_1">Popularity</option>
+              <option value="orderby_2">Rating</option>
+              <option value="orderby_3">Newest first</option>
+            </select>
+          </div>
+        </header>
+        <div class="row">
+          <product-card *ngFor="let product of products" class="col-xl-3 col-lg-4 col-sm-6" [cardProduct]="product"></product-card>
+        </div>
+        <nav aria-label="page navigation" class="d-flex justify-content-center mb-5 mt-3">
+          <ul class="pagination">
+            <li class="page-item"><a href="#" aria-label="Previous" class="page-link"><span aria-hidden="true">Prev</span><span class="sr-only">Previous</span></a></li>
+            <li class="page-item active"><a href="#" class="page-link">1       </a></li>
+            <li class="page-item"><a href="#" class="page-link">2       </a></li>
+            <li class="page-item"><a href="#" class="page-link">3       </a></li>
+            <li class="page-item"><a href="#" class="page-link">4       </a></li>
+            <li class="page-item"><a href="#" class="page-link">5 </a></li>
+            <li class="page-item"><a href="#" aria-label="Next" class="page-link"><span aria-hidden="true">Next</span><span class="sr-only">Next     </span></a></li>
+          </ul>
+        </nav>
+      </div>
+      <!-- / Grid End-->
+
+      <!-- Sidebar-->
+      <products-left-sidebar class="col-xl-3 col-lg-3 pr-xl-5 order-lg-1"></products-left-sidebar>
+
+    </div>
+  </div>
+</div>
+
+<products-slider class="col-12"></products-slider>
+<recommended-products></recommended-products>
+
+
+
+<!--<div *ngIf="!loading" class="container">
+  <a class="btn-transparent product-view-switch info_color" (click)="switch()">
+    <fa-icon [ngClass]="{'hidden': !switchOn}" size="2x" [icon]="faToggleOff"></fa-icon>
+    <fa-icon [ngClass]="{'hidden': switchOn}" size="2x" [icon]="faToggleOn"></fa-icon>
+  </a>
+  <div [ngClass]="{'hidden': !switchOn}" class="row">
+    <table id="table" class="table col">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Base Price</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{product.category}}</td>
+        <td>{{product.title}}</td>
+        <td>{{product.description}}</td>
+        <td>{{product.price}}</td>
+        <td *ngIf="authenticated">
+          <button class="mr-1 btn-transparent"   type="button" (click)="deleteProduct(product); $event.stopPropagation();">
+            <fa-icon size="sm" [icon]="faTrashAlt"></fa-icon> </button>
+          <button class="btn-transparent"   type="button" (click)="editProduct(product); $event.stopPropagation();">
+            <fa-icon size="sm" [icon]="faPencilAlt"></fa-icon> </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div [ngClass]="{'hidden': switchOn}" class="row justify-content-center">
+     <product-card *ngFor="let product of products" class="col-10 col-sm-10 col-md-6 col-lg-6 col-xl-4" [cardProduct]="product"></product-card>
+  </div>
+
+  <div>
+    <app-add-product *ngIf="authenticated" (addProduct)='onAddProduct($event)'></app-add-product>
+  </div>
+</div>-->
