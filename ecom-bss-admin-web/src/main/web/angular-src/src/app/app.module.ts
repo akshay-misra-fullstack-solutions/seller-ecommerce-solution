@@ -46,6 +46,7 @@ import { RecommendedProductsComponent } from './bss/components/product_managemen
 import { ProductCategoriesNavigationComponent } from './bss/components/product_management/product-categories-navigation/product-categories-navigation.component';
 import { ProductCategoriesMegamenuComponent } from './bss/views/products/product-categories-megamenu/product-categories-megamenu.component';
 import { ProductsSliderComponent } from './bss/components/product_management/products-slider/products-slider.component';
+import { ProductCategoryComponent } from './bss/components/product_management/product-category/product-category.component';
 
 export function tokenGetter() {
   return localStorage.getItem('AuthToken');
@@ -84,6 +85,7 @@ export function tokenGetter() {
     ProductCategoriesNavigationComponent,
     ProductCategoriesMegamenuComponent,
     ProductsSliderComponent,
+    ProductCategoryComponent,
   ],
 
   //Modules go here

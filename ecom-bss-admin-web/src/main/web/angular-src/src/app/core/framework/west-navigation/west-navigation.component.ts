@@ -7,7 +7,7 @@ import { UserService } from '../services/user.service';
 
 
 @Component({
-  selector: 'app-west-navigation',
+  selector: 'west-navigation',
   templateUrl: './west-navigation.component.html',
   styleUrls: ['./west-navigation.component.scss']
 })

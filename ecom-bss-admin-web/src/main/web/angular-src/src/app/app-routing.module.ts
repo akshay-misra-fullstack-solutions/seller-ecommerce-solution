@@ -9,19 +9,19 @@ import {UserProfileComponent} from "./core/framework/user-profile/user-profile.c
 import {CartComponent} from "./bss/components/order-management/cart/cart.component";
 import {RevenueManagementComponent} from "./bss/components/revenue-management/revenue-management.component";
 import {DeliveryManagementComponent} from "./bss/components/delivery-management/delivery-management.component";
-import {ProductDetailsComponent} from "./bss/views/product-details/product-details.component";
 import {ProcessOrderComponent} from "./bss/components/order-management/process-order/process-order.component";
 import {CustomerOrdersComponent} from "./bss/components/customer-management/customer-orders/customer-orders.component";
 import {CustomerAccountComponent} from "./bss/components/customer-management/customer-account/customer-account.component";
 import {CustomerAddressComponent} from "./bss/components/customer-management/customer-address/customer-address.component";
 import {OrderSuccessComponent} from "./bss/components/order-management/order-success/order-success.component";
 import {OrderDetailsComponent} from "./bss/components/order-management/order-details/order-details.component";
+import {ProductCategoryComponent} from "./bss/components/product_management/product-category/product-category.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: '', component: ViewProductComponent },
-  { path: 'product/details', component: ProductDetailsComponent},
+  { path: 'catalog/category', component: ProductCategoryComponent},
   { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard]},
   { path: 'products/cart', component: CartComponent, canActivate: [AuthGuard]},
   { path: 'process/order', component: ProcessOrderComponent, canActivate: [AuthGuard]},

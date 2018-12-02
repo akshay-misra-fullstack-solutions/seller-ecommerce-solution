@@ -80,7 +80,19 @@
 }
 
 .navbar-logo {
-  color: whitesmoke;
+  color: #232f3e;
+}
+
+.navbar-nav {
+  display: inline;
+}
+
+.navbar-brand {
+  float: left;
+  padding: 14px 15px;
+  font-size: 17px;
+  line-height: 18px;
+  height: 60px;
 }
 
 #nav-global-location-slot {
