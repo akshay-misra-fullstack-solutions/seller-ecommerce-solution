@@ -15,13 +15,15 @@ import {CustomerAccountComponent} from "./bss/components/customer-management/cus
 import {CustomerAddressComponent} from "./bss/components/customer-management/customer-address/customer-address.component";
 import {OrderSuccessComponent} from "./bss/components/order-management/order-success/order-success.component";
 import {OrderDetailsComponent} from "./bss/components/order-management/order-details/order-details.component";
-import {ProductCategoryComponent} from "./bss/components/product_management/product-category/product-category.component";
+import {ProductCategoriesListComponent} from "./bss/components/product_management/product-categories/product-categories-list/product-categories-list.component";
+import {AddProductCategoryComponent} from './bss/components/product_management/product-categories/add-product-category/add-product-category.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: '', component: ViewProductComponent },
-  { path: 'catalog/category', component: ProductCategoryComponent},
+  /*{ path: '', component: ViewProductComponent },*/
+  { path: '', component: ProductCategoriesListComponent},
+  { path: 'catalog/add/category', component: AddProductCategoryComponent},
   { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard]},
   { path: 'products/cart', component: CartComponent, canActivate: [AuthGuard]},
   { path: 'process/order', component: ProcessOrderComponent, canActivate: [AuthGuard]},

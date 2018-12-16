@@ -5,6 +5,7 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import {JwtModule} from '@auth0/angular-jwt';
+import { NgxSummernoteModule } from 'ngx-summernote';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
@@ -46,7 +47,8 @@ import { RecommendedProductsComponent } from './bss/components/product_managemen
 import { ProductCategoriesNavigationComponent } from './bss/components/product_management/product-categories-navigation/product-categories-navigation.component';
 import { ProductCategoriesMegamenuComponent } from './bss/views/products/product-categories-megamenu/product-categories-megamenu.component';
 import { ProductsSliderComponent } from './bss/components/product_management/products-slider/products-slider.component';
-import { ProductCategoryComponent } from './bss/components/product_management/product-category/product-category.component';
+import { ProductCategoriesListComponent } from './bss/components/product_management/product-categories/product-categories-list/product-categories-list.component';
+import { AddProductCategoryComponent } from './bss/components/product_management/product-categories/add-product-category/add-product-category.component';
 
 export function tokenGetter() {
   return localStorage.getItem('AuthToken');
@@ -85,7 +87,8 @@ export function tokenGetter() {
     ProductCategoriesNavigationComponent,
     ProductCategoriesMegamenuComponent,
     ProductsSliderComponent,
-    ProductCategoryComponent,
+    ProductCategoriesListComponent,
+    AddProductCategoryComponent,
   ],
 
   //Modules go here
@@ -97,6 +100,7 @@ export function tokenGetter() {
     FormsModule,
     AppRoutingModule,
     InfiniteScrollModule,
+    NgxSummernoteModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
