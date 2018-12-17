@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddProductCategoryComponent implements OnInit {
 
+  private activeTab: string;
+
   constructor() { }
 
   ngOnInit() {
+    this.activeTab = 'general';
+  }
+
+  selectTab(event, tabClicked) {
+    console.log(tabClicked);
+    this.activeTab = tabClicked;
   }
 
 }

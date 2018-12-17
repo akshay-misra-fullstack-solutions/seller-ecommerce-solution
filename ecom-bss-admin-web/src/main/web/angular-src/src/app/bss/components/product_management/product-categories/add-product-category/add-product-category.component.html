@@ -19,10 +19,10 @@
       <div class="panel-body">
         <form action="https://demo.opencart.com/admin/index.php?route=catalog/category/add&amp;user_token=NnO89QJ1AQjcLeFmuVlcHidG9MClYumV" method="post" enctype="multipart/form-data" id="form-category" class="form-horizontal">
           <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab-general" data-toggle="tab">General</a></li>
-            <li><a href="#tab-data" data-toggle="tab">Data</a></li>
-            <li><a href="#tab-seo" data-toggle="tab">SEO</a></li>
-            <li><a href="#tab-design" data-toggle="tab">Design</a></li>
+            <li [ngClass]="{'active': activeTab == 'general'}" (click)="selectTab($event, 'general')"><a href="#tab-general" data-toggle="tab">General</a></li>
+            <li [ngClass]="{'active': activeTab == 'data'}" (click)="selectTab($event, 'data')"><a href="#tab-data" data-toggle="tab">Data</a></li>
+            <li [ngClass]="{'active': activeTab == 'seo'}" (click)="selectTab($event, 'seo')"><a href="#tab-seo" data-toggle="tab">SEO</a></li>
+            <li [ngClass]="{'active': activeTab == 'design'}" (click)="selectTab($event, 'design')"><a href="#tab-design" data-toggle="tab">Design</a></li>
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="tab-general">

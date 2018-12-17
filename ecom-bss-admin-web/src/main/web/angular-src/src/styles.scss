@@ -20,3 +20,7 @@ a, button {
 .nav-link {
   cursor: pointer;
 }
+
+select.form-control:not([size]):not([multiple]) {
+  height: auto;
+}
