@@ -24,3 +24,7 @@ a, button {
 select.form-control:not([size]):not([multiple]) {
   height: auto;
 }
+
+.table-responsive>.table-bordered {
+  border: 1px solid #ddd;
+}
