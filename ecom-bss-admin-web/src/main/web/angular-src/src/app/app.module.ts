@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 
+import {AngularMaterialModules} from './material-module';
+
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import {JwtModule} from '@auth0/angular-jwt';
@@ -49,6 +51,14 @@ import { ProductCategoriesMegamenuComponent } from './bss/views/products/product
 import { ProductsSliderComponent } from './bss/components/product_management/products-slider/products-slider.component';
 import { ProductCategoriesListComponent } from './bss/components/product_management/product-categories/product-categories-list/product-categories-list.component';
 import { AddProductCategoryComponent } from './bss/components/product_management/product-categories/add-product-category/add-product-category.component';
+import { AttributeGroupsListComponent } from './bss/components/product_management/attribute-specification/attribute-groups-list/attribute-groups-list.component';
+import { AddAttributeGroupsComponent } from './bss/components/product_management/attribute-specification/add-attribute-groups/add-attribute-groups.component';
+import { AttributeListComponent } from './bss/components/product_management/attribute-specification/attribute-list/attribute-list.component';
+import { AddAttributeComponent } from './bss/components/product_management/attribute-specification/add-attribute/add-attribute.component';
+import { ProductSpecListComponent } from './bss/components/product_management/attribute-specification/product-spec-list/product-spec-list.component';
+import { AddProductSpecComponent } from './bss/components/product_management/attribute-specification/add-product-spec/add-product-spec.component';
+import { AttributesSpecsWrapperComponent } from './bss/components/product_management/attribute-specification/attributes-specs-wrapper/attributes-specs-wrapper.component';
+import { DataTableComponent } from './bss/views/data-table/data-table.component';
 
 export function tokenGetter() {
   return localStorage.getItem('AuthToken');
@@ -89,12 +99,21 @@ export function tokenGetter() {
     ProductsSliderComponent,
     ProductCategoriesListComponent,
     AddProductCategoryComponent,
+    AttributeGroupsListComponent,
+    AddAttributeGroupsComponent,
+    AttributeListComponent,
+    AddAttributeComponent,
+    ProductSpecListComponent,
+    AddProductSpecComponent,
+    AttributesSpecsWrapperComponent,
+    DataTableComponent,
   ],
 
   //Modules go here
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    AngularMaterialModules,
     FontAwesomeModule,
     HttpClientModule,
     FormsModule,

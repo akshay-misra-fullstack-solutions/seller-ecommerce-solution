@@ -19,5 +19,9 @@ export class AddProductCategoryComponent implements OnInit {
     console.log(tabClicked);
     this.activeTab = tabClicked;
   }
+  
+  saveCategory() {
+    
+  }
 
 }

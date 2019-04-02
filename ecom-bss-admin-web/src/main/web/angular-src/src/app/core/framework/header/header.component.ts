@@ -1,3 +1,5 @@
+
+import {filter} from 'rxjs/operators';
 import { Component, OnInit, Inject, Renderer, ElementRef } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router, NavigationEnd  } from '@angular/router';
@@ -9,7 +11,7 @@ import {Subscription} from "rxjs/index";
 import {JwtHelperService} from "@auth0/angular-jwt";
 import {User} from "../models/user";
 
-import 'rxjs/add/operator/filter';
+
 import { DOCUMENT } from '@angular/platform-browser';
 
 @Component({
@@ -52,7 +54,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.enterLocation = false;
-    this._router = this.router.events.filter(event => event instanceof NavigationEnd).subscribe((event: NavigationEnd) => {
+    this._router = this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event: NavigationEnd) => {
       if (window.outerWidth > 991) {
         window.document.children[0].scrollTop = 0;
       }else{

@@ -1,3 +1,5 @@
+
+import {filter} from 'rxjs/operators';
 import {Component, OnInit, Renderer, ElementRef, Inject} from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import {Subscription} from "rxjs/index";
@@ -52,7 +54,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._router = this.router.events.filter(event => event instanceof NavigationEnd).subscribe((event: NavigationEnd) => {
+    this._router = this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event: NavigationEnd) => {
       if (window.outerWidth > 991) {
         window.document.children[0].scrollTop = 0;
       } else {
