@@ -2,15 +2,15 @@
   <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
 </mat-form-field>
 
-<span class="float-right mt-3">
- <a mat-icon-button color="primary" routerLink="/catalog/add/attribute"
-  matTooltip="Add Attribute" [matTooltipPosition]="'above'">
-  <mat-icon aria-hidden="false">note_add</mat-icon>
- </a>
- <button mat-icon-button color="warn" mat-button matTooltip="Delete Attribute"
- [matTooltipPosition]="'above'">
- <mat-icon aria-hidden="false">delete</mat-icon>
-</button>
+<span class="float-right mt-3 mr-2" *ngFor="let toolbar of topToolbar">
+  <a *ngIf="toolbar.type === 'anchor'" mat-icon-button color="primary" 
+     routerLink="{{toolbar.href}}" matTooltip="{{toolbar.name}}" [matTooltipPosition]="'above'">
+    <mat-icon aria-hidden="false">{{toolbar.icon}}</mat-icon>
+  </a>
+  <button *ngIf="toolbar.type === 'button'" (click)="removeSelectedRows()" mat-icon-button color="warn" 
+     mat-button matTooltip="{{toolbar.name}}" [matTooltipPosition]="'above'">
+    <mat-icon aria-hidden="false">{{toolbar.icon}}</mat-icon>
+  </button>
 </span>
 
 
@@ -41,19 +41,41 @@
 
        <!-- Object Column -->
        <div *ngIf="column.columnDef !== 'actions'">
-         <th mat-header-cell *matHeaderCellDef mat-sort-header> {{column.header}} </th>
+         <th mat-header-cell *matHeaderCellDef mat-sort-header><strong>{{column.header}}</strong></th>
          <td td mat-cell *matCellDef="let row" [style.color]="column.dataName(row)">{{ column.dataName(row) }}</td>
        </div>
 
        <!-- Action Column -->
        <div *ngIf="column.columnDef === 'actions'">
-         <th mat-header-cell *matHeaderCellDef > {{column.header}} </th>
-         <td td mat-cell *matCellDef="let row">
-           <button mat-raised-button color="primary" id="column.dataName(row)" (click)="viewItem(column.dataName(row))">View</button>
-
+          <th mat-header-cell *matHeaderCellDef > <strong>{{column.header}}</strong> </th>
+          <td td mat-cell *matCellDef="let row">
+            <div class="btn-group">
+              <a mat-stroked-button class="btn btn-default" title="View">
+               <mat-icon>search</mat-icon> View
+              </a>
+             
+              <button class="btn btn-default" mat-stroked-button [matMenuTriggerFor]="menu" 
+              aria-label="menu button">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <a mat-menu-item>
+                  <mat-icon>edit</mat-icon>
+                  <span>Edit</span>
+                </a>
+                <mat-divider></mat-divider>
+                <!-- <button mat-menu-item disabled>
+                  <mat-icon>voicemail</mat-icon>
+                  <span>Check voice mail</span>
+                </button> -->
+                <button (click)="removeSelectedRows()" mat-menu-item>
+                  <mat-icon>delete</mat-icon>
+                  <span>Delete</span>
+                </button>
+              </mat-menu>
+           </div>
          </td>
        </div>
-
      </ng-container>
 
 

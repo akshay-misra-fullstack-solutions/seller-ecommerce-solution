@@ -1,6 +1,7 @@
-import {Component, OnInit, ViewChild, Input} from '@angular/core';
+import {Component, OnInit, ViewChild, Input, Output, EventEmitter} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
+import {DataTableConfig} from './data-table-config';
 
 @Component({
   selector: 'data-table',
@@ -11,27 +12,32 @@ export class DataTableComponent implements OnInit {
   dataSource: MatTableDataSource<any>;
   selection = new SelectionModel<any>(true, []);
   isLoadingResults = false;
-
-  @Input() receivedData: any;
-  @Input() tableTitle: string;
-  @Input() columns: any[] = [];
-
+  data: any;
   displayedColumns: string[];
+  topToolbar: object;
+  tableTitle: string;
 
+  @Input() dataTableConfig: DataTableConfig;
+  @Output() deleteObject = new EventEmitter();
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+
+  private columns: any[];
 
   constructor() {}
 
   ngOnInit() {
     this.isLoadingResults = true;
+    this.data = Object.assign(this.dataTableConfig.data);
+    this.columns = this.dataTableConfig.columns;
     this.displayedColumns = this.columns.map(x => x.columnDef);
-    console.log('ngOnInit, displayedColumns: ', this.displayedColumns);
-    this.displayedColumns.unshift('select');
-    console.log('ngOnInit, displayedColumns: ', this.displayedColumns);
-    this.columns.push({columnDef: 'select'});
+    console.log('ngOnInit, dataTableConfig: ', this.dataTableConfig);
+
+    this.topToolbar = this.dataTableConfig.topToolbar;
+    this.tableTitle = this.dataTableConfig.tableTitle;
+
     // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(this.receivedData);
+    this.dataSource = new MatTableDataSource(this.data);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.isLoadingResults = false;
@@ -69,4 +75,37 @@ export class DataTableComponent implements OnInit {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
   }
 
+/** Delete current row */
+  removeSelectedRows() {
+     this.isLoadingResults = true;
+     const rows: string[] = [];
+     this.selection.selected.forEach(item => {
+      console.log('removeSelectedRows, item: ', item);
+      rows.push(item.id);
+      let index: number = this.data.findIndex(d => d === item);
+      console.log('removeSelectedRows, index: ', index);
+      this.dataSource.data.splice(index, 1);
+    });
+    this.deleteItems(rows);
+    this.data = Object.assign(this.dataTableConfig.data);
+    this.dataSource = new MatTableDataSource<Element>(this.data);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+    this.selection = new SelectionModel<Element>(true, []);
+    this.isLoadingResults = false;
+  }
+
+  /** Delete row */
+  deleteItem(row) {
+    console.log('deleteItem, current object id: ', row.id);
+    const rows: string[] = [];
+    rows.push(row.id);
+    this.deleteItems(rows);
+  }
+
+  /** Delete rows */
+  deleteItems(rows) {
+    console.log('deleteItems, rows: ', rows);
+    this.deleteObject.emit(rows);
+  }
 }

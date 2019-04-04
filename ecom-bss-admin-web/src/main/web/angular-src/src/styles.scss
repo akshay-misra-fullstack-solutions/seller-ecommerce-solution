@@ -32,3 +32,10 @@ select.form-control:not([size]):not([multiple]) {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.cdk-mouse-focused , .cdk-focused {
+	outline: none !important;
+}
+
+

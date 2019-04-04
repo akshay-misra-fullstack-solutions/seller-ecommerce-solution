@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {DataTableConfig} from '../../../../views/data-table/data-table-config';
 
 export interface Attribute {
   id: string;
@@ -27,15 +28,39 @@ export class AttributeListComponent implements OnInit {
   private attributes: Attribute[] = [];
   private columns: any[] = [];
 
+  private tableConfig: DataTableConfig;
+
   constructor() {}
 
   ngOnInit() {
     this.attributes = Array.from({length: 100}, (_, k) => createNewAttribute(k + 1));
     this.columns = this.getColumns();
+
+    this.tableConfig = {
+       data: this.attributes,
+       tableTitle: 'Attributes',
+       columns: this.columns,
+       topToolbar: [
+                    {
+                      type: 'button', 
+                      name: 'Delete Attribute',
+                      icon: 'delete'
+                    },
+                    { 
+                      type: 'anchor', 
+                      name: 'Add Attribute', 
+                      href: '/catalog/add/attribute',
+                      icon: 'note_add' 
+                    }
+                   ] 
+      } 
+
   }
+  
 
   private getColumns(): string[] {
     const columns: any[] = [];
+    columns.push({ columnDef: 'select'});
     for (const key of Object.keys(this.attributes[0])) {
          columns.push({ columnDef: key, header: key.toLocaleUpperCase(),
            dataName: function(row) {return row[this.columnDef];} });
@@ -43,6 +68,10 @@ export class AttributeListComponent implements OnInit {
     columns.push({ columnDef: 'actions', header: 'ACTIONS',
       dataName: function(row) {return row[this.columnDef];}});
     return columns;
+  }
+
+  deleteObject(attributeId) {
+    console.log('Attribute, deleteObject, id: ', attributeId);
   }
 }
 
