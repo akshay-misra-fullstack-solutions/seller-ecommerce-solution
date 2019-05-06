@@ -21,6 +21,7 @@ import {AttributeGroupsListComponent} from "./bss/components/product_management/
 import {AddAttributeGroupsComponent} from "./bss/components/product_management/attribute-specification/add-attribute-groups/add-attribute-groups.component";
 import {AttributeListComponent} from "./bss/components/product_management/attribute-specification/attribute-list/attribute-list.component";
 import {AddAttributeComponent} from "./bss/components/product_management/attribute-specification/add-attribute/add-attribute.component";
+import { AddProductSpecComponent } from "./bss/components/product_management/attribute-specification/add-product-spec/add-product-spec.component";
 import {AttributesSpecsWrapperComponent} from "./bss/components/product_management/attribute-specification/attributes-specs-wrapper/attributes-specs-wrapper.component";
 
 const routes: Routes = [
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'catalog/add/attribute/group', component: AddAttributeGroupsComponent},
   { path: 'catalog/attributes', component: AttributeListComponent},
   { path: 'catalog/add/attribute', component: AddAttributeComponent},
+  { path: 'catalog/add/product/specification', component: AddProductSpecComponent},
   { path: 'catalog/add/category', component: AddProductCategoryComponent},
   { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard]},
   { path: 'products/cart', component: CartComponent, canActivate: [AuthGuard]},

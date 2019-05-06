@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DataTableConfig} from '../../../../views/data-table/data-table-config';
+import { Attribute } from '../../models/attribute';
 
-export interface Attribute {
-  id: string;
-  name: string;
-  progress: string;
-  color: string;
-}
 
 /** Constants used to fill up our data base. */
 const COLORS: string[] = [
@@ -57,7 +52,6 @@ export class AttributeListComponent implements OnInit {
 
   }
   
-
   private getColumns(): string[] {
     const columns: any[] = [];
     columns.push({ columnDef: 'select'});
@@ -83,7 +77,6 @@ function createNewAttribute(id: number): Attribute {
   return {
     id: id.toString(),
     name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
+    sortOrder: id
   };
 }

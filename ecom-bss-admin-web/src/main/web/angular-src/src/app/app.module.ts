@@ -11,8 +11,11 @@ import { NgxSummernoteModule } from 'ngx-summernote';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import { FormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+
 import { AppComponent } from './app.component';
+
+
 import { AddProductComponent } from './bss/components/product_management/add-product/add-product.component';
 import { ViewProductComponent } from './bss/components/product_management/view-product/view-product.component';
 import { ProductService } from './bss/components/product_management/services/product.service';
@@ -59,6 +62,7 @@ import { ProductSpecListComponent } from './bss/components/product_management/at
 import { AddProductSpecComponent } from './bss/components/product_management/attribute-specification/add-product-spec/add-product-spec.component';
 import { AttributesSpecsWrapperComponent } from './bss/components/product_management/attribute-specification/attributes-specs-wrapper/attributes-specs-wrapper.component';
 import { DataTableComponent } from './bss/views/data-table/data-table.component';
+import { MatReferenceFieldComponent } from './core/framework/material-custom-components/mat-reference-field/mat-reference-field.component';
 
 export function tokenGetter() {
   return localStorage.getItem('AuthToken');
@@ -107,6 +111,7 @@ export function tokenGetter() {
     AddProductSpecComponent,
     AttributesSpecsWrapperComponent,
     DataTableComponent,
+    MatReferenceFieldComponent,
   ],
 
   //Modules go here
@@ -117,6 +122,7 @@ export function tokenGetter() {
     FontAwesomeModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     InfiniteScrollModule,
     NgxSummernoteModule,

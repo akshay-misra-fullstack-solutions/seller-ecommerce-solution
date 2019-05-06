@@ -17,17 +17,39 @@
               <mat-form-field appearance="outline">
                 <mat-label>Public name</mat-label>
                 <input matInput placeholder="" required>
-                <mat-hint>Hint</mat-hint>
+                <mat-hint>This name will be displayed to user</mat-hint>
               </mat-form-field>
             </div>
 
             <div class="form-group">
-              <mat-form-field>
-                <mat-select placeholder="Attribute type" required>
-                <mat-option></mat-option>
-                <mat-option value="option">Dropdown</mat-option>
-                <mat-option value="option">Radio</mat-option>
-                <mat-option value="option">Color Picker</mat-option>
+              <mat-reference-field [(fieldConfig)] = "attrGroupFieldConfig"></mat-reference-field>
+            </div>
+
+            <div class="form-group">
+              <mat-form-field appearance="outline">
+                <mat-label>Sort Order</mat-label>
+                <input matInput placeholder="" required>
+                <mat-hint>Enter a number</mat-hint>
+              </mat-form-field>
+            </div>
+
+            <div class="form-group">
+              <mat-form-field appearance="outline">
+                <mat-label>Attribute type</mat-label>
+                <mat-select placeholder="" required>
+                <mat-option value="dropdown">Dropdown</mat-option>
+                <mat-option value="radio">Radio</mat-option>
+                <mat-option value="colorPicker">Color Picker</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div class="form-group">
+              <mat-form-field appearance="outline">
+                <mat-label>Use As Filter</mat-label>
+                <mat-select placeholder="" required>
+                <mat-option value="yes">Yes</mat-option>
+                <mat-option value="no">No</mat-option>
                 </mat-select>
               </mat-form-field>
             </div>
