@@ -61,7 +61,7 @@ import { AddAttributeComponent } from './bss/components/product_management/attri
 import { ProductSpecListComponent } from './bss/components/product_management/attribute-specification/product-spec-list/product-spec-list.component';
 import { AddProductSpecComponent } from './bss/components/product_management/attribute-specification/add-product-spec/add-product-spec.component';
 import { AttributesSpecsWrapperComponent } from './bss/components/product_management/attribute-specification/attributes-specs-wrapper/attributes-specs-wrapper.component';
-import { DataTableComponent } from './bss/views/data-table/data-table.component';
+import { DataTableComponent } from './core/framework/material-custom-components/data-table/data-table.component';
 import { MatReferenceFieldComponent } from './core/framework/material-custom-components/mat-reference-field/mat-reference-field.component';
 
 export function tokenGetter() {

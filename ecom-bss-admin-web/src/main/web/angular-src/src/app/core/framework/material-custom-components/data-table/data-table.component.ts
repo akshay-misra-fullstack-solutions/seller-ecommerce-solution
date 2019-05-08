@@ -14,7 +14,8 @@ export class DataTableComponent implements OnInit {
   isLoadingResults = false;
   data: any;
   displayedColumns: string[];
-  topToolbar: object;
+  topToolbar: any[];
+  inlineToolbar: any[];
   tableTitle: string;
 
   @Input() dataTableConfig: DataTableConfig;
@@ -34,6 +35,7 @@ export class DataTableComponent implements OnInit {
     console.log('ngOnInit, dataTableConfig: ', this.dataTableConfig);
 
     this.topToolbar = this.dataTableConfig.topToolbar;
+    this.inlineToolbar = this.dataTableConfig.inlineToolbar;
     this.tableTitle = this.dataTableConfig.tableTitle;
 
     // Assign the data to the data source for the table to render

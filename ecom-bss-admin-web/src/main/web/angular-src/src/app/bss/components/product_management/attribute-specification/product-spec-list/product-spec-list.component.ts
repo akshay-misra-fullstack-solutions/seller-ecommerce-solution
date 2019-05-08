@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {DataTableConfig} from '../../../../views/data-table/data-table-config';
+import { DataTableConfig } from 
+'../../../../../core/framework/material-custom-components/data-table/data-table-config';
 import { ProductSpecification } from '../../models/product-specification';
 
 
@@ -48,7 +49,13 @@ export class ProductSpecListComponent implements OnInit {
                       href: '/catalog/add/product/specification',
                       icon: 'note_add' 
                     }
-                   ] 
+                   ],
+       inlineToolbar: [{ 
+                          type: 'anchor', 
+                          name: 'Edit', 
+                          href: '/catalog/edit//product/specification',
+                          icon: 'edit' 
+                        }]  
       } 
 
   }

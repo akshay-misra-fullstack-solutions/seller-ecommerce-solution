@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 
 import { Attribute } from '../../models/attribute';
 import { AttributeGroup } from '../../models/attribute-group';
@@ -16,7 +17,7 @@ export class AddAttributeComponent implements OnInit {
   private attrGroupFieldConfig: MatReferenceFieldConfig;
 
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.attribute = {};

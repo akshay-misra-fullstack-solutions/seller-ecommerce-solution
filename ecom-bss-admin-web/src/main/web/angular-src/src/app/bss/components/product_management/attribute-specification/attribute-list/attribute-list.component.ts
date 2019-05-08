@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {DataTableConfig} from '../../../../views/data-table/data-table-config';
+import { DataTableConfig } from 
+'../../../../../core/framework/material-custom-components/data-table/data-table-config';
 import { Attribute } from '../../models/attribute';
 
 
@@ -32,10 +33,10 @@ export class AttributeListComponent implements OnInit {
     this.columns = this.getColumns();
 
     this.tableConfig = {
-       data: this.attributes,
-       tableTitle: 'Attributes',
-       columns: this.columns,
-       topToolbar: [
+        data: this.attributes,
+        tableTitle: 'Attributes',
+        columns: this.columns,
+        topToolbar: [
                     {
                       type: 'button', 
                       name: 'Delete Attribute',
@@ -47,7 +48,13 @@ export class AttributeListComponent implements OnInit {
                       href: '/catalog/add/attribute',
                       icon: 'note_add' 
                     }
-                   ] 
+                   ],
+        inlineToolbar: [{ 
+                          type: 'anchor', 
+                          name: 'Edit', 
+                          href: '/catalog/edit/attribute/',
+                          icon: 'edit' 
+                        }]             
       } 
 
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {DataTableConfig} from '../../../../views/data-table/data-table-config';
+import { DataTableConfig } from 
+'../../../../../core/framework/material-custom-components/data-table/data-table-config';
 import { AttributeGroup } from '../../models/attribute-group';
 
 /** Constants used to fill up our data base. */
@@ -46,7 +47,13 @@ export class AttributeGroupsListComponent implements OnInit {
                       href: '/catalog/add/attribute/group',
                       icon: 'note_add' 
                     }
-                   ] 
+                   ],
+       inlineToolbar: [{ 
+                          type: 'anchor', 
+                          name: 'Edit', 
+                          href: '/catalog/edit/attribute/group',
+                          icon: 'edit' 
+                        }]  
       } 
 
   }
