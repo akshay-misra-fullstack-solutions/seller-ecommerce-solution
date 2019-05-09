@@ -52,7 +52,7 @@ export class AttributeListComponent implements OnInit {
         inlineToolbar: [{ 
                           type: 'anchor', 
                           name: 'Edit', 
-                          href: '/catalog/edit/attribute/',
+                          href: '/catalog/edit/attribute',
                           icon: 'edit' 
                         }]             
       } 

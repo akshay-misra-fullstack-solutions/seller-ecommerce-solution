@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 import { Attribute } from '../../models/attribute';
 import { AttributeGroup } from '../../models/attribute-group';
@@ -11,16 +11,20 @@ import { MatReferenceFieldConfig } from '../../../../../core/framework/material-
   styleUrls: ['./add-attribute.component.scss']
 })
 export class AddAttributeComponent implements OnInit {
+  private attribute: Attribute;
   private options: AttributeGroup[] = [{id: '100', name: 'AttributeGroup1'}, {id: '103', name: 'AttributeGroup2'}, {id: '120', name: 'AttributeGroup3'}];
-
-  private attribute : Attribute;
+  private title = "Add New Attribute";
   private attrGroupFieldConfig: MatReferenceFieldConfig;
 
-
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    this.attribute = {};
+     this.route.paramMap.subscribe((params) => {
+        if (params.has('id')) {
+           this.title = "Edit Attribute";
+        }
+      }); 
+
     this.attrGroupFieldConfig = {
       options: this.options,
       fieldName: 'Attribute Group'

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 import { Attribute } from '../../models/attribute';
 import { ProductSpecification } from '../../models/product-specification';
@@ -15,11 +16,17 @@ private options: Attribute[] = [{id: '100', name: 'Attribute1'}, {id: '103', nam
    {id: '120', name: 'Attribute3'}];
 private productSpecification: ProductSpecification;
 private attributesFieldConfig: MatReferenceFieldConfig;
+private title = "Add New Product Specification";
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
   	this.productSpecification = {};
+    this.route.paramMap.subscribe((params) => {
+        if (params.has('id')) {
+           this.title = "Edit Product Specification";
+        }
+    }); 
   	this.attributesFieldConfig = {
       options: this.options,
       fieldName: 'Attributes'
