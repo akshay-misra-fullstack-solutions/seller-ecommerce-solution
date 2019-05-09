@@ -77,20 +77,34 @@ export class DataTableComponent implements OnInit {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
   }
 
-/** Delete current row */
+/** Delete selected row */
   removeSelectedRows() {
-     this.isLoadingResults = true;
-     const rows: string[] = [];
-     this.selection.selected.forEach(item => {
-      console.log('removeSelectedRows, item: ', item);
-      rows.push(item.id);
-      let index: number = this.data.findIndex(d => d === item);
-      console.log('removeSelectedRows, index: ', index);
-      this.dataSource.data.splice(index, 1);
+    this.isLoadingResults = true;
+    const rows: string[] = [];
+    this.selection.selected.forEach(item => {
+        console.log('removeSelectedRows, item: ', item);
+        rows.push(item.id);
+        let index: number = this.data.findIndex(d => d === item);
+        console.log('removeSelectedRows, index: ', index);
+        this.dataSource.data.splice(index, 1);
     });
     this.deleteItems(rows);
-    this.data = Object.assign(this.dataTableConfig.data);
-    this.dataSource = new MatTableDataSource<Element>(this.data);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+    this.selection = new SelectionModel<Element>(true, []);
+    this.isLoadingResults = false;
+  }
+
+  /** Delete current row */
+  removeCurrentRow(row) {
+    this.isLoadingResults = true;
+    const rows: string[] = [];
+    console.log('removeCurrentRow, row: ', row);
+    rows.push(row.id);
+    let index: number = this.data.findIndex(d => d === row);
+    console.log('removeCurrentRow, index: ', index);
+    this.dataSource.data.splice(index, 1);
+    this.deleteItems(rows);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.selection = new SelectionModel<Element>(true, []);
