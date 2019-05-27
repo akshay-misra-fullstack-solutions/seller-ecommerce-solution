@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild, Input, Output, EventEmitter} from '@angula
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
 import {DataTableConfig} from './data-table-config';
+import {WidgetsConfigService} from '../widgets/widgets-config.service';
 
 @Component({
   selector: 'data-table',
@@ -25,7 +26,7 @@ export class DataTableComponent implements OnInit {
 
   private columns: any[];
 
-  constructor() {}
+  constructor(private widgetService: WidgetsConfigService) {}
 
   ngOnInit() {
     this.isLoadingResults = true;
@@ -33,6 +34,8 @@ export class DataTableComponent implements OnInit {
     this.columns = this.dataTableConfig.columns;
     this.displayedColumns = this.columns.map(x => x.columnDef);
     console.log('ngOnInit, dataTableConfig: ', this.dataTableConfig);
+
+    console.log('########## ngOnInit, dataTableConfig.loadChildrens: ', this.widgetService.tableConfig.loadChildrens('1'));
 
     this.topToolbar = this.dataTableConfig.topToolbar;
     this.inlineToolbar = this.dataTableConfig.inlineToolbar;
@@ -123,5 +126,17 @@ export class DataTableComponent implements OnInit {
   deleteItems(rows) {
     console.log('deleteItems, rows: ', rows);
     this.deleteObject.emit(rows);
+  }
+
+  private getColumns(): string[] {
+    const columns: any[] = [];
+    columns.push({ columnDef: 'select'});
+    for (const key of Object.keys(this.data[0])) {
+         columns.push({ columnDef: key, header: key.toLocaleUpperCase(),
+           dataName: function(row) {return row[this.columnDef];} });
+    }
+    columns.push({ columnDef: 'actions', header: 'ACTIONS',
+      dataName: function(row) {return row[this.columnDef];}});
+    return columns;
   }
 }

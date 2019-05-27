@@ -80,10 +80,13 @@ export class AttributeListComponent implements OnInit {
 function createNewAttribute(id: number): Attribute {
   const name = NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
       NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
+  const av = ['Red', 'Blue', 'Green', 'Yellow'];    
 
   return {
     id: id.toString(),
     name: name,
-    sortOrder: id
+    sortOrder: id,
+    attributeValue: av,
+    children: ['attributeValue']
   };
 }

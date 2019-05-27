@@ -7,7 +7,7 @@ import { MatReferenceFieldConfig } from '../../../../../core/framework/material-
 
 @Component({
   selector: 'add-product-spec',
-  templateUrl: './add-product-spec.component.html',
+  templateUrl: './add-product-spec.component.html',  
   styleUrls: ['./add-product-spec.component.scss']
 })
 export class AddProductSpecComponent implements OnInit {

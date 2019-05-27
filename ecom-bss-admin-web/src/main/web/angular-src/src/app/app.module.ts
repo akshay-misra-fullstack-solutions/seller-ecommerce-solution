@@ -137,10 +137,10 @@ export function tokenGetter() {
   schemas: [ NO_ERRORS_SCHEMA ],
   //All the services go here
   providers:
-    [AuthGuard,
-    AlertService,
-    UserService,
-    ProductService,
+    [ AuthGuard,
+      AlertService,
+      UserService,
+      ProductService,
       { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
       ],
 

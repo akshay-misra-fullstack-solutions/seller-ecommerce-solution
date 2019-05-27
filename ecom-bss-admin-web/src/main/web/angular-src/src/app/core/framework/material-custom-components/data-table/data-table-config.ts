@@ -1,7 +1,8 @@
 export interface DataTableConfig {
-	data: any;
+	data: any[];
 	tableTitle: string;
 	columns: any[];
 	topToolbar?: any[];
 	inlineToolbar?: any[];
+	loadChildrens?:Function;
 }
