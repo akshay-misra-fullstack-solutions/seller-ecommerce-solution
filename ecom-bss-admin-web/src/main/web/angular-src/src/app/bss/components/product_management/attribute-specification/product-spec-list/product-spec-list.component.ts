@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataTableConfig } from 
+import { DataTableConfig } from
 '../../../../../core/framework/material-custom-components/data-table/data-table-config';
 import { ProductSpecification } from '../../models/product-specification';
 
@@ -39,27 +39,27 @@ export class ProductSpecListComponent implements OnInit {
        columns: this.columns,
        topToolbar: [
                     {
-                      type: 'button', 
+                      type: 'button',
                       name: 'Delete Product Specification',
                       icon: 'delete'
                     },
-                    { 
-                      type: 'anchor', 
-                      name: 'Add Product Specification', 
+                    {
+                      type: 'anchor',
+                      name: 'Add Product Specification',
                       href: '/catalog/add/product/specification',
-                      icon: 'note_add' 
+                      icon: 'note_add'
                     }
                    ],
-       inlineToolbar: [{ 
-                          type: 'anchor', 
-                          name: 'Edit', 
+       inlineToolbar: [{
+                          type: 'anchor',
+                          name: 'Edit',
                           href: '/catalog/edit//product/specification',
-                          icon: 'edit' 
-                        }]  
-      } 
+                          icon: 'edit'
+                        }]
+      }
 
   }
-  
+
 
   private getColumns(): string[] {
     const columns: any[] = [];
@@ -85,6 +85,7 @@ function createNewAttribute(id: number): ProductSpecification {
 
   return {
     id: id.toString(),
-    name: name
+    name: name,
+    objectTypeId: 'ProductSpecification1002'
   };
 }

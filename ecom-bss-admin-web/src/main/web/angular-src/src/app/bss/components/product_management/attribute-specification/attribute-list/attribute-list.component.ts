@@ -87,6 +87,7 @@ function createNewAttribute(id: number): Attribute {
     name: name,
     sortOrder: id,
     attributeValue: av,
-    children: ['attributeValue']
+    children: ['attributeValue'],
+    objectTypeId: 'Attribute1000'
   };
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataTableConfig } from 
+import { DataTableConfig } from
 '../../../../../core/framework/material-custom-components/data-table/data-table-config';
 import { AttributeGroup } from '../../models/attribute-group';
 
@@ -37,27 +37,27 @@ export class AttributeGroupsListComponent implements OnInit {
        columns: this.columns,
        topToolbar: [
                     {
-                      type: 'button', 
+                      type: 'button',
                       name: 'Delete Attribute Group',
                       icon: 'delete'
                     },
-                    { 
-                      type: 'anchor', 
-                      name: 'Add Attribute Group', 
+                    {
+                      type: 'anchor',
+                      name: 'Add Attribute Group',
                       href: '/catalog/add/attribute/group',
-                      icon: 'note_add' 
+                      icon: 'note_add'
                     }
                    ],
-       inlineToolbar: [{ 
-                          type: 'anchor', 
-                          name: 'Edit', 
+       inlineToolbar: [{
+                          type: 'anchor',
+                          name: 'Edit',
                           href: '/catalog/edit/attribute/group',
-                          icon: 'edit' 
-                        }]  
-      } 
+                          icon: 'edit'
+                        }]
+      }
 
   }
-  
+
   private getColumns(): string[] {
     const columns: any[] = [];
     columns.push({ columnDef: 'select'});
@@ -83,6 +83,7 @@ function createNewAttribute(id: number): AttributeGroup {
   return {
     id: id.toString(),
     name: name,
-    sortOrder: id
+    sortOrder: id,
+    objectTypeId: 'AttributeGroup1001'
   };
 }

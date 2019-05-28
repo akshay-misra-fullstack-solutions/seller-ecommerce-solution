@@ -39,4 +39,12 @@ export class WidgetsConfigService {
       return this.attrService.getAttributeValues("1");
     }
   };
+
+
+  CONFIG = new Map([
+      ['Attribute1000', this.tableConfig],
+      ['AttributeGroup1001', this.tableConfig],
+      ['ProductSpecification1002', this.tableConfig]
+  ]);
+
 }

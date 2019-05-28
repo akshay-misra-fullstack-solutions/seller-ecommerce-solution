@@ -8,4 +8,5 @@ export interface Attribute {
   sortOrder?: number;
   attributeType?: string;
   useAsFilter?: boolean;
+  objectTypeId: string;
 }

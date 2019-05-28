@@ -35,7 +35,10 @@ export class DataTableComponent implements OnInit {
     this.displayedColumns = this.columns.map(x => x.columnDef);
     console.log('ngOnInit, dataTableConfig: ', this.dataTableConfig);
 
-    console.log('########## ngOnInit, dataTableConfig.loadChildrens: ', this.widgetService.tableConfig.loadChildrens('1'));
+    console.log('########## ngOnInit, objectTypeId: ', this.data[0].objectTypeId);
+    console.log('########## ngOnInit, dataTableConfig.loadChildrens: ',
+      this.widgetService.CONFIG.get(this.data[0].objectTypeId).loadChildrens('1'));
+
 
     this.topToolbar = this.dataTableConfig.topToolbar;
     this.inlineToolbar = this.dataTableConfig.inlineToolbar;
