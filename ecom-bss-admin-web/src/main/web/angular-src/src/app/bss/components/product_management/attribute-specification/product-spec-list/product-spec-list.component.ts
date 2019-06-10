@@ -51,6 +51,7 @@ export class ProductSpecListComponent implements OnInit {
                     }
                    ],
        inlineToolbar: [{
+                          id: 'edit',
                           type: 'anchor',
                           name: 'Edit',
                           href: '/catalog/edit//product/specification',

@@ -54,15 +54,29 @@ import { ProductCategoriesMegamenuComponent } from './bss/views/products/product
 import { ProductsSliderComponent } from './bss/components/product_management/products-slider/products-slider.component';
 import { ProductCategoriesListComponent } from './bss/components/product_management/product-categories/product-categories-list/product-categories-list.component';
 import { AddProductCategoryComponent } from './bss/components/product_management/product-categories/add-product-category/add-product-category.component';
-import { AttributeGroupsListComponent } from './bss/components/product_management/attribute-specification/attribute-groups-list/attribute-groups-list.component';
-import { AddAttributeGroupsComponent } from './bss/components/product_management/attribute-specification/add-attribute-groups/add-attribute-groups.component';
-import { AttributeListComponent } from './bss/components/product_management/attribute-specification/attribute-list/attribute-list.component';
-import { AddAttributeComponent } from './bss/components/product_management/attribute-specification/add-attribute/add-attribute.component';
+import { AttributeGroupsListComponent } from './core/framework/design/model-schema/attribute-groups-list/attribute-groups-list.component';
+import { AddAttributeGroupsComponent } from './core/framework/design/model-schema/add-attribute-groups/add-attribute-groups.component';
+import { AttributeListComponent } from './core/framework/design/model-schema/attribute-list/attribute-list.component';
+import { AddAttributeComponent } from './core/framework/design/model-schema/add-attribute/add-attribute.component';
 import { ProductSpecListComponent } from './bss/components/product_management/attribute-specification/product-spec-list/product-spec-list.component';
 import { AddProductSpecComponent } from './bss/components/product_management/attribute-specification/add-product-spec/add-product-spec.component';
 import { AttributesSpecsWrapperComponent } from './bss/components/product_management/attribute-specification/attributes-specs-wrapper/attributes-specs-wrapper.component';
 import { DataTableComponent } from './core/framework/material-custom-components/data-table/data-table.component';
 import { MatReferenceFieldComponent } from './core/framework/material-custom-components/mat-reference-field/mat-reference-field.component';
+import { AttributeValueListComponent } from './core/framework/design/model-schema/attribute-value-list/attribute-value-list.component';
+import { AddAttributeValueComponent } from './core/framework/design/model-schema/add-attribute-value/add-attribute-value.component';
+import { ApplicationLayoutWrapperComponent } from './core/framework/design/layout/application-layout-wrapper/application-layout-wrapper.component';
+import { LayoutConfigComponent } from './core/framework/design/layout/layout-config/layout-config.component';
+import { TabLayoutComponent } from './core/framework/design/layout/tab-layout/tab-layout.component';
+import { SideNavigationTabComponent } from './core/framework/design/layout/side-navigation-tab/side-navigation-tab.component';
+import { AddLayoutConfigComponent } from './core/framework/design/layout/add-layout-config/add-layout-config.component';
+import { AddTabLayoutComponent } from './core/framework/design/layout/add-tab-layout/add-tab-layout.component';
+import { AddSideNavigationTabComponent } from './core/framework/design/layout/add-side-navigation-tab/add-side-navigation-tab.component';
+import { ApplicationModelWrapperComponent } from './core/framework/design/model-schema/application-model-wrapper/application-model-wrapper.component';
+import { ObjectTypeComponent } from './core/framework/design/model-schema/object-type/object-type.component';
+import { AddObjectTypeComponent } from './core/framework/design/model-schema/add-object-type/add-object-type.component';
+import { CharacteristicListComponent } from './bss/components/product_management/attribute-specification/characteristic-list/characteristic-list.component';
+import { AddCharacteristicComponent } from './bss/components/product_management/attribute-specification/add-characteristic/add-characteristic.component';
 
 export function tokenGetter() {
   return localStorage.getItem('AuthToken');
@@ -112,6 +126,20 @@ export function tokenGetter() {
     AttributesSpecsWrapperComponent,
     DataTableComponent,
     MatReferenceFieldComponent,
+    AttributeValueListComponent,
+    AddAttributeValueComponent,
+    ApplicationLayoutWrapperComponent,
+    LayoutConfigComponent,
+    TabLayoutComponent,
+    SideNavigationTabComponent,
+    AddLayoutConfigComponent,
+    AddTabLayoutComponent,
+    AddSideNavigationTabComponent,
+    ApplicationModelWrapperComponent,
+    ObjectTypeComponent,
+    AddObjectTypeComponent,
+    CharacteristicListComponent,
+    AddCharacteristicComponent,
   ],
 
   //Modules go here

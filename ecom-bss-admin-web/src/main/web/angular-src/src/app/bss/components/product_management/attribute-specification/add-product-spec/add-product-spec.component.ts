@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
-import { Attribute } from '../../models/attribute';
 import { ProductSpecification } from '../../models/product-specification';
 import { MatReferenceFieldConfig } from '../../../../../core/framework/material-custom-components/mat-reference-field/mat-reference-field-config';
+import {Attribute} from "../../../../../core/framework/design/model-schema/models/attribute";
 
 @Component({
   selector: 'add-product-spec',

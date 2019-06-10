@@ -1,0 +1,24 @@
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <mat-tab-group animationDuration="0ms"  >
+        <mat-tab label="Layout Configs">
+          <ng-template matTabContent>
+            <layout-config></layout-config>
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="Tab Layouts">
+          <ng-template matTabContent>
+            <tab-layout></tab-layout>
+            <!--<router-outlet name="attributes"></router-outlet>-->
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="Side Navigation Tabs">
+          <ng-template matTabContent>
+            <side-navigation-tab></side-navigation-tab>
+          </ng-template>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>
