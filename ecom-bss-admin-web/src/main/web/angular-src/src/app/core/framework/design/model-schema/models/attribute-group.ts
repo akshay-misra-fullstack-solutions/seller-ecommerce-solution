@@ -1,6 +1,5 @@
-export interface AttributeGroup {
-  id?: string;
-  name?: string;
-  sortOrder?: number;
-  objectTypeId?: string;
+import {Base} from './base';
+
+export interface AttributeGroup extends Base {
+
 }

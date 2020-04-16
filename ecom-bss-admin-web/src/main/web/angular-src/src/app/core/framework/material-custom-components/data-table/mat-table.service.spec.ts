@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AttributeService } from './attribute.service.ts';
+import { MatTableService } from './mat-table.service';
 
-describe('AttributeService', () => {
+describe('MatTableService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: AttributeService = TestBed.get(AttributeService);
+    const service: MatTableService = TestBed.get(MatTableService);
     expect(service).toBeTruthy();
   });
 });

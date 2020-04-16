@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { DataTableConfig } from '../data-table/data-table-config';
-import {AttributeService} from '../../design/model-schema/services/attribute.service';
+import {ApplicationSchemaService} from '../../design/model-schema/services/application-schema.service';
 
 
 @Injectable({
@@ -9,7 +9,7 @@ import {AttributeService} from '../../design/model-schema/services/attribute.ser
 })
 export class WidgetsConfigService {
 
-  constructor(private attributeService: AttributeService) {}
+  constructor(private applicationSchemaService: ApplicationSchemaService) {}
 
   attributeTableConfig: DataTableConfig = <DataTableConfig> {
     data: [],

@@ -3,6 +3,7 @@ import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
 import {DataTableConfig} from './data-table-config';
 import {WidgetsConfigService} from '../widgets/widgets-config.service';
+import {MatTableService} from './mat-table.service';
 
 @Component({
   selector: 'data-table',
@@ -13,7 +14,7 @@ export class DataTableComponent implements OnInit {
   dataSource: MatTableDataSource<any>;
   selection = new SelectionModel<any>(true, []);
   isLoadingResults = false;
-  data: any;
+  data: any[] = [];
   displayedColumns: string[];
   topToolbar: any[];
   inlineToolbar: any[];
@@ -26,12 +27,27 @@ export class DataTableComponent implements OnInit {
 
   private columns: any[];
 
-  constructor(private widgetService: WidgetsConfigService) {}
+  constructor(private widgetService: WidgetsConfigService,
+              private matTableService: MatTableService) {}
 
   ngOnInit() {
     this.isLoadingResults = true;
     this.data = Object.assign(this.dataTableConfig.data);
-    this.columns = this.dataTableConfig.columns;
+    if (this.data.length === 0 && this.dataTableConfig.loadAPI) {
+      this.matTableService.loadObjects(this.dataTableConfig.loadAPI).subscribe(
+        response => {
+          console.log(' response : ' + response);
+          this.data = response;
+          /*this.loading = false;*/
+          this.init();
+        }, );
+    } else {
+      this.init();
+    }
+  }
+
+  init() {
+    this.columns = this.getColumns();
     this.displayedColumns = this.columns.map(x => x.columnDef);
     console.log('ngOnInit, dataTableConfig: ', this.dataTableConfig);
     this.topToolbar = this.dataTableConfig.topToolbar;
@@ -127,11 +143,18 @@ export class DataTableComponent implements OnInit {
 
   private getColumns(): string[] {
     const columns: any[] = [];
-    columns.push({ columnDef: 'select'});
-    for (const key of Object.keys(this.data[0])) {
-         columns.push({ columnDef: key, header: key.toLocaleUpperCase(),
-           dataName: function(row) {return row[this.columnDef];} });
+    columns.push({columnDef: 'select'});
+    if (this.data.length !== 0 ) {
+      for (const key of Object.keys(this.data[0])) {
+        columns.push({
+          columnDef: key, header: key.toLocaleUpperCase(),
+          dataName: function (row) {
+            return row[this.columnDef];
+          }
+        });
+      }
     }
+
     columns.push({ columnDef: 'actions', header: 'ACTIONS',
       dataName: function(row) {return row[this.columnDef];}});
     return columns;

@@ -30,9 +30,9 @@
 	</properties>
 
 	<scm>
-		<connection>scm:git:https://github.com/akshaymisra24/seller-global-ecommerce-solution.git</connection>
-		<developerConnection>scm:git:git@github.com:akshaymisra24/seller-global-ecommerce-solution.git</developerConnection>
-		<url>https://github.com/akshaymisra24/seller-global-ecommerce-solution</url>
+		<connection>scm:git:https://github.com/akshay-misra-fullstack-solutions/seller-ecommerce-solution.git</connection>
+		<developerConnection>scm:git:git@github.com:akshay-misra-fullstack-solutions/seller-ecommerce-solution.git</developerConnection>
+		<url>https://github.com/akshay-misra-fullstack-solutions/seller-ecommerce-solution</url>
 		<tag>v0.0.1</tag>
 	</scm>
 
@@ -62,17 +62,42 @@
 	</dependencies>
 
 	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-maven-plugin</artifactId>
-					<configuration>
-						<skip>true</skip>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
+
+	<repositories>
+		<!--<repository>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<id>bintray-akki2488-framework-core</id>
+			<name>bintray</name>
+			<url>https://dl.bintray.com/akki2488/framework-core</url>
+		</repository>
+		<repository>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<id>bintray-akki2488-web-app-authentication</id>
+			<name>bintray</name>
+			<url>https://dl.bintray.com/akki2488/web-app-authentication</url>
+		</repository>-->
+		<repository>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<id>bintray-akki2488-bss-product-management</id>
+			<name>bintray</name>
+			<url>https://dl.bintray.com/akki2488/bss-product-management</url>
+		</repository>
+	</repositories>
 
 </project>

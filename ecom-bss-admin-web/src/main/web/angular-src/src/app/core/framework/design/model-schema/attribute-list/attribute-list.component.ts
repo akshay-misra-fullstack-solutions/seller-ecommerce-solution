@@ -29,11 +29,9 @@ export class AttributeListComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.attributes = Array.from({length: 100}, (_, k) => createNewAttribute(k + 1));
-    this.columns = this.getColumns();
-
     this.tableConfig = {
         data: this.attributes,
+        loadAPI: '/application/schema/get/attributes',
         tableTitle: 'Attributes',
         columns: this.columns,
         topToolbar: [
@@ -45,7 +43,7 @@ export class AttributeListComponent implements OnInit {
                     {
                       type: 'anchor',
                       name: 'Add Attribute',
-                      href: '/catalog/add/attribute',
+                      href: '/application/design/model/add/attribute',
                       icon: 'note_add'
                     }
                    ],
@@ -54,49 +52,20 @@ export class AttributeListComponent implements OnInit {
           id: 'edit',
           type: 'anchor',
           name: 'Edit',
-          href: '/catalog/edit/attribute',
+          href: '/application/design/model/edit/attribute',
           icon: 'edit'
         },
         {
           id: 'children',
           type: 'anchor',
           name: 'Attribute Values',
-          href: '/catalog/attribute/values',
+          href: '/application/design/model/attribute/values',
           icon: 'edit'
         }]
       }
-
-  }
-
-  private getColumns(): string[] {
-    const columns: any[] = [];
-    columns.push({ columnDef: 'select'});
-    for (const key of Object.keys(this.attributes[0])) {
-         columns.push({ columnDef: key, header: key.toLocaleUpperCase(),
-           dataName: function(row) {return row[this.columnDef];} });
-    }
-    columns.push({ columnDef: 'actions', header: 'ACTIONS',
-      dataName: function(row) {return row[this.columnDef];}});
-    return columns;
   }
 
   deleteObject(attributeId) {
     console.log('Attribute, deleteObject, id: ', attributeId);
   }
-}
-
-/** Builds and returns a new Attribute. */
-function createNewAttribute(id: number): Attribute {
-  const name = NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-      NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
-  const av = ['Red', 'Blue', 'Green', 'Yellow'];
-
-  return {
-    id: id.toString(),
-    name: name,
-    sortOrder: id,
-    attributeValue: av,
-    children: ['attributeValue'],
-    objectTypeId: 'Attribute1000'
-  };
 }

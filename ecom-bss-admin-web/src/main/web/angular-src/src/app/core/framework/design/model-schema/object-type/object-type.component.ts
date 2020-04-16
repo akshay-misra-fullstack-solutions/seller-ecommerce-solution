@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ObjectType} from "../models/object-type";
 import {DataTableConfig} from "../../../material-custom-components/data-table/data-table-config";
+import {Subscription} from 'rxjs';
+import {ApplicationSchemaService} from '../services/application-schema.service';
 
 const NAMES: string[] = [
   'Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack', 'Charlotte', 'Theodore', 'Isla', 'Oliver',
@@ -14,19 +16,25 @@ const NAMES: string[] = [
 })
 export class ObjectTypeComponent implements OnInit {
 
-  private attributes: ObjectType[] = [];
+  private objectTypes: ObjectType[] = [];
   private columns: any[] = [];
+  private addObjectTypeSubscription: Subscription;
 
   private tableConfig: DataTableConfig;
 
-  constructor() {}
+  constructor(private applicationSchemaService: ApplicationSchemaService) {
+
+    this.addObjectTypeSubscription = this.applicationSchemaService.addObjectTypeHandler().subscribe(objectType => {
+      this.objectTypes.push(objectType);
+      console.log('.... addObjectTypeSubscription, new objectType: '+objectType.name);
+      console.log('.... addObjectTypeSubscription, objectTypes size: '+this.objectTypes.length);
+    });
+  }
 
   ngOnInit() {
-    this.attributes = Array.from({length: 100}, (_, k) => createNewAttribute(k + 1));
-    this.columns = this.getColumns();
-
     this.tableConfig = {
-      data: this.attributes,
+      data: this.objectTypes,
+      loadAPI: '/application/schema/get/object-types',
       tableTitle: 'Object Types',
       columns: this.columns,
       topToolbar: [
@@ -51,35 +59,14 @@ export class ObjectTypeComponent implements OnInit {
           icon: 'edit'
         }]
     }
-
   }
 
-  private getColumns(): string[] {
-    const columns: any[] = [];
-    columns.push({ columnDef: 'select'});
-    for (const key of Object.keys(this.attributes[0])) {
-      columns.push({ columnDef: key, header: key.toLocaleUpperCase(),
-        dataName: function(row) {return row[this.columnDef];} });
-    }
-    columns.push({ columnDef: 'actions', header: 'ACTIONS',
-      dataName: function(row) {return row[this.columnDef];}});
-    return columns;
+  ngOnDestroy() {
+    this.addObjectTypeSubscription.unsubscribe();
   }
 
   deleteObject(attributeId) {
     console.log('Attribute, deleteObject, id: ', attributeId);
   }
-}
-
-/** Builds and returns a new Attribute. */
-function createNewAttribute(id: number): ObjectType {
-  const name = NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
-  const av = ['Red', 'Blue', 'Green', 'Yellow'];
-
-  return {
-    id: id.toString(),
-    name: name,
-  };
 }
 

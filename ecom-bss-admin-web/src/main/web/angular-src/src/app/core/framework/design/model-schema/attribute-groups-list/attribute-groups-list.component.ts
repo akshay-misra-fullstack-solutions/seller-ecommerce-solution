@@ -28,11 +28,9 @@ export class AttributeGroupsListComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.attributeGroups = Array.from({length: 100}, (_, k) => createNewAttribute(k + 1));
-    this.columns = this.getColumns();
-
     this.tableConfig = {
        data: this.attributeGroups,
+       loadAPI: '/application/schema/get/attribute-groups',
        tableTitle: 'Attribute Groups',
        columns: this.columns,
        topToolbar: [
@@ -44,7 +42,7 @@ export class AttributeGroupsListComponent implements OnInit {
                     {
                       type: 'anchor',
                       name: 'Add Attribute Group',
-                      href: '/catalog/add/attribute/group',
+                      href: '/application/design/model/add/attribute/group',
                       icon: 'note_add'
                     }
                    ],
@@ -52,39 +50,13 @@ export class AttributeGroupsListComponent implements OnInit {
                           id: 'edit',
                           type: 'anchor',
                           name: 'Edit',
-                          href: '/catalog/edit/attribute/group',
+                          href: '/application/design/model/edit/attribute/group',
                           icon: 'edit'
                         }]
       }
-
-  }
-
-  private getColumns(): string[] {
-    const columns: any[] = [];
-    columns.push({ columnDef: 'select'});
-    for (const key of Object.keys(this.attributeGroups[0])) {
-         columns.push({ columnDef: key, header: key.toLocaleUpperCase(),
-           dataName: function(row) {return row[this.columnDef];} });
-    }
-    columns.push({ columnDef: 'actions', header: 'ACTIONS',
-      dataName: function(row) {return row[this.columnDef];}});
-    return columns;
   }
 
   deleteObject(attributeId) {
     console.log('Attribute Group, deleteObject, id: ', attributeId);
   }
-}
-
-/** Builds and returns a new Attribute Group. */
-function createNewAttribute(id: number): AttributeGroup {
-  const name = NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-      NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
-
-  return {
-    id: id.toString(),
-    name: name,
-    sortOrder: id,
-    objectTypeId: 'AttributeGroup1001'
-  };
 }

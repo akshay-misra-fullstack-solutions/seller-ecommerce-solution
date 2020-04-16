@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MatTabChangeEvent} from '@angular/material';
 
 @Component({
   selector: 'app-application-model-wrapper',
@@ -10,6 +11,10 @@ export class ApplicationModelWrapperComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onTabChange(event: MatTabChangeEvent) {
+    console.log('..... selectedTabChange, event: ' + event);
   }
 
 }

@@ -1,12 +1,10 @@
-export interface Attribute {
-  id?: string;
-  name?: string;
-  publicName?: string;
-  attributeGroup?: string;
+import {Base} from './base';
+
+export interface Attribute extends Base {
+  attributeGroup?: any;
   attributeValue?: any[];
   children?: string[];
-  sortOrder?: number;
-  attributeType?: string;
+  attributeType?: number;
   useAsFilter?: boolean;
-  objectTypeId?: string;
+  catalog?: boolean;
 }

@@ -4,11 +4,11 @@
       <div class="card-body">
         <h5 class="card-title">{{title}}</h5>
         <div class="d-flex justify-content-center">
-          <form>
+          <form (ngSubmit)="onSubmit()" #form="ngForm" novalidate>
             <div class="form-group">
               <mat-form-field appearance="outline">
                 <mat-label>Name</mat-label>
-                <input matInput placeholder="" required>
+                <input [(ngModel)]="objectType.name" name="name" matInput placeholder="" required>
                 <mat-hint>Hint</mat-hint>
               </mat-form-field>
             </div>
@@ -16,22 +16,69 @@
             <div class="form-group">
               <mat-form-field appearance="outline">
                 <mat-label>Public name</mat-label>
-                <input matInput placeholder="" required>
+                <input [(ngModel)]="objectType.publicName" name="publicName" matInput placeholder="" required>
                 <mat-hint>This name will be displayed to user</mat-hint>
               </mat-form-field>
             </div>
 
             <div class="form-group">
               <mat-form-field appearance="outline">
+                <mat-label>Description</mat-label>
+                <textarea
+                  [(ngModel)]="objectType.description" name="description"
+                  matInput placeholder=""
+                          cdkTextareaAutosize
+                          #autosize="cdkTextareaAutosize"
+                          cdkAutosizeMinRows="1"
+                          cdkAutosizeMaxRows="5"></textarea>
+                <mat-hint>Add description for this entity.</mat-hint>
+              </mat-form-field>
+            </div>
+
+            <div class="form-group">
+              <mat-reference-field matInput
+                                   (updateSelectedOptions) = "updateAttributes($event)"
+                                   [(fieldConfig)] = "attributesFieldConfig">
+              </mat-reference-field>
+            </div>
+
+            <div class="form-group">
+              <mat-form-field appearance="outline">
+                <mat-label>Same Type Children</mat-label>
+                <mat-select name="sameTypeChildren"
+                  [(ngModel)]="objectType.sameTypeChildren"
+                    placeholder="" required>
+                  <mat-option [value]='true'>Yes</mat-option>
+                  <mat-option [value]='false'>No</mat-option>
+                </mat-select>
+                <mat-hint>Can have children of same object type?</mat-hint>
+              </mat-form-field>
+            </div>
+
+            <div class="form-group">
+              <mat-form-field appearance="outline">
+                <mat-label>Is System</mat-label>
+                <mat-select name="isSystem"
+                  [(ngModel)]="objectType.system"
+                  placeholder="" required>
+                  <mat-option [value]='true'>Yes</mat-option>
+                  <mat-option [value]='false'>No</mat-option>
+                </mat-select>
+                <mat-hint>Is this an internal system object type?</mat-hint>
+              </mat-form-field>
+            </div>
+
+            <div class="form-group">
+              <mat-form-field appearance="outline">
                 <mat-label>Sort Order</mat-label>
-                <input matInput placeholder="" required>
+                <input [(ngModel)]="objectType.order" name="order" matInput placeholder="">
                 <mat-hint>Enter a number</mat-hint>
               </mat-form-field>
             </div>
 
-            <a routerLink="/catalog/attribute/specifications" class="btn btn-secondary">
+            <a routerLink="/application/design/model" class="btn btn-secondary">
               Cancel</a>
-            <button type="submit" class="btn btn-primary float-right">Save</button>
+            <button type="submit" class="btn btn-primary float-right" [disabled]="!form.form.valid">Save</button>
           </form>
         </div>
       </div>

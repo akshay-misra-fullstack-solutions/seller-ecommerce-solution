@@ -4,11 +4,14 @@
       <div class="card-body">
         <h5 class="card-title">{{title}}</h5>
         <div class="d-flex justify-content-center">
-          <form>
+          <form (ngSubmit)="onSubmit()" #form="ngForm" novalidate>
+
             <div class="form-group">
               <mat-form-field appearance="outline">
                 <mat-label>Name</mat-label>
-                <input matInput placeholder="" required>
+                <input name="name"
+                       [(ngModel)]="attribute.name"
+                       matInput placeholder="" required>
                 <mat-hint>Hint</mat-hint>
               </mat-form-field>
             </div>
@@ -16,47 +19,75 @@
             <div class="form-group">
               <mat-form-field appearance="outline">
                 <mat-label>Public name</mat-label>
-                <input matInput placeholder="" required>
+                <input name="publicName"
+                       [(ngModel)]="attribute.publicName"
+                       matInput placeholder="" required>
                 <mat-hint>This name will be displayed to user</mat-hint>
               </mat-form-field>
             </div>
 
             <div class="form-group">
-              <mat-reference-field [(fieldConfig)] = "attrGroupFieldConfig"></mat-reference-field>
-            </div>
-
-            <div class="form-group">
-              <mat-form-field appearance="outline">
-                <mat-label>Sort Order</mat-label>
-                <input matInput placeholder="" required>
-                <mat-hint>Enter a number</mat-hint>
-              </mat-form-field>
+              <mat-reference-field matInput
+                                   (updateSelectedOptions) = "updateAttributeGroup($event)"
+                                   [(fieldConfig)] = "attrGroupFieldConfig">
+              </mat-reference-field>
             </div>
 
             <div class="form-group">
               <mat-form-field appearance="outline">
                 <mat-label>Attribute type</mat-label>
-                <mat-select placeholder="" required>
-                <mat-option value="dropdown">Dropdown</mat-option>
-                <mat-option value="radio">Radio</mat-option>
-                <mat-option value="colorPicker">Color Picker</mat-option>
+                <mat-select name="useAsFilter"
+                  [(ngModel)]="attribute.attributeType"
+                  placeholder="" required>
+                  <mat-option value="0">Text</mat-option>
+                  <mat-option value="1">List</mat-option>
+                  <mat-option value="2">Reference</mat-option>
+                  <mat-option value="3">Date</mat-option>
+                  <mat-option value="4">Currency</mat-option>
+                  <mat-option value="5">Color Picker</mat-option>
                 </mat-select>
               </mat-form-field>
             </div>
 
             <div class="form-group">
               <mat-form-field appearance="outline">
-                <mat-label>Use As Filter</mat-label>
-                <mat-select placeholder="" required>
-                <mat-option value="yes">Yes</mat-option>
-                <mat-option value="no">No</mat-option>
+                <mat-label>Use As Filter?</mat-label>
+                <mat-select name="useAsFilter"
+                            [(ngModel)]="attribute.useAsFilter"
+                            placeholder="" required>
+                  <mat-option [value]='true'>Yes</mat-option>
+                  <mat-option [value]='false'>No</mat-option>
                 </mat-select>
+                <mat-hint>Can be used as a filter to search objects?</mat-hint>
               </mat-form-field>
             </div>
 
-            <a routerLink="/catalog/attribute/specifications" class="btn btn-secondary">
+            <div class="form-group">
+              <mat-form-field appearance="outline">
+                <mat-label>For Catalog?</mat-label>
+                <mat-select name="catalog"
+                            [(ngModel)]="attribute.catalog"
+                            placeholder="" required>
+                  <mat-option [value]='true'>Yes</mat-option>
+                  <mat-option [value]='false'>No</mat-option>
+                </mat-select>
+                <mat-hint>Is this attribute for product catalog?</mat-hint>
+              </mat-form-field>
+            </div>
+
+            <div class="form-group">
+              <mat-form-field appearance="outline">
+                <mat-label>Sort Order</mat-label>
+                <input name="order"
+                       [(ngModel)]="attribute.order"
+                       matInput placeholder="" required>
+                <mat-hint>Enter a number</mat-hint>
+              </mat-form-field>
+            </div>
+
+            <a routerLink="/application/design/model" class="btn btn-secondary">
             Cancel</a>
-            <button type="submit" class="btn btn-primary float-right">Save</button>
+            <button type="submit" class="btn btn-primary float-right" [disabled]="!form.form.valid">Save</button>
           </form>
         </div>
       </div>

@@ -3,8 +3,8 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 import { DataTableConfig } from
   '../../../material-custom-components/data-table/data-table-config';
-import {AttributeService} from '../services/attribute.service';
 import {AttributeValue} from "../models/attribute-value";
+import {ApplicationSchemaService} from '../services/application-schema.service';
 
 
 
@@ -32,7 +32,7 @@ export class AttributeValueListComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private attributeService: AttributeService) { }
+              private applicationSchemaService: ApplicationSchemaService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
@@ -40,7 +40,7 @@ export class AttributeValueListComponent implements OnInit {
         console.log('___ attribute id: '+params.get('id'));
 
         console.log('########## ngOnInit, getAttributeValues: ',
-          this.attributeService.getAttributeValues(params.get('id')));
+          this.applicationSchemaService.getAttributeValues(params.get('id')));
       }
     });
 
@@ -60,7 +60,7 @@ export class AttributeValueListComponent implements OnInit {
         {
           type: 'anchor',
           name: 'Add Attribute Value',
-          href: '/catalog/add/attribute/value',
+          href: '/application/design/model/add/attribute/value',
           icon: 'note_add'
         }
       ],
@@ -68,7 +68,7 @@ export class AttributeValueListComponent implements OnInit {
         id: 'edit',
         type: 'anchor',
         name: 'Edit',
-        href: '/catalog/edit/attribute/value',
+        href: '/application/design/model/edit/attribute/value',
         icon: 'edit'
       }]
     }

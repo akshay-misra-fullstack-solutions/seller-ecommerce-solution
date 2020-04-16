@@ -15,7 +15,7 @@ export class UserService {
   private authenticatedSubject = new Subject<any>();
   private routeAuthSubject = new Subject<boolean>();
   constructor(private http: HttpClient, private router: Router) { }
-  private authServer= 'http://localhost:8080';
+  private authServer = 'http://localhost:8080';
 
 
   register(user: User) {

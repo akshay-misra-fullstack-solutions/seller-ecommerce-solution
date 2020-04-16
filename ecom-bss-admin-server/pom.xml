@@ -63,7 +63,7 @@
 		<dependency>
 			<groupId>com.web-app-authentication</groupId>
 			<artifactId>web-app-auth-framework</artifactId>
-			<version>0.0.1</version>
+			<version>0.0.1.RELEASE</version>
 			<scope>compile</scope>
 		</dependency>
 
