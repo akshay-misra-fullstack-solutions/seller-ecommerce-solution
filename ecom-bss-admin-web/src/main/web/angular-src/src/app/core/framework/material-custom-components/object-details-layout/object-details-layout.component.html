@@ -1,0 +1,20 @@
+<div id="content">
+
+  <dynamic-object-details [details]="details"></dynamic-object-details>
+
+  <div class="page-header">
+    <div class="container-fluid">
+      <mat-tab-group animationDuration="0ms"  >
+        <mat-tab label="Attribute Values">
+          <ng-template matTabContent>
+            <data-table
+              [(dataTableConfig)] = "tableConfig"
+              (deleteObject) = "deleteObject($event)"
+            >
+            </data-table>
+          </ng-template>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

@@ -31,8 +31,8 @@ export class MatReferenceFieldComponent implements OnInit {
   @ViewChild('chipsInput') chipsInput: ElementRef<HTMLInputElement>;
   @Output() updateSelectedOptions = new EventEmitter();
 
-  constructor(private matReferenceFieldService: MatReferenceFieldService) { }
-
+  constructor(private matReferenceFieldService: MatReferenceFieldService) {
+  }
 
   /*
   *   TODO: Add prohibit selected feature in future.
@@ -77,7 +77,15 @@ export class MatReferenceFieldComponent implements OnInit {
     if (index >= 0) {
       this.selectedOptions.splice(index, 1);
     }
-    this.updateSelectedOptions.emit(this.selectedOptions);
+    this.emitValues();
+  }
+
+  emitValues() {
+    if (this.fieldConfig.multiple) {
+      this.updateSelectedOptions.emit(this.selectedOptions);
+    } else {
+      this.updateSelectedOptions.emit(this.selectedOptions.length === 0 ? null : this.selectedOptions.values().next().value);
+    }
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
@@ -89,7 +97,7 @@ export class MatReferenceFieldComponent implements OnInit {
     }
     this.chipsInput.nativeElement.value = '';
     this.formControl.setValue(null);
-    this.updateSelectedOptions.emit(this.selectedOptions);
+    this.emitValues();
   }
 
   private _filter(value: any): any[] {

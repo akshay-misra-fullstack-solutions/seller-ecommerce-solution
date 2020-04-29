@@ -5,6 +5,7 @@ import { MatReferenceFieldConfig } from '../../../material-custom-components/mat
 import {Attribute} from '../models/attribute';
 import {AttributeGroup} from '../models/attribute-group';
 import {ApplicationSchemaService} from '../services/application-schema.service';
+import {ObjectType} from '../models/object-type';
 
 @Component({
   selector: 'add-attribute',
@@ -15,6 +16,7 @@ export class AddAttributeComponent implements OnInit {
   private attribute: Attribute;
   private options: AttributeGroup[] = [];
   private attrGroupFieldConfig: MatReferenceFieldConfig;
+  private objectTypeFieldConfig: MatReferenceFieldConfig;
   private submitted = false;
   private title = 'Add New Attribute';
 
@@ -34,13 +36,27 @@ export class AddAttributeComponent implements OnInit {
       options: this.options,
       fieldName: 'Attribute Group',
       multiple: false,
-      loadAPI: '/application/schema/get/attribute-groups'
+      loadAPI: '/application/api//5e934da667ed1fb0bcf0fca8/load/all',
+      required: true
+    };
+
+    this.objectTypeFieldConfig = {
+      options: this.options,
+      fieldName: 'Reference To Object Type',
+      multiple: false,
+      loadAPI: '/application/api//5ea86babc8ae3bed0b307a4d/load/all',
+      required: true
     };
   }
 
-  updateAttributeGroup(attributeGroup: any[]) {
+  updateAttributeGroup(attributeGroup: AttributeGroup) {
     console.log('updateAttributes, attributeGroup: ' + attributeGroup);
     this.attribute.attributeGroup = attributeGroup;
+  }
+
+  updateObjectType(objectType: ObjectType) {
+    console.log('updateObjectType, objectType: ' + objectType);
+    this.attribute.referenceToObjectType = objectType.id;
   }
 
 

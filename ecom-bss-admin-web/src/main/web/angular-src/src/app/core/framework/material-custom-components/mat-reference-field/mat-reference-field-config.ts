@@ -4,4 +4,5 @@ export interface MatReferenceFieldConfig {
 	multiple?: boolean;
 	prohibitSelected?: boolean;
 	loadAPI?: string;
+	required?: boolean;
 }

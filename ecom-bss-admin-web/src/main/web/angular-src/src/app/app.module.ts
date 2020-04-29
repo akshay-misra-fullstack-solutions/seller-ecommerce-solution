@@ -62,7 +62,6 @@ import { ProductSpecListComponent } from './bss/components/product_management/at
 import { AddProductSpecComponent } from './bss/components/product_management/attribute-specification/add-product-spec/add-product-spec.component';
 import { AttributesSpecsWrapperComponent } from './bss/components/product_management/attribute-specification/attributes-specs-wrapper/attributes-specs-wrapper.component';
 import { DataTableComponent } from './core/framework/material-custom-components/data-table/data-table.component';
-import { MatReferenceFieldComponent } from './core/framework/material-custom-components/mat-reference-field/mat-reference-field.component';
 import { AttributeValueListComponent } from './core/framework/design/model-schema/attribute-value-list/attribute-value-list.component';
 import { AddAttributeValueComponent } from './core/framework/design/model-schema/add-attribute-value/add-attribute-value.component';
 import { ApplicationLayoutWrapperComponent } from './core/framework/design/layout/application-layout-wrapper/application-layout-wrapper.component';
@@ -77,6 +76,10 @@ import { ObjectTypeComponent } from './core/framework/design/model-schema/object
 import { AddObjectTypeComponent } from './core/framework/design/model-schema/add-object-type/add-object-type.component';
 import { CharacteristicListComponent } from './bss/components/product_management/attribute-specification/characteristic-list/characteristic-list.component';
 import { AddCharacteristicComponent } from './bss/components/product_management/attribute-specification/add-characteristic/add-characteristic.component';
+import { ObjectDetailsLayoutComponent } from './core/framework/material-custom-components/object-details-layout/object-details-layout.component';
+import {DynamicFormModule} from './core/framework/material-custom-components/dynamic-form/dynamic-form.module';
+import {DynamicDetailsModule} from './core/framework/material-custom-components/dynamic-details/dynamic-details.module';
+import {MatReferenceFieldComponent} from './core/framework/material-custom-components/mat-reference-field/mat-reference-field.component';
 
 export function tokenGetter() {
   return localStorage.getItem('AuthToken');
@@ -125,7 +128,6 @@ export function tokenGetter() {
     AddProductSpecComponent,
     AttributesSpecsWrapperComponent,
     DataTableComponent,
-    MatReferenceFieldComponent,
     AttributeValueListComponent,
     AddAttributeValueComponent,
     ApplicationLayoutWrapperComponent,
@@ -140,6 +142,8 @@ export function tokenGetter() {
     AddObjectTypeComponent,
     CharacteristicListComponent,
     AddCharacteristicComponent,
+    ObjectDetailsLayoutComponent,
+    MatReferenceFieldComponent,
   ],
 
   //Modules go here
@@ -150,6 +154,8 @@ export function tokenGetter() {
     FontAwesomeModule,
     HttpClientModule,
     FormsModule,
+    DynamicFormModule,
+    DynamicDetailsModule,
     ReactiveFormsModule,
     AppRoutingModule,
     InfiniteScrollModule,

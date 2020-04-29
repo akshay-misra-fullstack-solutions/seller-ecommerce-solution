@@ -1,5 +1,5 @@
-export interface AttributeValue {
-  id?: string;
-  name?: string;
-  objectTypeId?: string;
+import {Base} from './base';
+
+export interface AttributeValue extends Base {
+  value?: string;
 }

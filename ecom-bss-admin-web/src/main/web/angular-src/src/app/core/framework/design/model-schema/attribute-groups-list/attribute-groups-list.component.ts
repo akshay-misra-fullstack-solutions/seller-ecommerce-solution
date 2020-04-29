@@ -3,16 +3,6 @@ import { DataTableConfig } from
   '../../../material-custom-components/data-table/data-table-config';
 import {AttributeGroup} from "../models/attribute-group";
 
-/** Constants used to fill up our data base. */
-const COLORS: string[] = [
-  'maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple', 'fuchsia', 'lime', 'teal',
-  'aqua', 'blue', 'navy', 'black', 'gray'
-];
-const NAMES: string[] = [
-  'Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack', 'Charlotte', 'Theodore', 'Isla', 'Oliver',
-  'Isabella', 'Jasper', 'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'
-];
-
 @Component({
   selector: 'attribute-groups-list',
   templateUrl: './attribute-groups-list.component.html',
@@ -30,7 +20,7 @@ export class AttributeGroupsListComponent implements OnInit {
   ngOnInit() {
     this.tableConfig = {
        data: this.attributeGroups,
-       loadAPI: '/application/schema/get/attribute-groups',
+       loadAPI: '/application/api/5e934da667ed1fb0bcf0fca8/load/all',
        tableTitle: 'Attribute Groups',
        columns: this.columns,
        topToolbar: [

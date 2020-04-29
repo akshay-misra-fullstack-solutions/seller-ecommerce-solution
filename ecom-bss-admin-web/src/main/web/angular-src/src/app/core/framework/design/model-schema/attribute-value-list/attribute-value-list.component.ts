@@ -6,18 +6,6 @@ import { DataTableConfig } from
 import {AttributeValue} from "../models/attribute-value";
 import {ApplicationSchemaService} from '../services/application-schema.service';
 
-
-
-/** Constants used to fill up our data base. */
-const COLORS: string[] = [
-  'maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple', 'fuchsia', 'lime', 'teal',
-  'aqua', 'blue', 'navy', 'black', 'gray'
-];
-const NAMES: string[] = [
-  'Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack', 'Charlotte', 'Theodore', 'Isla', 'Oliver',
-  'Isabella', 'Jasper', 'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'
-];
-
 @Component({
   selector: 'app-attribute-value-list',
   templateUrl: './attribute-value-list.component.html',
@@ -27,6 +15,7 @@ export class AttributeValueListComponent implements OnInit {
 
   private attributeValues: AttributeValue[] = [];
   private columns: any[] = [];
+  private loadAPI: string;
 
   private tableConfig: DataTableConfig;
 
@@ -36,19 +25,14 @@ export class AttributeValueListComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
-      if (params.has('id')) {
-        console.log('___ attribute id: '+params.get('id'));
-
-        console.log('########## ngOnInit, getAttributeValues: ',
-          this.applicationSchemaService.getAttributeValues(params.get('id')));
+      if (params.has('parentId')) {
+        this.loadAPI = '/application/api//5e934d4567ed1fb0bcf0fca7/load/children/' + params.get('parentId');
       }
     });
 
-    this.attributeValues = Array.from({length: 100}, (_, k) => createNewAttribute(k + 1));
-    this.columns = this.getColumns();
-
     this.tableConfig = {
       data: this.attributeValues,
+      loadAPI: this.loadAPI,
       tableTitle: 'Attributes',
       columns: this.columns,
       topToolbar: [
@@ -60,7 +44,7 @@ export class AttributeValueListComponent implements OnInit {
         {
           type: 'anchor',
           name: 'Add Attribute Value',
-          href: '/application/design/model/add/attribute/value',
+          href: 'add',
           icon: 'note_add'
         }
       ],
@@ -68,38 +52,13 @@ export class AttributeValueListComponent implements OnInit {
         id: 'edit',
         type: 'anchor',
         name: 'Edit',
-        href: '/application/design/model/edit/attribute/value',
+        href: 'edit',
         icon: 'edit'
       }]
     }
   }
 
-  private getColumns(): string[] {
-    const columns: any[] = [];
-    columns.push({ columnDef: 'select'});
-    for (const key of Object.keys(this.attributeValues[0])) {
-      columns.push({ columnDef: key, header: key.toLocaleUpperCase(),
-        dataName: function(row) {return row[this.columnDef];} });
-    }
-    columns.push({ columnDef: 'actions', header: 'ACTIONS',
-      dataName: function(row) {return row[this.columnDef];}});
-    return columns;
-  }
-
   deleteObject(attributeId) {
     console.log('AttributeValue, deleteObject, id: ', attributeId);
   }
-}
-
-/** Builds and returns a new Attribute. */
-function createNewAttribute(id: number): AttributeValue {
-  const name = NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
-  const av = ['Red', 'Blue', 'Green', 'Yellow'];
-
-  return {
-    id: id.toString(),
-    name: name,
-    objectTypeId: 'AttributeValue1003'
-  };
 }

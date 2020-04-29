@@ -3,17 +3,6 @@ import { DataTableConfig } from
   '../../../material-custom-components/data-table/data-table-config';
 import {Attribute} from "../models/attribute";
 
-
-/** Constants used to fill up our data base. */
-const COLORS: string[] = [
-  'maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple', 'fuchsia', 'lime', 'teal',
-  'aqua', 'blue', 'navy', 'black', 'gray'
-];
-const NAMES: string[] = [
-  'Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack', 'Charlotte', 'Theodore', 'Isla', 'Oliver',
-  'Isabella', 'Jasper', 'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'
-];
-
 @Component({
   selector: 'attribute-list',
   templateUrl: './attribute-list.component.html',
@@ -31,7 +20,7 @@ export class AttributeListComponent implements OnInit {
   ngOnInit() {
     this.tableConfig = {
         data: this.attributes,
-        loadAPI: '/application/schema/get/attributes',
+        loadAPI: '/application/api/5e934d4567ed1fb0bcf0fca7/load/all',
         tableTitle: 'Attributes',
         columns: this.columns,
         topToolbar: [
@@ -59,10 +48,10 @@ export class AttributeListComponent implements OnInit {
           id: 'children',
           type: 'anchor',
           name: 'Attribute Values',
-          href: '/application/design/model/attribute/values',
+          href: '/application/api/load/details/5e934d4567ed1fb0bcf0fca7',
           icon: 'edit'
         }]
-      }
+      };
   }
 
   deleteObject(attributeId) {

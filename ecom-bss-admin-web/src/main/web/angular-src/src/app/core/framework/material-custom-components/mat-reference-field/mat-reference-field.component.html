@@ -19,7 +19,10 @@
       [matChipInputSeparatorKeyCodes]="separatorKeysCodes">
   </mat-chip-list>
 
-    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="selected($event)">
+    <mat-autocomplete required="fieldConfig.required"
+                      autoActiveFirstOption
+                      #auto="matAutocomplete"
+                      (optionSelected)="selected($event)">
       <mat-option *ngIf="isLoading">
         <mat-progress-spinner [mode]="'indeterminate'" [diameter]="20"></mat-progress-spinner>
       </mat-option>
@@ -28,6 +31,5 @@
           {{option.name}}
         </mat-option>
       </ng-container>
-
     </mat-autocomplete>
 </mat-form-field>

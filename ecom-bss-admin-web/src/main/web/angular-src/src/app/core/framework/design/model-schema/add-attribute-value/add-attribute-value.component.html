@@ -4,11 +4,13 @@
       <div class="card-body">
         <h5 class="card-title">{{title}}</h5>
         <div class="d-flex justify-content-center">
-          <form>
+          <form (ngSubmit)="onSubmit()" #form="ngForm" novalidate>
             <div class="form-group">
               <mat-form-field appearance="outline">
                 <mat-label>Name</mat-label>
-                <input matInput placeholder="" required>
+                <input name="name"
+                       [(ngModel)]="attributeValue.name"
+                       matInput placeholder="" required>
                 <mat-hint>Hint</mat-hint>
               </mat-form-field>
             </div>
@@ -16,7 +18,9 @@
             <div class="form-group">
               <mat-form-field appearance="outline">
                 <mat-label>Public name</mat-label>
-                <input matInput placeholder="" required>
+                <input [value]="attributeValue.name" name="publicName"
+                       [(ngModel)]="attributeValue.publicName"
+                       matInput placeholder="" required>
                 <mat-hint>This name will be displayed to user</mat-hint>
               </mat-form-field>
             </div>
@@ -24,7 +28,9 @@
             <div class="form-group">
               <mat-form-field appearance="outline">
                 <mat-label>Value</mat-label>
-                <input matInput placeholder="" required>
+                <input name="publicName"
+                       [(ngModel)]="attributeValue.value"
+                       matInput placeholder="" required>
                 <mat-hint>Attribute Value</mat-hint>
               </mat-form-field>
             </div>
@@ -32,15 +38,17 @@
             <div class="form-group">
               <mat-form-field appearance="outline">
                 <mat-label>Sort Order</mat-label>
-                <input matInput placeholder="" required>
+                <input name="order"
+                       [(ngModel)]="attributeValue.order"
+                       matInput placeholder="">
                 <mat-hint>Enter a number</mat-hint>
               </mat-form-field>
             </div>
 
 
-            <a routerLink="/application/design/model" class="btn btn-secondary">
+            <a [routerLink]="[cancelLink]" class="btn btn-secondary">
               Cancel</a>
-            <button type="submit" class="btn btn-primary float-right">Save</button>
+            <button type="submit" class="btn btn-primary float-right" [disabled]="!form.form.valid">Save</button>
           </form>
         </div>
       </div>

@@ -27,6 +27,20 @@
             </div>
 
             <div class="form-group">
+              <mat-form-field appearance="outline">
+                <mat-label>Description</mat-label>
+                <textarea
+                  [(ngModel)]="attribute.description" name="description"
+                  matInput placeholder=""
+                  cdkTextareaAutosize
+                  #autosize="cdkTextareaAutosize"
+                  cdkAutosizeMinRows="1"
+                  cdkAutosizeMaxRows="5"></textarea>
+                <mat-hint>Add description for this entity.</mat-hint>
+              </mat-form-field>
+            </div>
+
+            <div class="form-group">
               <mat-reference-field matInput
                                    (updateSelectedOptions) = "updateAttributeGroup($event)"
                                    [(fieldConfig)] = "attrGroupFieldConfig">
@@ -40,13 +54,23 @@
                   [(ngModel)]="attribute.attributeType"
                   placeholder="" required>
                   <mat-option value="0">Text</mat-option>
-                  <mat-option value="1">List</mat-option>
+                  <mat-option value="1">Number</mat-option>
                   <mat-option value="2">Reference</mat-option>
-                  <mat-option value="3">Date</mat-option>
-                  <mat-option value="4">Currency</mat-option>
-                  <mat-option value="5">Color Picker</mat-option>
+                  <mat-option value="3">List</mat-option>
+                  <mat-option value="4">Date</mat-option>
+                  <mat-option value="5">Currency</mat-option>
+                  <mat-option value="6">Ip Address</mat-option>
+                  <mat-option value="7">Color Picker</mat-option>
+                  <mat-option value="8">Password</mat-option>
                 </mat-select>
               </mat-form-field>
+            </div>
+
+            <div class="form-group">
+              <mat-reference-field matInput
+                                   (updateSelectedOptions) = "updateObjectType($event)"
+                                   [(fieldConfig)] = "objectTypeFieldConfig">
+              </mat-reference-field>
             </div>
 
             <div class="form-group">
@@ -77,15 +101,93 @@
 
             <div class="form-group">
               <mat-form-field appearance="outline">
+                <mat-label>Is System? </mat-label>
+                <mat-select name="isSystem"
+                            [(ngModel)]="attribute.system"
+                            placeholder="" required>
+                  <mat-option [value]='true'>Yes</mat-option>
+                  <mat-option [value]='false'>No</mat-option>
+                </mat-select>
+                <mat-hint>Is this an internal system attribute?</mat-hint>
+              </mat-form-field>
+            </div>
+
+            <div class="form-group">
+              <mat-form-field appearance="outline">
+                <mat-label>Readonly? </mat-label>
+                <mat-select name="isSystem"
+                            [(ngModel)]="attribute.readonly"
+                            placeholder="" required>
+                  <mat-option [value]='true'>Yes</mat-option>
+                  <mat-option [value]='false'>No</mat-option>
+                </mat-select>
+                <mat-hint>Is this a readonly attribute?</mat-hint>
+              </mat-form-field>
+            </div>
+
+            <div class="form-group">
+              <mat-form-field appearance="outline">
+                <mat-label>Hidden? </mat-label>
+                <mat-select name="isSystem"
+                            [(ngModel)]="attribute.hidden"
+                            placeholder="" required>
+                  <mat-option [value]='true'>Yes</mat-option>
+                  <mat-option [value]='false'>No</mat-option>
+                </mat-select>
+                <mat-hint>Is this a hidden attribute?</mat-hint>
+              </mat-form-field>
+            </div>
+
+            <div class="form-group">
+              <mat-form-field appearance="outline">
+                <mat-label>Required? </mat-label>
+                <mat-select name="required"
+                            [(ngModel)]="attribute.required"
+                            placeholder="" required>
+                  <mat-option [value]='true'>Yes</mat-option>
+                  <mat-option [value]='false'>No</mat-option>
+                </mat-select>
+                <mat-hint>Is this a required attribute?</mat-hint>
+              </mat-form-field>
+            </div>
+
+            <div class="form-group">
+              <mat-form-field appearance="outline">
+                <mat-label>Multiple? </mat-label>
+                <mat-select name="isSystem"
+                            [(ngModel)]="attribute.multiple"
+                            placeholder="" required>
+                  <mat-option [value]='true'>Yes</mat-option>
+                  <mat-option [value]='false'>No</mat-option>
+                </mat-select>
+                <mat-hint>Is this a multiple value attribute?</mat-hint>
+              </mat-form-field>
+            </div>
+
+            <div class="form-group">
+              <mat-form-field appearance="outline">
+                <mat-label>Show While Create? </mat-label>
+                <mat-select name="isSystem"
+                            [(ngModel)]="attribute.showInCreate"
+                            placeholder="" required>
+                  <mat-option [value]='true'>Yes</mat-option>
+                  <mat-option [value]='false'>No</mat-option>
+                </mat-select>
+                <mat-hint>Is this attribute will be shown in create form?</mat-hint>
+              </mat-form-field>
+            </div>
+
+            <div class="form-group">
+              <mat-form-field appearance="outline">
                 <mat-label>Sort Order</mat-label>
                 <input name="order"
                        [(ngModel)]="attribute.order"
-                       matInput placeholder="" required>
+                       matInput placeholder="">
                 <mat-hint>Enter a number</mat-hint>
               </mat-form-field>
             </div>
 
-            <a routerLink="/application/design/model" class="btn btn-secondary">
+            <a routerLink="/application/design/model" mat-button color="warn" class="btn btn-secondary">
             Cancel</a>
             <button type="submit" class="btn btn-primary float-right" [disabled]="!form.form.valid">Save</button>
           </form>

@@ -35,7 +35,7 @@ export class AddObjectTypeComponent implements OnInit {
       options: this.options,
       fieldName: 'Attributes',
       multiple: true,
-      loadAPI: '/application/schema/get/attributes'
+      loadAPI: '/application/api/5e934d4567ed1fb0bcf0fca7/load/all'
     };
   }
 
@@ -57,10 +57,8 @@ export class AddObjectTypeComponent implements OnInit {
       this.applicationSchemaService.addObjectType(this.objectType)
         .subscribe(newObjectType => {
           console.log("addObjectType response.body:  "+newObjectType);
-          //this.addProduct.emit(newObjectType);
           this.objectType = {};
           this.router.navigate(['/application/design/model']);
-          this.applicationSchemaService.addObjectTypeEvent(newObjectType);
         });
     }
     this.submitted = true;

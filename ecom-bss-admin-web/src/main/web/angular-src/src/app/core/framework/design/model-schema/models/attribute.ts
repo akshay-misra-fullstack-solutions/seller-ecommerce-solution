@@ -5,6 +5,13 @@ export interface Attribute extends Base {
   attributeValue?: any[];
   children?: string[];
   attributeType?: number;
+  referenceToObjectType?: string;
   useAsFilter?: boolean;
   catalog?: boolean;
+  system?: boolean;
+  readonly?: boolean;
+  hidden?: boolean;
+  required?: boolean;
+  multiple?: boolean;
+  showInCreate?: boolean;
 }

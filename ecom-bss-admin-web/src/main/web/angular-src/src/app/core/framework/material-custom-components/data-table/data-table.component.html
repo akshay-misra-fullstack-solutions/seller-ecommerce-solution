@@ -4,7 +4,7 @@
 
 <span class="float-right mt-3 mr-2" *ngFor="let toolbar of topToolbar">
   <a *ngIf="toolbar.type === 'anchor'" mat-icon-button color="primary"
-     routerLink="{{toolbar.href}}" matTooltip="{{toolbar.name}}" [matTooltipPosition]="'above'">
+     [routerLink]="[toolbar.href]" matTooltip="{{toolbar.name}}" [matTooltipPosition]="'above'">
     <mat-icon aria-hidden="false">{{toolbar.icon}}</mat-icon>
   </a>
   <button *ngIf="toolbar.type === 'button'" (click)="removeSelectedRows()" mat-icon-button color="warn"

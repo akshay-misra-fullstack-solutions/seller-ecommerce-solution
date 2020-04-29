@@ -1,13 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ObjectType} from "../models/object-type";
 import {DataTableConfig} from "../../../material-custom-components/data-table/data-table-config";
-import {Subscription} from 'rxjs';
 import {ApplicationSchemaService} from '../services/application-schema.service';
-
-const NAMES: string[] = [
-  'Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack', 'Charlotte', 'Theodore', 'Isla', 'Oliver',
-  'Isabella', 'Jasper', 'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'
-];
 
 @Component({
   selector: 'object-type-list',
@@ -18,23 +12,15 @@ export class ObjectTypeComponent implements OnInit {
 
   private objectTypes: ObjectType[] = [];
   private columns: any[] = [];
-  private addObjectTypeSubscription: Subscription;
 
   private tableConfig: DataTableConfig;
 
-  constructor(private applicationSchemaService: ApplicationSchemaService) {
-
-    this.addObjectTypeSubscription = this.applicationSchemaService.addObjectTypeHandler().subscribe(objectType => {
-      this.objectTypes.push(objectType);
-      console.log('.... addObjectTypeSubscription, new objectType: '+objectType.name);
-      console.log('.... addObjectTypeSubscription, objectTypes size: '+this.objectTypes.length);
-    });
-  }
+  constructor(private applicationSchemaService: ApplicationSchemaService) {}
 
   ngOnInit() {
     this.tableConfig = {
       data: this.objectTypes,
-      loadAPI: '/application/schema/get/object-types',
+      loadAPI: '/application/api/5ea86babc8ae3bed0b307a4d/load/all',
       tableTitle: 'Object Types',
       columns: this.columns,
       topToolbar: [
@@ -61,9 +47,7 @@ export class ObjectTypeComponent implements OnInit {
     }
   }
 
-  ngOnDestroy() {
-    this.addObjectTypeSubscription.unsubscribe();
-  }
+  ngOnDestroy() {}
 
   deleteObject(attributeId) {
     console.log('Attribute, deleteObject, id: ', attributeId);

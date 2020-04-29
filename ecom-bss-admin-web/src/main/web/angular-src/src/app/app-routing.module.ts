@@ -31,6 +31,7 @@ import {AddTabLayoutComponent} from "./core/framework/design/layout/add-tab-layo
 import {AddSideNavigationTabComponent} from "./core/framework/design/layout/add-side-navigation-tab/add-side-navigation-tab.component";
 import {ApplicationModelWrapperComponent} from "./core/framework/design/model-schema/application-model-wrapper/application-model-wrapper.component";
 import {AddObjectTypeComponent} from "./core/framework/design/model-schema/add-object-type/add-object-type.component";
+import {ObjectDetailsLayoutComponent} from './core/framework/material-custom-components/object-details-layout/object-details-layout.component';
 
 //noinspection TypeScriptValidateTypes
 const routes: Routes = [
@@ -51,9 +52,10 @@ const routes: Routes = [
   { path: 'application/design/model/edit/attribute/group/:id', component: AddAttributeGroupsComponent},
   { path: 'application/design/model/add/attribute', component: AddAttributeComponent},
   { path: 'application/design/model/edit/attribute/:id', component: AddAttributeComponent},
-  { path: 'application/design/model/attribute/values/:id', component: AttributeValueListComponent},
-  { path: 'application/design/model/add/attribute/value', component: AddAttributeValueComponent},
-  { path: 'application/design/model/edit/attribute/value/:id', component: AddAttributeValueComponent},
+  // { path: 'application/design/model/attribute/values/:parentId', component: AttributeValueListComponent},
+  { path: 'application/api/load/details/:objectTypeId/:objectId', component: ObjectDetailsLayoutComponent},
+  { path: 'application/api/load/details/:objectTypeId/:parentId/add', component: AddAttributeValueComponent},
+  { path: 'application/design/model/attribute/values/:parentId/edit/:id', component: AddAttributeValueComponent},
   { path: 'application/design/model/add/object/type', component: AddObjectTypeComponent },
   { path: 'application/design/model/edit/object/type/:id', component: AddObjectTypeComponent },
 

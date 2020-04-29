@@ -33,6 +33,7 @@ export class DataTableComponent implements OnInit {
   ngOnInit() {
     this.isLoadingResults = true;
     this.data = Object.assign(this.dataTableConfig.data);
+    console.log('ngOnInit, loadAPI: ', this.dataTableConfig.loadAPI);
     if (this.data.length === 0 && this.dataTableConfig.loadAPI) {
       this.matTableService.loadObjects(this.dataTableConfig.loadAPI).subscribe(
         response => {
