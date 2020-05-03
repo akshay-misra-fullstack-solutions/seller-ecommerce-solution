@@ -4,11 +4,11 @@
     <mat-chip-list [required]="field.required" #chipList aria-label="option selection">
       <mat-chip
         selected [color]="primary"
-        *ngFor="let selectedOption of selectedOptions"
+        *ngFor="let selectedChip of selectedChips"
         [selectable]="selectable"
         [removable]="removable"
-        (removed)="remove(selectedOption)">
-        {{selectedOption.name}}
+        (removed)="remove(selectedChip)">
+        {{selectedChip.name}}
         <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
       </mat-chip>
       <input
@@ -39,8 +39,8 @@
     </mat-autocomplete>
     <mat-hint>{{field.hint}}</mat-hint>
     <mat-error>Too many chips</mat-error>
-<!--
-    <mat-error *ngIf="!isValid && isDirty">{{getErrorMessage()}}</mat-error>
--->
+    <!--
+        <mat-error *ngIf="!isValid && isDirty">{{getErrorMessage()}}</mat-error>
+    -->
   </mat-form-field>
 </div>

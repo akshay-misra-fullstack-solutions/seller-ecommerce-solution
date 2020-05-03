@@ -1,0 +1,19 @@
+<div class="page-header">
+  <div class="container-fluid">
+    <div class="card-container">
+      <div class="card">
+        <div class="container-fluid">
+          <mat-tab-group (selectedTabChange)="onTabChange($event)" animationDuration="0ms">
+            <mat-tab [label]="tableConfig.name" *ngFor="let tableConfig of tableConfigs">
+              <ng-template matTabContent>
+                <dynamic-table
+                  [(dynamicTableConfig)] = "tableConfig">
+                </dynamic-table>
+              </ng-template>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

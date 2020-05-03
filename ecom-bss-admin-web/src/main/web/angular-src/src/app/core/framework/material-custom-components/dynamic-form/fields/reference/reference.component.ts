@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild, ElementRef, Output, EventEmitter} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {AbstractControl, FormControl, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
 import { of } from 'rxjs/observable/of';
 import {debounceTime, finalize, map, startWith, switchMap, tap} from 'rxjs/operators';
@@ -19,10 +19,11 @@ export class ReferenceComponent extends Field implements OnInit {
   selectable = true;
   removable = true;
   separatorKeysCodes: number[] = [ENTER, COMMA];
-  formControl: FormControl;
+  formControl: AbstractControl;
   // @Input() field: ReferenceConfig;
   private options: any[] = [];
   private selectedOptions: any[];
+  private selectedChips: any[];
   private label: string;
   private filteredOptions: Observable<any>;
   private isLoading = false;
@@ -43,10 +44,26 @@ export class ReferenceComponent extends Field implements OnInit {
   * */
   ngOnInit() {
     this.selectedOptions = [];
+    this.selectedChips = [];
     this.label = this.field.label;
     this.formControl = this.form.controls[this.field.name];
 
-    if (this.field.options.length === 0 && this.field.loadAPI) {
+    if (this.field.value) {
+      if (Array.isArray(this.field.value)) {
+        const context = this;
+        this.field.value.forEach(function (value) {
+          return context.setValueToFormControl(value);
+        });
+      } else {
+        this.setValueToFormControl(this.field.value);
+      }
+    }
+
+    if (this.field.options === undefined) {
+      this.field.options = [];
+    }
+
+    if (this.field.loadAPI && this.field.options.length === 0) {
       this.formControl.valueChanges
         .pipe(
           debounceTime(500),
@@ -70,18 +87,23 @@ export class ReferenceComponent extends Field implements OnInit {
           }
         });
     } else {
-      this.options = this.field.options;
-      this.filteredOptions = this.formControl.valueChanges
-        .pipe(
-          startWith(null),
-          map((value: any | null ) => value ? this._filter(value) : this.options.slice())
-        );
+      if (this.field.options) {
+        this.options = this.field.options;
+        this.filteredOptions = this.formControl.valueChanges
+          .pipe(
+            startWith(null),
+            map((value: any | null) => value ? this._filter(value) : this.options.slice())
+          );
+      }
     }
   }
 
   remove(chip: any): void {
+    const chipIndex = this.selectedChips.indexOf(chip);
+    if (chipIndex >= 0) {
+      this.selectedChips.splice(chipIndex, 1);
+    }
     const index = this.selectedOptions.indexOf(chip);
-
     if (index >= 0) {
       this.selectedOptions.splice(index, 1);
     }
@@ -98,17 +120,33 @@ export class ReferenceComponent extends Field implements OnInit {
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
+    this.setValueToFormControl(event.option.value);
+    // this.chipList.errorState = true; // mat-error not working
+  }
+
+  setValueToFormControl(value: any) {
+    let selectedValue = '';
+    if (this.field.refIdAttr) {
+      selectedValue = value.id;
+    } else {
+      selectedValue = value;
+    }
     if (this.field.multiple) {
-      this.selectedOptions.push(event.option.value);
+      this.selectedOptions.push(selectedValue);
+      this.selectedChips.push(value);
     } else {
       this.selectedOptions.splice(0, this.selectedOptions.length);
-      this.selectedOptions.push(event.option.value);
+      this.selectedOptions.push(selectedValue);
+      this.selectedChips.splice(0, this.selectedChips.length);
+      this.selectedChips.push(value);
     }
     this.chipList.nativeElement.value = '';
-    this.formControl.setValue(this.selectedOptions);
+    if (this.field.multiple) {
+      this.formControl.setValue(this.selectedOptions);
+    } else {
+      this.formControl.setValue(selectedValue);
+    }
     this.emitValues();
-
-    this.chipList.errorState = true; // mat-error not working
   }
 
   private _filter(value: any): any[] {
@@ -116,3 +154,4 @@ export class ReferenceComponent extends Field implements OnInit {
     return this.options.filter(option => option.name.toLocaleLowerCase().indexOf(value) === 0);
   }
 }
+

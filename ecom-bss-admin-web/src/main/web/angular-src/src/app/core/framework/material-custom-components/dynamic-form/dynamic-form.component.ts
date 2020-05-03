@@ -1,5 +1,8 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {DynamicFormService} from './dynamic-form.service';
+import {Router} from '@angular/router';
+import {ApplicationRouteService} from '../../services/application-route.service';
 
 @Component({
   selector: 'dynamic-form',
@@ -17,14 +20,19 @@ export class DynamicFormComponent implements OnChanges {
   formGroups: FormGroup[] = [];
   object: any = {};
   private title: string;
+  private cancelLink: string;
 
-  constructor() { }
+  constructor(private dynamicFormService: DynamicFormService,
+              private applicationRouteService: ApplicationRouteService,
+              private router: Router) { }
 
   ngOnChanges() {
     if (this.details) {
-      this.title = this.details.objectName;
+      this.title = this.details.formTitle;
       this.groups = this.details.groups;
     }
+
+    this.calculateCancelLink();
     const fieldCtrls = {};
     for (const g of this.groups) {
       for (const f of g.fields) {
@@ -55,12 +63,35 @@ export class DynamicFormComponent implements OnChanges {
     return true;
   }
 
-  onSubmit() {
-    console.log('formGroups data: ' + JSON.stringify(this.form.value));
-    for (const form of this.formGroups) {
-
-      console.log('isFormValid: ' + JSON.stringify(form.controls['attribute'].value));
+  public calculateCancelLink() {
+    const previousRoute = this.applicationRouteService.getPreviousRoute();
+    const currentRoute = this.applicationRouteService.getCurrentRoute();
+    if (previousRoute === currentRoute) {
+      if (this.details && this.details.cancelLink) {
+        this.cancelLink = this.details.cancelLink;
+      } else {
+        this.cancelLink = '/application/design/model'; // TODO: remove it after cancelLink come from backend, using parent object or tab.
+      }
+    } else {
+      this.cancelLink = this.applicationRouteService.getPreviousRoute();
     }
+    console.log('**** cancelLink: ' + this.cancelLink);
+  }
+
+  onSubmit() {
+    console.log('---- onSubmit, createAPI: ' + this.details.createAPI)
+    this.object = this.form.value;
+    console.log('---- onSubmit formGroups data: ' + JSON.stringify(this.object));
+
+    this.dynamicFormService.createObject(this.object, this.details.createAPI)
+      .subscribe(object => {
+          console.log('updateObject response.body:  ' + object);
+          if (object) {
+            this.object = {};
+            this.router.navigate([this.cancelLink]);
+          }
+        },
+      );
   }
 
 }

@@ -8,7 +8,7 @@ export abstract class Field {
   get isValid() { return this.form.controls[this.field.name].valid; }
   get isDirty() { return this.form.controls[this.field.name].dirty; }
 
-  getErrorMessage() {
+  getErrorMessage(): string {
     if (this.form.controls[this.field.name].hasError('required')) {
       return 'You must enter a value';
     }

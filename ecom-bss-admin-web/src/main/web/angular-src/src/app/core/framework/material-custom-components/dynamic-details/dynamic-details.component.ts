@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
+import {DynamicDetailsService} from './dynamic-details.service';
 
 @Component({
   selector: 'dynamic-object-details',
@@ -18,7 +19,7 @@ export class DynamicDetailsComponent implements OnChanges {
   object: any = {};
   private title: string;
 
-  constructor() { }
+  constructor(private dynamicDetailsService: DynamicDetailsService) { }
 
   ngOnChanges() {
     if (this.details) {
@@ -56,8 +57,20 @@ export class DynamicDetailsComponent implements OnChanges {
   }
 
   onSubmit() {
+    console.log('---- onSubmit, updateAPI: ' + this.details.updateAPI)
     this.object = this.form.value;
     this.object.id = this.details.id;
-    console.log('formGroups data: ' + JSON.stringify(this.object));
+    console.log('---- onSubmit formGroups data: ' + JSON.stringify(this.object));
+
+    if (this.object.id) {
+      this.dynamicDetailsService.updateObject(this.object, this.details.updateAPI)
+        .subscribe(object => {
+            console.log('updateObject response.body:  ' + object);
+            if (object) {
+              this.object = {};
+            }
+          },
+        );
+    }
   }
 }

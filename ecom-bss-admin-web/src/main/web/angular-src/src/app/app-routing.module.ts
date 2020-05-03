@@ -32,12 +32,16 @@ import {AddSideNavigationTabComponent} from "./core/framework/design/layout/add-
 import {ApplicationModelWrapperComponent} from "./core/framework/design/model-schema/application-model-wrapper/application-model-wrapper.component";
 import {AddObjectTypeComponent} from "./core/framework/design/model-schema/add-object-type/add-object-type.component";
 import {ObjectDetailsLayoutComponent} from './core/framework/material-custom-components/object-details-layout/object-details-layout.component';
+import {CompositeFormComponent} from './core/framework/composite/composite-form/composite-form.component';
+import {NavigationLayoutComponent} from './core/framework/design/layout/navigation-layout/navigation-layout.component';
 
 //noinspection TypeScriptValidateTypes
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   /*{ path: '', component: ViewProductComponent },*/
+
+  { path: 'application/navigation/:tabId', component: NavigationLayoutComponent },
   { path: 'application/design/layout', component: ApplicationLayoutWrapperComponent },
   { path: 'application/design/layout/add/layout/config', component: AddLayoutConfigComponent },
   { path: 'application/design/layout/edit/layout/config/:id', component: AddLayoutConfigComponent },
@@ -53,6 +57,9 @@ const routes: Routes = [
   { path: 'application/design/model/add/attribute', component: AddAttributeComponent},
   { path: 'application/design/model/edit/attribute/:id', component: AddAttributeComponent},
   // { path: 'application/design/model/attribute/values/:parentId', component: AttributeValueListComponent},
+
+  { path: 'application/design/create/object/:objectTypeId', component: CompositeFormComponent},
+
   { path: 'application/api/load/details/:objectTypeId/:objectId', component: ObjectDetailsLayoutComponent},
   { path: 'application/api/load/details/:objectTypeId/:parentId/add', component: AddAttributeValueComponent},
   { path: 'application/design/model/attribute/values/:parentId/edit/:id', component: AddAttributeValueComponent},

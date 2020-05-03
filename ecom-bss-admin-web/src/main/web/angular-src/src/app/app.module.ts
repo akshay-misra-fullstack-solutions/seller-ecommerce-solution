@@ -80,6 +80,11 @@ import { ObjectDetailsLayoutComponent } from './core/framework/material-custom-c
 import {DynamicFormModule} from './core/framework/material-custom-components/dynamic-form/dynamic-form.module';
 import {DynamicDetailsModule} from './core/framework/material-custom-components/dynamic-details/dynamic-details.module';
 import {MatReferenceFieldComponent} from './core/framework/material-custom-components/mat-reference-field/mat-reference-field.component';
+import { CompositeTableWrapperComponent } from './core/framework/composite/composite-table-wrapper/composite-table-wrapper.component';
+import { CompositeFormComponent } from './core/framework/composite/composite-form/composite-form.component';
+import { DynamicTableComponent } from './core/framework/material-custom-components/dynamic-table/dynamic-table.component';
+import {NotifierModule} from 'angular-notifier';
+import { NavigationLayoutComponent } from './core/framework/design/layout/navigation-layout/navigation-layout.component';
 
 export function tokenGetter() {
   return localStorage.getItem('AuthToken');
@@ -144,6 +149,10 @@ export function tokenGetter() {
     AddCharacteristicComponent,
     ObjectDetailsLayoutComponent,
     MatReferenceFieldComponent,
+    CompositeTableWrapperComponent,
+    CompositeFormComponent,
+    DynamicTableComponent,
+    NavigationLayoutComponent,
   ],
 
   //Modules go here
@@ -159,6 +168,7 @@ export function tokenGetter() {
     ReactiveFormsModule,
     AppRoutingModule,
     InfiniteScrollModule,
+    NotifierModule,
     NgxSummernoteModule,
     JwtModule.forRoot({
       config: {

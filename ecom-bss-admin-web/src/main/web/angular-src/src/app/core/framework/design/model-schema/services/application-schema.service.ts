@@ -8,6 +8,7 @@ import {ObjectType} from '../models/object-type';
 import {AttributeGroup} from '../models/attribute-group';
 import {Attribute} from '../models/attribute';
 import {Product} from '../../../../../bss/components/product_management/models/product';
+import {NavigationTab} from '../../layout/model/navigation-tab';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -62,6 +63,11 @@ export class ApplicationSchemaService {
   public updateAttributeValue(attribute: AttributeValue): Observable<AttributeValue> {
     const URI = `${this.serverApi}/5ea6c35f3fe39bd27a715a33/update`;
     return this.http.put<ObjectType>(URI, attribute);
+  }
+
+  public addNavigationTab(tab: NavigationTab): Observable<Attribute> {
+    const URI = `${this.serverApi}/5eaaa5862e2efbf64a9f4a5b/add`;
+    return this.http.post<NavigationTab>(URI, tab);
   }
 
 }

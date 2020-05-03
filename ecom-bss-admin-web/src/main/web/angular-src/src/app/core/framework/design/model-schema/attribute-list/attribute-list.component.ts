@@ -32,7 +32,8 @@ export class AttributeListComponent implements OnInit {
                     {
                       type: 'anchor',
                       name: 'Add Attribute',
-                      href: '/application/design/model/add/attribute',
+                      // href: '/application/design/model/add/attribute',
+                      href: '/application/design/create/object/5e934d4567ed1fb0bcf0fca7',
                       icon: 'note_add'
                     }
                    ],

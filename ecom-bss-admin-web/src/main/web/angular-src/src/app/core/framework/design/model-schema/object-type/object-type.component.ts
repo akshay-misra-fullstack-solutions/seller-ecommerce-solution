@@ -32,7 +32,7 @@ export class ObjectTypeComponent implements OnInit {
         {
           type: 'anchor',
           name: 'Add Object Type',
-          href: '/application/design/model/add/object/type',
+          href: '/application/design/create/object/5ea86babc8ae3bed0b307a4d',
           icon: 'note_add'
         }
       ],
@@ -42,6 +42,13 @@ export class ObjectTypeComponent implements OnInit {
           type: 'anchor',
           name: 'Edit',
           href: '/application/design/model/edit/object/type',
+          icon: 'edit'
+        },
+        {
+          id: 'children',
+          type: 'anchor',
+          name: 'Object Types',
+          href: '/application/api/load/details/5ea86babc8ae3bed0b307a4d',
           icon: 'edit'
         }]
     }

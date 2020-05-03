@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {SideNavigationTab} from "../model/side-navigation-tab";
+import {NavigationTab} from "../model/navigation-tab";
 import {DataTableConfig} from "../../../material-custom-components/data-table/data-table-config";
 
 const NAMES: string[] = [
@@ -14,7 +14,7 @@ const NAMES: string[] = [
 })
 export class SideNavigationTabComponent implements OnInit {
 
-  private attributes: SideNavigationTab[] = [];
+  private attributes: NavigationTab[] = [];
   private columns: any[] = [];
 
   private tableConfig: DataTableConfig;
@@ -22,23 +22,21 @@ export class SideNavigationTabComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.attributes = Array.from({length: 100}, (_, k) => createNewAttribute(k + 1));
-    this.columns = this.getColumns();
-
     this.tableConfig = {
       data: this.attributes,
+      loadAPI: '/application/api/5eaaa5862e2efbf64a9f4a5b/load/all',
       tableTitle: 'Attributes',
       columns: this.columns,
       topToolbar: [
         {
           type: 'button',
-          name: 'Delete Attribute',
+          name: 'Delete Tab',
           icon: 'delete'
         },
         {
           type: 'anchor',
-          name: 'Add Attribute',
-          href: '/application/add/side/nav/tab',
+          name: 'Add New Tab',
+          href: '/application/design/create/object/5eaaa5862e2efbf64a9f4a5b',
           icon: 'note_add'
         }
       ],
@@ -54,7 +52,7 @@ export class SideNavigationTabComponent implements OnInit {
           id: 'children',
           type: 'anchor',
           name: 'Attribute Values',
-          href: '/catalog/attribute/values',
+          href: '/application/api/load/details/5eaaa5862e2efbf64a9f4a5b',
           icon: 'edit'
         }]
     }
@@ -79,7 +77,7 @@ export class SideNavigationTabComponent implements OnInit {
 }
 
 /** Builds and returns a new Attribute. */
-function createNewAttribute(id: number): SideNavigationTab {
+function createNewAttribute(id: number): NavigationTab {
   const name = NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
     NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
   const av = ['Red', 'Blue', 'Green', 'Yellow'];
@@ -89,8 +87,6 @@ function createNewAttribute(id: number): SideNavigationTab {
     name: name,
     parentId: id.toString(),
     icon: '',
-    subTabs: [],
-    tabLayoutId: id.toString(),
     objectTypeId: 'SideNavigationTab1007'
   };
 }

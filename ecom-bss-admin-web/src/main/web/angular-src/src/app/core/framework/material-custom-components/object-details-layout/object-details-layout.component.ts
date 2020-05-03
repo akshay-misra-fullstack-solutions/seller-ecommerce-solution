@@ -2,9 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {AttributeValue} from '../../design/model-schema/models/attribute-value';
 import {DataTableConfig} from '../data-table/data-table-config';
 import {ActivatedRoute, Router} from '@angular/router';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 import {ObjectDetailsLayoutService} from './object-details-layout.service';
-import {Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
+import {DynamicTableConfig} from '../dynamic-table/dynamic-table.component';
 
 @Component({
   selector: 'app-object-details-layout',
@@ -26,6 +27,8 @@ export class ObjectDetailsLayoutComponent implements OnInit {
   public objectLayoutWrapper: any;
   private groups: Observable<any[]>;
   private details: Observable<any>;
+  private compositeTableConfig: any;
+  private showChildren: boolean;
 
 
   private tableConfig: DataTableConfig;
@@ -94,6 +97,11 @@ export class ObjectDetailsLayoutComponent implements OnInit {
     this.title = this.objectLayoutWrapper.objectName;
     this.details = this.objectLayoutWrapper.detail;
     this.groups = this.objectLayoutWrapper.detail.groups;
+    this.compositeTableConfig = this.objectLayoutWrapper.children;
+    console.log('---- ObjectDetailsLayoutComponent, init, compositeTableConfig: ' + JSON.stringify(this.compositeTableConfig));
+    if (this.compositeTableConfig && this.compositeTableConfig.tables.length > 0) {
+      this.showChildren = true;
+    }
 
     this.form = new FormGroup({
       fields: new FormControl(JSON.stringify(this.groups))
