@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-
+import { FlexLayoutModule } from "@angular/flex-layout";
 import {AngularMaterialModules} from './material-module';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -19,18 +19,14 @@ import { AppComponent } from './app.component';
 import { AddProductComponent } from './bss/components/product_management/add-product/add-product.component';
 import { ViewProductComponent } from './bss/components/product_management/view-product/view-product.component';
 import { ProductService } from './bss/components/product_management/services/product.service';
-import { AlertComponent } from './core/framework/alert/alert.component';
 import { LoginComponent } from './core/framework/login/login.component';
 import { RegisterComponent } from './core/framework/register/register.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthGuard } from "./core/framework/guards/auth.guard";
-import { AlertService } from "./core/framework/services/alert.service";
-import { UserService } from "./core/framework/services/user.service";
-import { ErrorInterceptor } from "./core/framework/helpers/error.interceptor";
-import { HeaderComponent } from './core/framework/header/header.component';
+import { AuthGuard } from './core/framework/guards/auth.guard';
+import { AlertService } from './core/framework/services/alert.service';
+import { UserService } from './core/framework/services/user.service';
+import { ErrorInterceptor } from './core/framework/helpers/error.interceptor';
 import { UserProfileComponent } from './core/framework/user-profile/user-profile.component';
-import { FooterComponent } from './core/framework/footer/footer.component';
-import { WestNavigationComponent } from './core/framework/west-navigation/west-navigation.component';
 import { EastNavigationComponent } from './core/framework/east-navigation/east-navigation.component';
 import { RevenueManagementComponent } from './bss/components/revenue-management/revenue-management.component';
 import { DeliveryManagementComponent } from './bss/components/delivery-management/delivery-management.component';
@@ -77,14 +73,16 @@ import { AddObjectTypeComponent } from './core/framework/design/model-schema/add
 import { CharacteristicListComponent } from './bss/components/product_management/attribute-specification/characteristic-list/characteristic-list.component';
 import { AddCharacteristicComponent } from './bss/components/product_management/attribute-specification/add-characteristic/add-characteristic.component';
 import { ObjectDetailsLayoutComponent } from './core/framework/material-custom-components/object-details-layout/object-details-layout.component';
-import {DynamicFormModule} from './core/framework/material-custom-components/dynamic-form/dynamic-form.module';
-import {DynamicDetailsModule} from './core/framework/material-custom-components/dynamic-details/dynamic-details.module';
-import {MatReferenceFieldComponent} from './core/framework/material-custom-components/mat-reference-field/mat-reference-field.component';
+import { DynamicFormModule} from './core/framework/material-custom-components/dynamic-form/dynamic-form.module';
+import { DynamicDetailsModule} from './core/framework/material-custom-components/dynamic-details/dynamic-details.module';
+import { MatReferenceFieldComponent} from './core/framework/material-custom-components/mat-reference-field/mat-reference-field.component';
 import { CompositeTableWrapperComponent } from './core/framework/composite/composite-table-wrapper/composite-table-wrapper.component';
 import { CompositeFormComponent } from './core/framework/composite/composite-form/composite-form.component';
 import { DynamicTableComponent } from './core/framework/material-custom-components/dynamic-table/dynamic-table.component';
-import {NotifierModule} from 'angular-notifier';
 import { NavigationLayoutComponent } from './core/framework/design/layout/navigation-layout/navigation-layout.component';
+import { MatToolbarModule, MatSidenavModule, MatListModule } from "@angular/material";
+import { ApplicationLayoutModule} from './core/framework/material-custom-components/application-layout/application-layout.module';
+
 
 export function tokenGetter() {
   return localStorage.getItem('AuthToken');
@@ -95,13 +93,9 @@ export function tokenGetter() {
     AppComponent,
     AddProductComponent,
     ViewProductComponent,
-    AlertComponent,
     LoginComponent,
     RegisterComponent,
-    HeaderComponent,
     UserProfileComponent,
-    FooterComponent,
-    WestNavigationComponent,
     EastNavigationComponent,
     RevenueManagementComponent,
     DeliveryManagementComponent,
@@ -159,16 +153,20 @@ export function tokenGetter() {
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    FlexLayoutModule,
     AngularMaterialModules,
     FontAwesomeModule,
     HttpClientModule,
     FormsModule,
     DynamicFormModule,
     DynamicDetailsModule,
+    ApplicationLayoutModule,
     ReactiveFormsModule,
     AppRoutingModule,
     InfiniteScrollModule,
-    NotifierModule,
     NgxSummernoteModule,
     JwtModule.forRoot({
       config: {

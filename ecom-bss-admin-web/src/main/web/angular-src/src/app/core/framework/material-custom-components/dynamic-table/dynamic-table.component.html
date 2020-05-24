@@ -60,7 +60,7 @@
               <mat-menu #menu="matMenu">
                 <span *ngFor="let itoolbar of inlineToolbar">
                   <span *ngIf="itoolbar.id === 'edit'">
-                    <a mat-menu-item
+                    <a mat-menu-item.ts
                        [routerLink]="[detailsAPI, row.id]">
                       <mat-icon aria-hidden="false">{{itoolbar.icon}}</mat-icon>
                       <span>{{itoolbar.name}}</span>
@@ -68,7 +68,7 @@
                   </span>
                   <mat-divider></mat-divider>
                 </span>
-                <button (click)="removeCurrentRow(row)" mat-menu-item>
+                <button (click)="removeCurrentRow(row)" mat-menu-item.ts>
                   <mat-icon>delete</mat-icon>
                   <span>Delete</span>
                 </button>
@@ -90,6 +90,6 @@
           (click)="selection.toggle(row)">
       </tr>
     </table>
-    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+    <mat-paginator class="mat-paginator-sticky" [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
   </div>
 </div>

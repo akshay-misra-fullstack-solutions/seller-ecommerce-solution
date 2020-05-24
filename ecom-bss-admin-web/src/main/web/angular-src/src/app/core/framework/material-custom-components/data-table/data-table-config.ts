@@ -4,6 +4,6 @@ export interface DataTableConfig {
 	columns: any[];
 	topToolbar?: any[];
 	inlineToolbar?: any[];
-	loadChildrens?: Function;
+	loadChildren?: Function;
 	loadAPI?: string;
 }

@@ -7,6 +7,7 @@ import {FieldsComposerComponent} from './fields-composer/fields-composer.compone
 import {AngularMaterialModules} from '../../../../material-module';
 import {MatFormFieldModule, MatInputModule} from '@angular/material';
 import {RouterModule} from '@angular/router';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {RouterModule} from '@angular/router';
     RouterModule,
     AngularMaterialModules,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    FlexLayoutModule
   ],
   exports: [DynamicFormComponent],
 })

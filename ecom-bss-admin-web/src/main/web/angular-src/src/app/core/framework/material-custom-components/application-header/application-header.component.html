@@ -1,0 +1,69 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row fxLayout class="header">
+
+    <button mat-icon-button (click)="openWestSideNav()" fxShow="true" fxHide.gt-sm>
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <!-- brand logo starts -->
+    <a mat-icon-button [routerLink]="['/']" class="navbar-logo navbar-brand">
+      <mat-icon [inline]="true">toys</mat-icon>
+    </a>
+    <!-- brand logo ends -->
+
+    <span class="logo-name">Framework Core</span>
+    <span class="menu-spacer"></span>
+
+    <div class="d-flex align-items-center justify-content-between justify-content-lg-end mt-1 mb-2 my-lg-0 ml-auto">
+      <!-- search button -->
+      <button mat-icon-button (click)="sidenav.toggle()"m>
+        <mat-icon>search</mat-icon>
+      </button>
+
+      <!-- User Not Logged - link to login page-->
+      <div *ngIf="!authenticated" class="mx-1">
+        <button [routerLink]="['/login']" mat-icon-button>
+          <mat-icon>person</mat-icon>
+        </button>
+      </div>
+
+      <!-- User Logged In - Drop Down -->
+      <div *ngIf="authenticated" class="dropdown mx-1">
+        <a mat-icon-button id="userdetails" href="https://example.com" data-toggle="dropdown"
+           aria-haspopup="true" aria-expanded="false" class="dropdown-toggle">
+          <mat-icon>person</mat-icon>
+        </a>
+        <div aria-labelledby="userdetails" class="dropdown-menu dropdown-menu-right">
+          <a href="customer/orders" class="dropdown-item">Orders</a>
+          <a href="customer/address" class="dropdown-item">Addresses</a>
+          <a href="customer/account" class="dropdown-item">Profile</a>
+          <div class="dropdown-divider my-0"></div>
+          <a class="dropdown-item" (click)="logout(); $event.stopPropagation();" >Logout</a>
+
+        </div>
+      </div>
+
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="select language">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>dialpad</mat-icon>
+          <span>English</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>voicemail</mat-icon>
+          <span>Hindi</span>
+        </button>
+      </mat-menu>
+
+      <button mat-icon-button (click)="openEastSideNav()">  <!--fxShow="true" fxHide.lt-md-->
+        <mat-icon>notifications</mat-icon>
+      </button>
+      <!--<button mat-icon-button fxShow="true" fxHide.gt-sm>
+        <mat-icon>chat</mat-icon>
+      </button>-->
+    </div>
+
+  </mat-toolbar-row>
+</mat-toolbar>

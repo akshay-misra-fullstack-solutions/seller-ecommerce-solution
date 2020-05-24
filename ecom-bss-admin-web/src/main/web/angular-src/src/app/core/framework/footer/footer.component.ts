@@ -37,6 +37,8 @@ export class FooterComponent implements OnInit {
       this.authenticated = true;
     }
 
+    this.authenticated = true;
+
     this.subscription = this.userService.getAuth().subscribe(authenticated => {
       this.authenticated = authenticated;
     });

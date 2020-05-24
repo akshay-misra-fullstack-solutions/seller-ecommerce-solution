@@ -2,36 +2,15 @@
 
 @import "./bootstrap-custom.scss";
 @import "~angular-notifier/styles";
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
 
 .hidden {
   display: none;
 }
 
-a, button {
-  cursor: pointer;
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-
-.form-signin .navbar-brand, .form-signup .navbar-brand {
-  color: #2b3034;
-}
-.form-signin .navbar-brand:hover, .form-signup .navbar-brand:hover {
-  color: #495057;
-}
-
-.nav-link {
-  cursor: pointer;
-}
-
-select.form-control:not([size]):not([multiple]) {
-  height: auto;
-}
-
-.table-responsive>.table-bordered {
-  border: 1px solid #ddd;
-}
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
 .cdk-mouse-focused , .cdk-focused {

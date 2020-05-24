@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WestNavigationComponent } from './west-navigation.component';
+import { ApplicationLayoutComponent } from './application-layout.component';
 
-describe('WestNavigationComponent', () => {
-  let component: WestNavigationComponent;
-  let fixture: ComponentFixture<WestNavigationComponent>;
+describe('ApplicationLayoutComponent', () => {
+  let component: ApplicationLayoutComponent;
+  let fixture: ComponentFixture<ApplicationLayoutComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WestNavigationComponent ]
+      declarations: [ ApplicationLayoutComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WestNavigationComponent);
+    fixture = TestBed.createComponent(ApplicationLayoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

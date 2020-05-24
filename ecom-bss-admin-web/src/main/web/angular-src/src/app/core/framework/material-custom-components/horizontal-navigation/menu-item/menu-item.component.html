@@ -1,0 +1,9 @@
+<li class="dropdown" aria-haspopup="true">
+  <a mat-icon-button href="#" [routerLink]="[href]">
+    <mat-icon>laptop</mat-icon> {{item.name}}
+    <mat-icon *ngIf="!item.parent && item.items">keyboard_arrow_down</mat-icon>
+    <mat-icon class="float-right" *ngIf="item.items && item.parent">keyboard_arrow_right</mat-icon>
+  </a>
+
+  <menu-item-group class="sub-menu" *ngIf="item.items" [items]="item.items"></menu-item-group>
+</li>
