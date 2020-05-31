@@ -4,8 +4,9 @@ import { RouterModule, Routes } from '@angular/router';
 import {AuthGuard} from "./core/framework/guards/auth.guard";
 import {LoginComponent} from "./core/framework/login/login.component";
 import {RegisterComponent} from "./core/framework/register/register.component";
-import {ViewProductComponent} from "./bss/components/product_management/view-product/view-product.component";
 import {UserProfileComponent} from "./core/framework/user-profile/user-profile.component";
+
+import {ViewProductComponent} from "./bss/components/product_management/view-product/view-product.component";
 import {CartComponent} from "./bss/components/order-management/cart/cart.component";
 import {RevenueManagementComponent} from "./bss/components/revenue-management/revenue-management.component";
 import {DeliveryManagementComponent} from "./bss/components/delivery-management/delivery-management.component";
@@ -17,23 +18,11 @@ import {OrderSuccessComponent} from "./bss/components/order-management/order-suc
 import {OrderDetailsComponent} from "./bss/components/order-management/order-details/order-details.component";
 import {ProductCategoriesListComponent} from "./bss/components/product_management/product-categories/product-categories-list/product-categories-list.component";
 import {AddProductCategoryComponent} from './bss/components/product_management/product-categories/add-product-category/add-product-category.component';
-import {AttributeGroupsListComponent} from "./core/framework/design/model-schema/attribute-groups-list/attribute-groups-list.component";
-import {AddAttributeGroupsComponent} from "./core/framework/design/model-schema/add-attribute-groups/add-attribute-groups.component";
-import {AttributeListComponent} from "./core/framework/design/model-schema/attribute-list/attribute-list.component";
-import {AddAttributeComponent} from "./core/framework/design/model-schema/add-attribute/add-attribute.component";
 import { AddProductSpecComponent } from "./bss/components/product_management/attribute-specification/add-product-spec/add-product-spec.component";
 import {AttributesSpecsWrapperComponent} from "./bss/components/product_management/attribute-specification/attributes-specs-wrapper/attributes-specs-wrapper.component";
-import {AttributeValueListComponent} from "./core/framework/design/model-schema/attribute-value-list/attribute-value-list.component";
-import {AddAttributeValueComponent} from "./core/framework/design/model-schema/add-attribute-value/add-attribute-value.component";
-import {ApplicationLayoutWrapperComponent} from "./core/framework/design/layout/application-layout-wrapper/application-layout-wrapper.component";
-import {AddLayoutConfigComponent} from "./core/framework/design/layout/add-layout-config/add-layout-config.component";
-import {AddTabLayoutComponent} from "./core/framework/design/layout/add-tab-layout/add-tab-layout.component";
-import {AddSideNavigationTabComponent} from "./core/framework/design/layout/add-side-navigation-tab/add-side-navigation-tab.component";
-import {ApplicationModelWrapperComponent} from "./core/framework/design/model-schema/application-model-wrapper/application-model-wrapper.component";
-import {AddObjectTypeComponent} from "./core/framework/design/model-schema/add-object-type/add-object-type.component";
-import {ObjectDetailsLayoutComponent} from './core/framework/material-custom-components/object-details-layout/object-details-layout.component';
-import {CompositeFormComponent} from './core/framework/composite/composite-form/composite-form.component';
-import {NavigationLayoutComponent} from './core/framework/design/layout/navigation-layout/navigation-layout.component';
+
+
+import {CompositePageComponent} from './core/framework/material-custom-components/composite/composite-page/composite-page.component';
 
 //noinspection TypeScriptValidateTypes
 const routes: Routes = [
@@ -41,34 +30,12 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   /*{ path: '', component: ViewProductComponent },*/
 
-  { path: 'application/navigation/:tabId', component: NavigationLayoutComponent },
-  { path: 'application/design/layout', component: ApplicationLayoutWrapperComponent },
-  { path: 'application/design/layout/add/layout/config', component: AddLayoutConfigComponent },
-  { path: 'application/design/layout/edit/layout/config/:id', component: AddLayoutConfigComponent },
-  { path: 'application/design/layout/add/tab/layout', component: AddTabLayoutComponent },
-  { path: 'application/design/layout/edit/tab/layout/:id', component: AddTabLayoutComponent },
-  { path: 'application/design/layout/add/side/nav/tab', component: AddSideNavigationTabComponent },
-  { path: 'application/design/layout/edit/side/nav/tab/:id', component: AddSideNavigationTabComponent },
+  { path: 'application/navigation/:objectTypeId/:objectId', component: CompositePageComponent, data : { operation : 'load_nav' } },
+  { path: 'application/design/create/object/:objectTypeId/:objectId', component: CompositePageComponent, data : { operation : 'load_form' } },
+  { path: 'application/api/load/details/:objectTypeId/:objectId', component: CompositePageComponent, data : { operation : 'load_details' } },
 
-  { path: 'application/design/model', component: ApplicationModelWrapperComponent },
-
-  { path: 'application/design/model/add/attribute/group', component: AddAttributeGroupsComponent},
-  { path: 'application/design/model/edit/attribute/group/:id', component: AddAttributeGroupsComponent},
-  { path: 'application/design/model/add/attribute', component: AddAttributeComponent},
-  { path: 'application/design/model/edit/attribute/:id', component: AddAttributeComponent},
-  // { path: 'application/design/model/attribute/values/:parentId', component: AttributeValueListComponent},
-
-  { path: 'application/design/create/object/:objectTypeId', component: CompositeFormComponent},
-
-  { path: 'application/api/load/details/:objectTypeId/:objectId', component: ObjectDetailsLayoutComponent},
-  { path: 'application/api/load/details/:objectTypeId/:parentId/add', component: AddAttributeValueComponent},
-  { path: 'application/design/model/attribute/values/:parentId/edit/:id', component: AddAttributeValueComponent},
-  { path: 'application/design/model/add/object/type', component: AddObjectTypeComponent },
-  { path: 'application/design/model/edit/object/type/:id', component: AddObjectTypeComponent },
-
-  { path: '', component: ProductCategoriesListComponent},
+  /*{ path: '', component: ProductCategoriesListComponent},
   { path: 'catalog/attribute/specifications', component: AttributesSpecsWrapperComponent},
-
   { path: 'catalog/add/product/specification', component: AddProductSpecComponent},
   { path: 'catalog/edit/product/specification/:id', component: AddProductSpecComponent},
   { path: 'catalog/add/category', component: AddProductCategoryComponent},
@@ -81,7 +48,7 @@ const routes: Routes = [
   { path: 'customer/account', component: CustomerAccountComponent, canActivate: [AuthGuard]},
   { path: 'customer/address', component: CustomerAddressComponent, canActivate: [AuthGuard]},
   { path: 'billing', component: RevenueManagementComponent, canActivate: [AuthGuard]},
-  { path: 'delivery', component: DeliveryManagementComponent, canActivate: [AuthGuard]},
+  { path: 'delivery', component: DeliveryManagementComponent, canActivate: [AuthGuard]},*/
 
 
   // otherwise redirect to home

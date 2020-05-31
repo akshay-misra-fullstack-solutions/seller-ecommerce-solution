@@ -16,8 +16,7 @@ export class MenuItemComponent implements OnInit {
 
   ngOnInit() {
     if (this.item) {
-      this.href = '/application/navigation/' + this.item.id;
+      this.href = '/application/navigation/' + this.item.objectTypeId + '/' + this.item.id;
     }
-    console.log('... MenuItemComponent, item: ' + JSON.stringify(this.item));
   }
 }

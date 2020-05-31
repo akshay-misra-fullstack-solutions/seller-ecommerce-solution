@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MenuItem} from '../../navigation-service/menu-item';
 
-
 @Component({
   selector: 'nav-item',
   templateUrl: './nav-item.component.html',
@@ -20,9 +19,8 @@ export class NavItemComponent implements OnInit {
       if (this.item.dummy) {
         this.href = '#' + this.item.id;
       } else {
-        this.href = '/application/navigation/' + this.item.id;
+        this.href = '/application/navigation/' + this.item.objectTypeId + '/' + this.item.id;
       }
     }
-    console.log('... NavItemComponent, item: ' + JSON.stringify(this.item));
   }
 }

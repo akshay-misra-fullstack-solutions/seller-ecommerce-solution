@@ -16,6 +16,8 @@ export class ApplicationLayoutComponent implements OnInit, OnDestroy {
 
   private hasBackDrop: boolean;
 
+  private load: boolean;
+
   @ViewChild('westSidenav') public westSidenav: MatSidenav;
 
   @ViewChild('eastSidenav') public eastSidenav: MatSidenav;
@@ -28,6 +30,9 @@ export class ApplicationLayoutComponent implements OnInit, OnDestroy {
 
     this.westSidenavSubscription = this.navigationService.observeWestNavigation().subscribe(() => {
       this.hasBackDrop = true;
+      if (!this.load) {
+         this.load = true;
+      }
       this.westSidenav.toggle();
     });
 

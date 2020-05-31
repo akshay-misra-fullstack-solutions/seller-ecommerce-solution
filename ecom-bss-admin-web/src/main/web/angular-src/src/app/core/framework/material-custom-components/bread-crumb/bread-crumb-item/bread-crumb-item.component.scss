@@ -1,0 +1,27 @@
+.bread-crumb-item {
+  display: inline-flex;
+  list-style: none;
+  min-width: 100px;
+  align-items: center;
+  font-size: 12px;
+}
+
+.bread-crumb-item a {
+  color: #c6c6c6;
+  width: auto;
+  text-decoration: none;
+}
+
+.bread-crumb-item a:hover {
+  color: #fff;
+}
+
+.bread-crumb-item a.disabled {
+  color: #a0a0a0;
+}
+
+.bread-crumb-item a.disabled:hover {
+  color: #a0a0a0;
+  cursor: default;
+}
+

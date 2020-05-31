@@ -10,7 +10,7 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class ObjectDetailsLayoutService {
+export class CompositeDetailsService {
 
   constructor(private http: HttpClient, private router: Router) { }
 

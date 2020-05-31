@@ -1,7 +1,6 @@
 
-
 .table-container {
-  max-height: 500px;
+  max-height: 550px;
   overflow: auto;
 }
 
@@ -10,4 +9,16 @@
   bottom: 0px;
   position: sticky;
   z-index: 10;
+}
+
+table th {
+  min-width: 100px;
+}
+
+table th:first-child {
+  min-width: 60px;
+}
+
+label {
+  margin-bottom: 0.1rem !important;
 }

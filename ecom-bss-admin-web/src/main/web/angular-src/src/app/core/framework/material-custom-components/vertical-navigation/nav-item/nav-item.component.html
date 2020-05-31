@@ -1,12 +1,12 @@
 <li>
-  <a mat-menu-item *ngIf="!item.items && !item.dummy" [routerLink]="href">
+  <a mat-menu-item *ngIf="!item.dummy" [routerLink]="href">
     <mat-icon>navigate_next</mat-icon> {{item.name}}
   </a>
 
-  <a mat-menu-item *ngIf="item.dummy && item.items" data-toggle="collapse" class="parent collapsed" [href]="href">
+  <a mat-menu-item *ngIf="item.dummy" data-toggle="collapse" class="parent collapsed" [href]="href">
     <mat-icon>navigate_next</mat-icon> {{item.name}}
   </a>
 
-  <nav-collapsable-item class="" *ngIf="item.items" [item]="item"></nav-collapsable-item>
+  <nav-collapsable-item class="" *ngIf="item.dummy" [item]="item"></nav-collapsable-item>
 </li>
 

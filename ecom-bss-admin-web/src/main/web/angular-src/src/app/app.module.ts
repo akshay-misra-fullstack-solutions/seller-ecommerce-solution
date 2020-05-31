@@ -72,16 +72,17 @@ import { ObjectTypeComponent } from './core/framework/design/model-schema/object
 import { AddObjectTypeComponent } from './core/framework/design/model-schema/add-object-type/add-object-type.component';
 import { CharacteristicListComponent } from './bss/components/product_management/attribute-specification/characteristic-list/characteristic-list.component';
 import { AddCharacteristicComponent } from './bss/components/product_management/attribute-specification/add-characteristic/add-characteristic.component';
-import { ObjectDetailsLayoutComponent } from './core/framework/material-custom-components/object-details-layout/object-details-layout.component';
 import { DynamicFormModule} from './core/framework/material-custom-components/dynamic-form/dynamic-form.module';
 import { DynamicDetailsModule} from './core/framework/material-custom-components/dynamic-details/dynamic-details.module';
 import { MatReferenceFieldComponent} from './core/framework/material-custom-components/mat-reference-field/mat-reference-field.component';
-import { CompositeTableWrapperComponent } from './core/framework/composite/composite-table-wrapper/composite-table-wrapper.component';
-import { CompositeFormComponent } from './core/framework/composite/composite-form/composite-form.component';
-import { DynamicTableComponent } from './core/framework/material-custom-components/dynamic-table/dynamic-table.component';
 import { NavigationLayoutComponent } from './core/framework/design/layout/navigation-layout/navigation-layout.component';
 import { MatToolbarModule, MatSidenavModule, MatListModule } from "@angular/material";
-import { ApplicationLayoutModule} from './core/framework/material-custom-components/application-layout/application-layout.module';
+import { ApplicationLayoutModule } from './core/framework/material-custom-components/application-layout/application-layout.module';
+import { CommonMaterialModule } from './core/framework/material-custom-components/common-module/common-material.module';
+import { CompositeTableModule } from './core/framework/material-custom-components/composite/composite-table/composite-table.module';
+import { CompositeFormModule } from './core/framework/material-custom-components/composite/composite-form/composite-form.module';
+import { CompositeDetailsModule } from './core/framework/material-custom-components/composite/composite-details/composite-details.module';
+import { CompositePageModule } from './core/framework/material-custom-components/composite/composite-page/composite-page.module';
 
 
 export function tokenGetter() {
@@ -141,11 +142,7 @@ export function tokenGetter() {
     AddObjectTypeComponent,
     CharacteristicListComponent,
     AddCharacteristicComponent,
-    ObjectDetailsLayoutComponent,
     MatReferenceFieldComponent,
-    CompositeTableWrapperComponent,
-    CompositeFormComponent,
-    DynamicTableComponent,
     NavigationLayoutComponent,
   ],
 
@@ -161,6 +158,11 @@ export function tokenGetter() {
     FontAwesomeModule,
     HttpClientModule,
     FormsModule,
+    CommonMaterialModule,
+    CompositeTableModule,
+    CompositeFormModule,
+    CompositeDetailsModule,
+    CompositePageModule,
     DynamicFormModule,
     DynamicDetailsModule,
     ApplicationLayoutModule,

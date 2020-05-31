@@ -3,7 +3,7 @@
 
   <mat-sidenav
     #westSidenav mode="over">
-    <vertical-navbar (close)="closeWestSideNav()"></vertical-navbar>
+    <vertical-navbar *ngIf="load" (close)="closeWestSideNav()"></vertical-navbar>
   </mat-sidenav>
 
   <mat-sidenav-content>

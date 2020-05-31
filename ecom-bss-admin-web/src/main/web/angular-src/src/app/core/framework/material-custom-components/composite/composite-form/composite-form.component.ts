@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Observable, of} from 'rxjs';
 import {CompositeFormService} from './composite-form.service';
 
 @Component({
@@ -10,6 +9,7 @@ import {CompositeFormService} from './composite-form.service';
 })
 export class CompositeFormComponent implements OnInit {
 
+  @Input() data: any;
   private loadAPI: string;
   private objectTypeId: string;
   private details: DynamicFormConfig;
@@ -19,6 +19,14 @@ export class CompositeFormComponent implements OnInit {
               private compositeFormService: CompositeFormService) { }
 
   ngOnInit() {
+    if (this.data) {
+      this.details = this.data;
+    } else {
+      this.load();
+    }
+  }
+
+  load() {
     this.route.paramMap.subscribe((params) => {
       if (params.has('objectTypeId')) {
         this.objectTypeId = params.get('objectTypeId');
@@ -28,7 +36,6 @@ export class CompositeFormComponent implements OnInit {
         response => {
           console.log(' response : ' + response);
           this.details = response;
-          // console.log('CompositeFormComponent, form config details: ' + JSON.stringify(this.details));
         },);
     });
   }

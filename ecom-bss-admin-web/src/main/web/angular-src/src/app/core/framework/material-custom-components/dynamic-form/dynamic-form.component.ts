@@ -30,9 +30,9 @@ export class DynamicFormComponent implements OnChanges {
     if (this.details) {
       this.title = this.details.formTitle;
       this.groups = this.details.groups;
+      this.cancelLink = this.details.cancelLink;
     }
 
-    this.calculateCancelLink();
     const fieldCtrls = {};
     for (const g of this.groups) {
       for (const f of g.fields) {
@@ -61,21 +61,6 @@ export class DynamicFormComponent implements OnChanges {
       }
     }
     return true;
-  }
-
-  public calculateCancelLink() {
-    const previousRoute = this.applicationRouteService.getPreviousRoute();
-    const currentRoute = this.applicationRouteService.getCurrentRoute();
-    if (previousRoute === currentRoute) {
-      if (this.details && this.details.cancelLink) {
-        this.cancelLink = this.details.cancelLink;
-      } else {
-        this.cancelLink = '/application/design/model'; // TODO: remove it after cancelLink come from backend, using parent object or tab.
-      }
-    } else {
-      this.cancelLink = this.applicationRouteService.getPreviousRoute();
-    }
-    console.log('**** cancelLink: ' + this.cancelLink);
   }
 
   onSubmit() {

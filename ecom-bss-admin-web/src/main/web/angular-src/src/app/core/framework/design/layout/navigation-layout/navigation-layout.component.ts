@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {CompositeTableConfig} from '../../../composite/composite-table-wrapper/composite-table-wrapper.component';
-import {ActivatedRoute} from '@angular/router';
-import {NavigationLayoutService} from './navigation-layout.service';
+import {ActivatedRoute } from '@angular/router';
+import { NavigationLayoutService } from './navigation-layout.service';
+import { CompositeTableConfig } from '../../../material-custom-components/composite/composite-table/composite-table.component';
 
 @Component({
   selector: 'app-navigation-layout',
@@ -23,11 +23,9 @@ export class NavigationLayoutComponent implements OnInit {
 
         this.navigationLayoutService.loadTabDetails(this.loadAPI).subscribe(
           response => {
-            console.log(' response : ' + response);
             this.compositeTableConfig = response;
           }, );
       }
     });
   }
-
 }

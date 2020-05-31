@@ -3,6 +3,7 @@ import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
 import {WidgetsConfigService} from '../widgets/widgets-config.service';
 import {DynamicTableService} from './dynamic-table.service';
+import {DynamicTableConfig} from './dynamic-table-config';
 
 @Component({
   selector: 'dynamic-table',
@@ -166,20 +167,4 @@ export class DynamicTableComponent implements OnInit {
       dataName: function(row) {return row[this.columnDef];}});
     return columns;
   }
-}
-
-export interface DynamicTableConfig {
-  name?: string;
-  loadAPI?: string;
-  createAPI?: string;
-  deleteAPI?: string;
-  detailsAPI?: string;
-  columns?: Column[];
-}
-
-export interface Column {
-  columnDef?: string;
-  header?: string;
-  required?: boolean;
-  readonly?: boolean;
 }

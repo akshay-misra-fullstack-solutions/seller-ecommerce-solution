@@ -13,6 +13,5 @@ export class MenuItemGroupComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('---- MenuItemGroupComponent, items: ' + JSON.stringify(this.items));
   }
 }

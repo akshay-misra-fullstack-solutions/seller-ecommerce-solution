@@ -13,7 +13,6 @@ export class NavCollapsibleItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('---- NavCollapsibleItemComponent, items: ' + JSON.stringify(this.item));
   }
 
 }
