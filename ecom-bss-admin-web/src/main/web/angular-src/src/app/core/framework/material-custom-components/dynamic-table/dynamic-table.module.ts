@@ -6,7 +6,7 @@ import {
   MatIconModule,
   MatInputModule,
   MatPaginatorModule,
-  MatProgressSpinnerModule,
+  MatProgressSpinnerModule, MatSortModule,
   MatTableModule,
   MatTooltipModule
 } from '@angular/material';
@@ -19,6 +19,7 @@ import {RouterModule} from '@angular/router';
   imports: [
     CommonModule,
     MatTableModule,
+    MatSortModule,
     MatIconModule,
     MatInputModule,
     MatTooltipModule,
